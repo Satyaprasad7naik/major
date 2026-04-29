@@ -33,11 +33,11 @@ class QueryResponse(BaseModel):
     error: Optional[str] = None
 
 
-def execute_query(query: str, table_name: Optional[str] = None) -> QueryResponse:
+def execute_query(query: str, table_name: Optional[str] = None, params: Optional[Dict[str, Any]] = None) -> QueryResponse:
     """Execute a query on the database."""
     try:
         with engine.connect() as conn:
-            result = conn.execute(text(query))
+            result = conn.execute(text(query), params or {})
             rows = result.fetchall()
             columns = result.keys()
             data = [dict(zip(columns, row)) for row in rows]
@@ -179,7 +179,7 @@ def get_table_data(table_name: str, limit: int = 10, offset: int = 0) -> QueryRe
     if table_name not in tables:
         raise HTTPException(status_code=404, detail=f"Table '{table_name}' not found")
 
-    return execute_query(f"SELECT * FROM `{table_name}` LIMIT {limit} OFFSET {offset}", table_name)
+    return execute_query(f"SELECT * FROM `{table_name}` LIMIT :limit OFFSET :offset", table_name, {"limit": limit, "offset": offset})
 
 
 @router.get("/table/{table_name}/count")
@@ -209,13 +209,13 @@ def get_table_row_count(table_name: str) -> Dict[str, Any]:
 @router.get("/users")
 def get_users(limit: int = 10) -> QueryResponse:
     """Get users from the users table."""
-    return execute_query(f"SELECT * FROM users LIMIT {limit}", "users")
+    return execute_query("SELECT * FROM users LIMIT :limit", "users", {"limit": limit})
 
 
 @router.get("/users/{user_id}")
 def get_user_by_id(user_id: str) -> QueryResponse:
     """Get a specific user by ID."""
-    return execute_query(f"SELECT * FROM users WHERE user_id = '{user_id}'", "users")
+    return execute_query("SELECT * FROM users WHERE user_id = :user_id", "users", {"user_id": user_id})
 
 
 # ==================== Transactions Table ====================
@@ -223,13 +223,13 @@ def get_user_by_id(user_id: str) -> QueryResponse:
 @router.get("/transactions")
 def get_transactions(limit: int = 10) -> QueryResponse:
     """Get transactions."""
-    return execute_query(f"SELECT * FROM transactions LIMIT {limit}", "transactions")
+    return execute_query("SELECT * FROM transactions LIMIT :limit", "transactions", {"limit": limit})
 
 
 @router.get("/transactions/user/{user_id}")
 def get_user_transactions(user_id: str, limit: int = 10) -> QueryResponse:
     """Get transactions for a specific user."""
-    return execute_query(f"SELECT * FROM transactions WHERE user_id = '{user_id}' LIMIT {limit}", "transactions")
+    return execute_query("SELECT * FROM transactions WHERE user_id = :user_id LIMIT :limit", "transactions", {"user_id": user_id, "limit": limit})
 
 
 # ==================== Login Events Table ====================
@@ -237,13 +237,13 @@ def get_user_transactions(user_id: str, limit: int = 10) -> QueryResponse:
 @router.get("/login-events")
 def get_login_events(limit: int = 10) -> QueryResponse:
     """Get login events."""
-    return execute_query(f"SELECT * FROM login_events LIMIT {limit}", "login_events")
+    return execute_query("SELECT * FROM login_events LIMIT :limit", "login_events", {"limit": limit})
 
 
 @router.get("/login-events/user/{user_id}")
 def get_user_login_events(user_id: str, limit: int = 10) -> QueryResponse:
     """Get login events for a specific user."""
-    return execute_query(f"SELECT * FROM login_events WHERE user_id = '{user_id}' LIMIT {limit}", "login_events")
+    return execute_query("SELECT * FROM login_events WHERE user_id = :user_id LIMIT :limit", "login_events", {"user_id": user_id, "limit": limit})
 
 
 # ==================== Metric Specs Table (Alerts) ====================
@@ -257,7 +257,7 @@ def get_metric_specs() -> QueryResponse:
 @router.get("/metric-specs/{metric_id}")
 def get_metric_spec_by_id(metric_id: int) -> QueryResponse:
     """Get a specific metric specification by ID."""
-    return execute_query(f"SELECT * FROM metric_specs WHERE metric_id = {metric_id}", "metric_specs")
+    return execute_query("SELECT * FROM metric_specs WHERE metric_id = :metric_id", "metric_specs", {"metric_id": metric_id})
 
 
 # ==================== Alert History Table ====================
@@ -265,13 +265,13 @@ def get_metric_spec_by_id(metric_id: int) -> QueryResponse:
 @router.get("/alert-history")
 def get_alert_history(limit: int = 20) -> QueryResponse:
     """Get alert history."""
-    return execute_query(f"SELECT * FROM alert_history ORDER BY created_at DESC LIMIT {limit}", "alert_history")
+    return execute_query("SELECT * FROM alert_history ORDER BY created_at DESC LIMIT :limit", "alert_history", {"limit": limit})
 
 
 @router.get("/alert-history/metric/{metric_id}")
 def get_alert_history_by_metric(metric_id: int, limit: int = 10) -> QueryResponse:
     """Get alert history for a specific metric."""
-    return execute_query(f"SELECT * FROM alert_history WHERE metric_id = {metric_id} ORDER BY created_at DESC LIMIT {limit}", "alert_history")
+    return execute_query("SELECT * FROM alert_history WHERE metric_id = :metric_id ORDER BY created_at DESC LIMIT :limit", "alert_history", {"metric_id": metric_id, "limit": limit})
 
 
 # ==================== Anomaly History Table ====================
@@ -287,7 +287,7 @@ def get_anomaly_history() -> QueryResponse:
 @router.get("/events")
 def get_events(limit: int = 10) -> QueryResponse:
     """Get events."""
-    return execute_query(f"SELECT * FROM events ORDER BY created_at DESC LIMIT {limit}", "events")
+    return execute_query("SELECT * FROM events ORDER BY created_at DESC LIMIT :limit", "events", {"limit": limit})
 
 
 # ==================== Dashboards Table ====================
@@ -295,13 +295,13 @@ def get_events(limit: int = 10) -> QueryResponse:
 @router.get("/dashboards")
 def get_dashboards(limit: int = 10) -> QueryResponse:
     """Get dashboards."""
-    return execute_query(f"SELECT * FROM dashboards LIMIT {limit}", "dashboards")
+    return execute_query("SELECT * FROM dashboards LIMIT :limit", "dashboards", {"limit": limit})
 
 
 @router.get("/dashboards/{dashboard_id}")
 def get_dashboard_by_id(dashboard_id: str) -> QueryResponse:
     """Get a specific dashboard by ID."""
-    return execute_query(f"SELECT * FROM dashboards WHERE dashboard_id = '{dashboard_id}'", "dashboards")
+    return execute_query("SELECT * FROM dashboards WHERE dashboard_id = :dashboard_id", "dashboards", {"dashboard_id": dashboard_id})
 
 
 @router.get("/dashboards/deployed")
