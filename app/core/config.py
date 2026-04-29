@@ -80,6 +80,7 @@ class Settings(BaseSettings):
 
     # App Settings
     LOG_LEVEL: str = "INFO"
+    ALLOWED_ORIGINS: list[str] = ["*"]
     
     class Config:
         env_file = ".env"
