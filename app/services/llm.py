@@ -1,4 +1,4 @@
-import time
+import asyncio
 import google.generativeai as genai
 from app.core.config import settings
 from app.core.logger import logger
@@ -94,7 +94,7 @@ class LLMService:
                     attempts += 1
                     wait = 2 ** attempts
                     logger.warning(f"LLM rate limit encountered, retrying in {wait}s (attempt {attempts})")
-                    time.sleep(wait)
+                    await asyncio.sleep(wait)
                     continue
                 logger.error(f"LLM Error: {str(e)}")
                 return f"Error generating response: {str(e)}"

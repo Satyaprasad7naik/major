@@ -50,7 +50,7 @@ async def test_llm_service_retry_logic():
         ]
         
         # Patch sleep to avoid waiting
-        with patch("time.sleep"):
+        with patch("asyncio.sleep"):
             service = LLMService()
             service.provider = "gemini"
             service.model = mock_model
