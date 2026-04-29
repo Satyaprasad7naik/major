@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+derivenv/
+pip-log.txt
+pip-delete-this-directory.txt
+.env
+# Environment variables
+
+
+
+# IDEs
+.vscode/
+.idea/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Large generated files (optional, keeping sql for now as it is < 50MB)
+# derivinsight_mock_data.sql
+logs

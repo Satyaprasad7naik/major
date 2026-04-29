@@ -1,0 +1,1132 @@
+{
+  "scan_id": "scan-20260207T140524",
+  "timestamp": "2026-02-07T14:05:24.821225",
+  "stats": {
+    "total_missions": 8,
+    "critical_count": 0,
+    "high_count": 0,
+    "overall_risk": 0,
+    "overall_severity": "LOW"
+  },
+  "detections": [
+    {
+      "mission_id": "sec_001",
+      "mission_name": "Anomalous PEP Transaction Sieving",
+      "domain": "security",
+      "severity": "LOW",
+      "risk_score": 0,
+      "risk_factors": {},
+      "sql": null,
+      "data_count": 0,
+      "results": [],
+      "visualization_config": null,
+      "insight": null,
+      "recommendation": null,
+      "original_query": "Identify Politically Exposed Persons (PEPs) whose transaction patterns exhibit a significant deviation from their historical norms, specifically focusing on a sudden increase in transactions with newly introduced high-risk 'instrument' types or a disproportionate use of 'payment_method's not previously utilized. Analyze if these deviations correlate with an elevated 'risk_score' or a change in 'kyc_status' within the preceding 90 days, suggesting potential attempts to bypass enhanced due diligence through complex financial maneuvers.",
+      "depth": 0,
+      "parent_mission_id": null,
+      "rationale": "",
+      "timestamp": "LIVE AUDIT",
+      "logs": [
+        {
+          "ts": 1770473089.745,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [classify_intent]"
+        },
+        {
+          "ts": 1770473089.747,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Starting Intent Classification and Preprocessing in parallel for domain: security"
+        },
+        {
+          "ts": 1770473089.777,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classifying intent for domain: security | Query: Identify Politically Exposed Persons (PEPs) whose transaction patterns exhibit a significant deviation from their historical norms, specifically focusing on a sudden increase in transactions with newly introduced high-risk 'instrument' types or a disproportionate use of 'payment_method's not previously utilized. Analyze if these deviations correlate with an elevated 'risk_score' or a change in 'kyc_status' within the preceding 90 days, suggesting potential attempts to bypass enhanced due diligence through complex financial maneuvers."
+        },
+        {
+          "ts": 1770473089.779,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770473091.527,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"intent\": \"SELECT\",\n  \"confidence\": 0...."
+        },
+        {
+          "ts": 1770473091.533,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classification Result: SELECT (conf: 0.9) | Needs Clarification: True"
+        },
+        {
+          "ts": 1770473096.469,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770473097.105,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: [\"users\", \"transactions\"]..."
+        },
+        {
+          "ts": 1770473097.11,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770473099.569,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"resolved_entities\": {\n    \"users.is_p..."
+        },
+        {
+          "ts": 1770473099.569,
+          "level": "INFO",
+          "node": "entity_extractor.py",
+          "msg": "Final Extracted/Resolved Entities: {'users.is_pep': '1', 'transactions.instrument': ['XRP/USD', 'AMZN', 'AAPL', 'DAX', 'FTSE100', 'GOOGL', 'AUD/USD', 'Natural Gas', 'Nikkei', 'Oil', 'NVDA', 'EUR/USD', 'BTC/USD', 'ETH/USD', 'NASDAQ', 'GBP/USD', 'USD/JPY', 'MSFT', 'TSLA'], 'transactions.payment_method': ['Wire Transfer', 'Bank Transfer', 'E-Wallet', 'Debit Card', 'SEPA', 'ACH', 'Crypto Wallet', 'Credit Card'], 'users.risk_score': [12, 8, 45, 72, 15, 10, 38, 68, 5, 89, 42, 18, 52, 7, 75, 48, 22, 11, 71, 6], 'users.kyc_status': 'VERIFIED'}"
+        },
+        {
+          "ts": 1770473110.3,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Intent classified: SELECT (conf: 0.9) | Needs Clarification: True"
+        },
+        {
+          "ts": 1770473110.336,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770473111.686,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: I understand you're interested in identifying Poli..."
+        }
+      ]
+    },
+    {
+      "mission_id": "comp_002",
+      "mission_name": "Sanctions Evasion Through Layered Transactions",
+      "domain": "compliance",
+      "severity": "LOW",
+      "risk_score": 0,
+      "risk_factors": {},
+      "sql": null,
+      "data_count": 0,
+      "results": [],
+      "visualization_config": null,
+      "insight": null,
+      "recommendation": null,
+      "original_query": "Construct transaction graphs for users flagged with 'is_pep' = TRUE and a 'risk_level' of 'HIGH' or 'CRITICAL'. Analyze these graphs for multi-hop transaction chains (at least three levels deep) involving intermediary users who themselves have high 'risk_score' or are also PEPs. Focus on identifying if these layered transactions utilize obscure 'payment_method's or 'instrument's that are not typically associated with standard financial flows, potentially indicative of sanctions evasion or money laundering.",
+      "depth": 0,
+      "parent_mission_id": null,
+      "rationale": "",
+      "timestamp": "LIVE AUDIT",
+      "logs": [
+        {
+          "ts": 1770473089.755,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [classify_intent]"
+        },
+        {
+          "ts": 1770473089.755,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Starting Intent Classification and Preprocessing in parallel for domain: compliance"
+        },
+        {
+          "ts": 1770473092.996,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classifying intent for domain: compliance | Query: Construct transaction graphs for users flagged with 'is_pep' = TRUE and a 'risk_level' of 'HIGH' or 'CRITICAL'. Analyze these graphs for multi-hop transaction chains (at least three levels deep) involving intermediary users who themselves have high 'risk_score' or are also PEPs. Focus on identifying if these layered transactions utilize obscure 'payment_method's or 'instrument's that are not typically associated with standard financial flows, potentially indicative of sanctions evasion or money laundering."
+        },
+        {
+          "ts": 1770473092.996,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770473093.654,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"intent\": \"SELECT\",\n  \"confidence\": 0...."
+        },
+        {
+          "ts": 1770473093.654,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classification Result: SELECT (conf: 0.9) | Needs Clarification: True"
+        },
+        {
+          "ts": 1770473102.196,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770473102.851,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: [\"users\", \"transactions\"]..."
+        },
+        {
+          "ts": 1770473102.853,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770473104.001,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"resolved_entities\": {\n    \"users.is_p..."
+        },
+        {
+          "ts": 1770473104.001,
+          "level": "INFO",
+          "node": "entity_extractor.py",
+          "msg": "Final Extracted/Resolved Entities: {'users.is_pep': '1', 'users.risk_level': 'CRITICAL', 'transactions.payment_method': 'Crypto Wallet', 'transactions.instrument': 'ETH/USD'}"
+        },
+        {
+          "ts": 1770473110.314,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Intent classified: SELECT (conf: 0.9) | Needs Clarification: True"
+        },
+        {
+          "ts": 1770473114.335,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770473116.107,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: I understand you're interested in analyzing transa..."
+        }
+      ]
+    },
+    {
+      "mission_id": "ops_002",
+      "mission_name": "User Performance Degradation Post-Login Anomaly",
+      "domain": "operations",
+      "severity": "LOW",
+      "risk_score": 0,
+      "risk_factors": {},
+      "sql": null,
+      "data_count": 0,
+      "results": [],
+      "visualization_config": null,
+      "insight": null,
+      "recommendation": null,
+      "original_query": "Identify users who, after exhibiting a pattern of failed login attempts ('status' = 'FAILED' in 'login_events') from diverse locations and devices over a week, show a subsequent significant drop in their successful transaction rates or overall transaction volume for the following two weeks. This mission aims to identify potential long-term impacts of persistent cyber threats on user engagement and platform utilization.",
+      "depth": 0,
+      "parent_mission_id": null,
+      "rationale": "",
+      "timestamp": "LIVE AUDIT",
+      "logs": [
+        {
+          "ts": 1770473089.764,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [classify_intent]"
+        },
+        {
+          "ts": 1770473089.765,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Starting Intent Classification and Preprocessing in parallel for domain: operations"
+        },
+        {
+          "ts": 1770473094.337,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classifying intent for domain: operations | Query: Identify users who, after exhibiting a pattern of failed login attempts ('status' = 'FAILED' in 'login_events') from diverse locations and devices over a week, show a subsequent significant drop in their successful transaction rates or overall transaction volume for the following two weeks. This mission aims to identify potential long-term impacts of persistent cyber threats on user engagement and platform utilization."
+        },
+        {
+          "ts": 1770473094.339,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770473095.134,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"intent\": \"SELECT\",\n  \"confidence\": 1...."
+        },
+        {
+          "ts": 1770473095.134,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classification Result: SELECT (conf: 1.0) | Needs Clarification: True"
+        },
+        {
+          "ts": 1770473105.462,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770473105.944,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: [\"users\", \"transactions\", \"login_events\"]..."
+        },
+        {
+          "ts": 1770473105.944,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770473106.832,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"resolved_entities\": {\n    \"login_even..."
+        },
+        {
+          "ts": 1770473106.832,
+          "level": "INFO",
+          "node": "entity_extractor.py",
+          "msg": "Final Extracted/Resolved Entities: {'login_events.status': 'FAILED'}"
+        },
+        {
+          "ts": 1770473110.318,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Intent classified: SELECT (conf: 1.0) | Needs Clarification: True"
+        },
+        {
+          "ts": 1770473117.163,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770473118.751,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: I understand you're interested in identifying user..."
+        }
+      ]
+    },
+    {
+      "mission_id": "risk_002",
+      "mission_name": "Concentration Risk in Highly Volatile Instruments",
+      "domain": "risk",
+      "severity": "LOW",
+      "risk_score": 0,
+      "risk_factors": {},
+      "sql": null,
+      "data_count": 0,
+      "results": [],
+      "visualization_config": null,
+      "insight": null,
+      "recommendation": null,
+      "original_query": "Analyze users across all 'age' segments who hold a disproportionate concentration of their total 'amount_usd' within 'instrument' types classified as having a 'risk_score' above 7.0. Specifically, identify if any 'age' segments show a statistically significant higher percentage of their portfolio invested in these high-risk instruments compared to others, indicating potential sector-specific or demographic-driven speculative behavior.",
+      "depth": 0,
+      "parent_mission_id": null,
+      "rationale": "",
+      "timestamp": "LIVE AUDIT",
+      "logs": [
+        {
+          "ts": 1770473089.771,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [classify_intent]"
+        },
+        {
+          "ts": 1770473089.771,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Starting Intent Classification and Preprocessing in parallel for domain: risk"
+        },
+        {
+          "ts": 1770473095.847,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classifying intent for domain: risk | Query: Analyze users across all 'age' segments who hold a disproportionate concentration of their total 'amount_usd' within 'instrument' types classified as having a 'risk_score' above 7.0. Specifically, identify if any 'age' segments show a statistically significant higher percentage of their portfolio invested in these high-risk instruments compared to others, indicating potential sector-specific or demographic-driven speculative behavior."
+        },
+        {
+          "ts": 1770473095.853,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770473096.45,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"intent\": \"SELECT\",\n  \"confidence\": 1...."
+        },
+        {
+          "ts": 1770473096.45,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classification Result: SELECT (conf: 1.0) | Needs Clarification: True"
+        },
+        {
+          "ts": 1770473108.205,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770473108.74,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: [\"users\", \"transactions\"]..."
+        },
+        {
+          "ts": 1770473108.744,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770473110.258,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"resolved_entities\": {\n    \"transactio..."
+        },
+        {
+          "ts": 1770473110.258,
+          "level": "INFO",
+          "node": "entity_extractor.py",
+          "msg": "Final Extracted/Resolved Entities: {'transactions.instrument': ['XRP/USD', 'AMZN', 'AAPL', 'DAX', 'FTSE100', 'GOOGL', 'AUD/USD', 'Natural Gas', 'Nikkei', 'Oil', 'NVDA', 'EUR/USD', 'BTC/USD', 'ETH/USD', 'NASDAQ', 'GBP/USD', 'USD/JPY', 'MSFT', 'TSLA'], 'users.age': ['24', '25', '28', '29', '30', '31', '33', '34', '36', '38', '41', '43', '45', '48', '52', '55', '58', '62', '67'], 'transactions.risk_score': ['12', '8', '45', '72', '15', '10', '38', '68', '89', '42', '48', '71']}"
+        },
+        {
+          "ts": 1770473110.326,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Intent classified: SELECT (conf: 1.0) | Needs Clarification: True"
+        },
+        {
+          "ts": 1770473119.653,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770473121.099,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: I understand you're interested in analyzing user a..."
+        }
+      ]
+    },
+    {
+      "mission_id": "comp_001",
+      "mission_name": "KYC Degradation & High-Risk Instrument Adoption",
+      "domain": "compliance",
+      "severity": "LOW",
+      "risk_score": 0,
+      "risk_factors": {},
+      "sql": null,
+      "data_count": 0,
+      "results": [],
+      "visualization_config": null,
+      "insight": null,
+      "recommendation": null,
+      "original_query": "Identify users whose 'kyc_status' has degraded from 'APPROVED' to 'PENDING' or 'FAILED' within the last 90 days. For these users, analyze if they have concurrently increased their engagement with 'instrument' types having an average 'risk_score' above 7.0, particularly if their 'risk_level' has also escalated or if they are flagged as 'is_pep' = TRUE. This mission aims to uncover potential attempts to exploit regulatory loopholes or circumvent enhanced due diligence processes during KYC re-evaluation.",
+      "depth": 0,
+      "parent_mission_id": null,
+      "rationale": "",
+      "timestamp": "LIVE AUDIT",
+      "logs": [
+        {
+          "ts": 1770473089.749,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [classify_intent]"
+        },
+        {
+          "ts": 1770473089.755,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Starting Intent Classification and Preprocessing in parallel for domain: compliance"
+        },
+        {
+          "ts": 1770473092.353,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classifying intent for domain: compliance | Query: Identify users whose 'kyc_status' has degraded from 'APPROVED' to 'PENDING' or 'FAILED' within the last 90 days. For these users, analyze if they have concurrently increased their engagement with 'instrument' types having an average 'risk_score' above 7.0, particularly if their 'risk_level' has also escalated or if they are flagged as 'is_pep' = TRUE. This mission aims to uncover potential attempts to exploit regulatory loopholes or circumvent enhanced due diligence processes during KYC re-evaluation."
+        },
+        {
+          "ts": 1770473092.355,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770473092.996,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"intent\": \"SELECT\",\n  \"confidence\": 1...."
+        },
+        {
+          "ts": 1770473092.996,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classification Result: SELECT (conf: 1.0) | Needs Clarification: False"
+        },
+        {
+          "ts": 1770473100.96,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770473101.708,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: [\"users\", \"transactions\"]..."
+        },
+        {
+          "ts": 1770473101.716,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770473102.18,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"resolved_entities\": {},\n  \"metadata\":..."
+        },
+        {
+          "ts": 1770473102.196,
+          "level": "INFO",
+          "node": "entity_extractor.py",
+          "msg": "Final Extracted/Resolved Entities: {}"
+        },
+        {
+          "ts": 1770473110.312,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Intent classified: SELECT (conf: 1.0) | Needs Clarification: False"
+        },
+        {
+          "ts": 1770473113.653,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [generate_sql]"
+        },
+        {
+          "ts": 1770473113.66,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "Generating SQL for domain: compliance | Query: Identify users whose 'kyc_status' has degraded from 'APPROVED' to 'PENDING' or 'FAILED' within the last 90 days. For these users, analyze if they have concurrently increased their engagement with 'instrument' types having an average 'risk_score' above 7.0, particularly if their 'risk_level' has also escalated or if they are flagged as 'is_pep' = TRUE. This mission aims to uncover potential attempts to exploit regulatory loopholes or circumvent enhanced due diligence processes during KYC re-evaluation."
+        },
+        {
+          "ts": 1770473113.671,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "Using custom SQL prompt for domain: compliance"
+        },
+        {
+          "ts": 1770473113.677,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770473114.324,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: Error: I don't have a table for regulatory text. H..."
+        },
+        {
+          "ts": 1770473114.328,
+          "level": "WARNING",
+          "node": "SQL_GEN",
+          "msg": "SQL Generation guidance response for query: Identify users whose 'kyc_status' has degraded from 'APPROVED' to 'PENDING' or 'FAILED' within the last 90 days. For these users, analyze if they have concurrently increased their engagement with 'instrument' types having an average 'risk_score' above 7.0, particularly if their 'risk_level' has also escalated or if they are flagged as 'is_pep' = TRUE. This mission aims to uncover potential attempts to exploit regulatory loopholes or circumvent enhanced due diligence processes during KYC re-evaluation. | Msg: Error: I don't have a table for regulatory text. H..."
+        },
+        {
+          "ts": 1770473114.33,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "SQL Generator returned guidance instead of SQL: Error: I don't have a table for regulatory text. H..."
+        }
+      ]
+    },
+    {
+      "mission_id": "risk_001",
+      "mission_name": "Emerging High-Risk Instrument Adoption by Low-Risk Users",
+      "domain": "risk",
+      "severity": "LOW",
+      "risk_score": 0,
+      "risk_factors": {},
+      "sql": null,
+      "data_count": 0,
+      "results": [],
+      "visualization_config": null,
+      "insight": null,
+      "recommendation": null,
+      "original_query": "Identify users with a 'risk_score' below 3.0 and an 'age' between 18 and 30 who have recently (within the last 60 days) started transacting with 'instrument' types that have an average 'risk_score' above 8.0. Analyze the frequency, 'amount_usd', and 'txn_type' of these transactions to assess the user's understanding of the associated risks and potential for rapid portfolio deterioration.",
+      "depth": 0,
+      "parent_mission_id": null,
+      "rationale": "",
+      "timestamp": "LIVE AUDIT",
+      "logs": [
+        {
+          "ts": 1770473089.767,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [classify_intent]"
+        },
+        {
+          "ts": 1770473089.77,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Starting Intent Classification and Preprocessing in parallel for domain: risk"
+        },
+        {
+          "ts": 1770473095.134,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classifying intent for domain: risk | Query: Identify users with a 'risk_score' below 3.0 and an 'age' between 18 and 30 who have recently (within the last 60 days) started transacting with 'instrument' types that have an average 'risk_score' above 8.0. Analyze the frequency, 'amount_usd', and 'txn_type' of these transactions to assess the user's understanding of the associated risks and potential for rapid portfolio deterioration."
+        },
+        {
+          "ts": 1770473095.134,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770473095.841,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"intent\": \"SELECT\",\n  \"confidence\": 1...."
+        },
+        {
+          "ts": 1770473095.843,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classification Result: SELECT (conf: 1.0) | Needs Clarification: False"
+        },
+        {
+          "ts": 1770473106.832,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770473107.376,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: [\"users\", \"transactions\"]..."
+        },
+        {
+          "ts": 1770473107.381,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770473108.205,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"resolved_entities\": {},\n  \"metadata\":..."
+        },
+        {
+          "ts": 1770473108.205,
+          "level": "INFO",
+          "node": "entity_extractor.py",
+          "msg": "Final Extracted/Resolved Entities: {}"
+        },
+        {
+          "ts": 1770473110.32,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Intent classified: SELECT (conf: 1.0) | Needs Clarification: False"
+        },
+        {
+          "ts": 1770473118.767,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [generate_sql]"
+        },
+        {
+          "ts": 1770473118.771,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "Generating SQL for domain: risk | Query: Identify users with a 'risk_score' below 3.0 and an 'age' between 18 and 30 who have recently (within the last 60 days) started transacting with 'instrument' types that have an average 'risk_score' above 8.0. Analyze the frequency, 'amount_usd', and 'txn_type' of these transactions to assess the user's understanding of the associated risks and potential for rapid portfolio deterioration."
+        },
+        {
+          "ts": 1770473118.778,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "Using custom SQL prompt for domain: risk"
+        },
+        {
+          "ts": 1770473118.783,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770473119.628,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: Error: The database schema does not support calcul..."
+        },
+        {
+          "ts": 1770473119.644,
+          "level": "WARNING",
+          "node": "SQL_GEN",
+          "msg": "SQL Generation guidance response for query: Identify users with a 'risk_score' below 3.0 and an 'age' between 18 and 30 who have recently (within the last 60 days) started transacting with 'instrument' types that have an average 'risk_score' above 8.0. Analyze the frequency, 'amount_usd', and 'txn_type' of these transactions to assess the user's understanding of the associated risks and potential for rapid portfolio deterioration. | Msg: Error: The database schema does not support calcul..."
+        },
+        {
+          "ts": 1770473119.644,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "SQL Generator returned guidance instead of SQL: Error: The database schema does not support calcul..."
+        }
+      ]
+    },
+    {
+      "mission_id": "sec_002",
+      "mission_name": "Account Takeover Velocity & Asset Stripping",
+      "domain": "security",
+      "severity": "LOW",
+      "risk_score": 0,
+      "risk_factors": {},
+      "sql": "WITH UserLoginCounts AS (\n  SELECT\n    user_id,\n    COUNT(DISTINCT country) AS distinct_countries,\n    COUNT(*) AS successful_logins,\n    MAX(created_at) AS last_login_time,\n    MIN(created_at) AS first_login_time\n  FROM login_events\n  WHERE\n    UPPER(status) LIKE '%SUCCESS%'\n  GROUP BY\n    user_id\n  HAVING\n    COUNT(DISTINCT country) > 5\n), User30DayAvg AS (\n  SELECT\n    user_id,\n    AVG(amount_usd) AS avg_amount_usd\n  FROM transactions\n  WHERE\n    created_at BETWEEN date('2026-02-07', '-30 day') AND '2026-02-07 19:35:11'\n  GROUP BY\n    user_id\n)\nSELECT DISTINCT\n  u.username\nFROM users AS u\nJOIN UserLoginCounts AS ulc\n  ON u.user_id = ulc.user_id\nJOIN transactions AS t\n  ON u.user_id = t.user_id\nJOIN User30DayAvg AS u30da\n  ON u.user_id = u30da.user_id\nWHERE\n  (\n    ulc.last_login_time - ulc.first_login_time\n  ) <= 12 * 60 * 60 AND t.amount_usd > (\n    u30da.avg_amount_usd * 0.75\n  ) AND (\n    UPPER(t.flag_reason) LIKE '%SYSTEM_ERROR%' OR t.flag_reason IS NULL\n  ) AND UPPER(t.txn_type) LIKE '%OUTFLOW%';",
+      "data_count": 0,
+      "results": [],
+      "visualization_config": null,
+      "insight": "No data found to analyze.",
+      "recommendation": "Try broadening your search criteria or checking if the data for this period is available.",
+      "original_query": "Detect users who have experienced a high velocity of successful logins ('status' = 'SUCCESS' in 'login_events') originating from geographically diverse locations (more than 5 distinct 'country' codes within 12 hours) coupled with a subsequent rapid outflow of funds. Specifically, analyze transactions where the 'amount_usd' represents over 75% of the user's 30-day average transaction value, and the 'flag_reason' is either absent or a generic 'SYSTEM_ERROR', indicating potential automated account takeover and immediate asset stripping.",
+      "depth": 0,
+      "parent_mission_id": null,
+      "rationale": "",
+      "timestamp": "LIVE AUDIT",
+      "logs": [
+        {
+          "ts": 1770473089.747,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [classify_intent]"
+        },
+        {
+          "ts": 1770473089.749,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Starting Intent Classification and Preprocessing in parallel for domain: security"
+        },
+        {
+          "ts": 1770473091.533,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classifying intent for domain: security | Query: Detect users who have experienced a high velocity of successful logins ('status' = 'SUCCESS' in 'login_events') originating from geographically diverse locations (more than 5 distinct 'country' codes within 12 hours) coupled with a subsequent rapid outflow of funds. Specifically, analyze transactions where the 'amount_usd' represents over 75% of the user's 30-day average transaction value, and the 'flag_reason' is either absent or a generic 'SYSTEM_ERROR', indicating potential automated account takeover and immediate asset stripping."
+        },
+        {
+          "ts": 1770473091.533,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770473092.35,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"intent\": \"SELECT\",\n  \"confidence\": 1...."
+        },
+        {
+          "ts": 1770473092.35,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classification Result: SELECT (conf: 1.0) | Needs Clarification: False"
+        },
+        {
+          "ts": 1770473099.578,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770473100.095,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: [\"users\", \"transactions\", \"login_events\"]..."
+        },
+        {
+          "ts": 1770473100.111,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770473100.955,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"resolved_entities\": {\n    \"login_even..."
+        },
+        {
+          "ts": 1770473100.957,
+          "level": "INFO",
+          "node": "entity_extractor.py",
+          "msg": "Final Extracted/Resolved Entities: {'login_events.status': 'SUCCESS', 'transactions.flag_reason': '', 'transactions.status': 'COMPLETED'}"
+        },
+        {
+          "ts": 1770473110.309,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Intent classified: SELECT (conf: 1.0) | Needs Clarification: False"
+        },
+        {
+          "ts": 1770473111.686,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [generate_sql]"
+        },
+        {
+          "ts": 1770473111.686,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "Generating SQL for domain: security | Query: Detect users who have experienced a high velocity of successful logins ('status' = 'SUCCESS' in 'login_events') originating from geographically diverse locations (more than 5 distinct 'country' codes within 12 hours) coupled with a subsequent rapid outflow of funds. Specifically, analyze transactions where the 'amount_usd' represents over 75% of the user's 30-day average transaction value, and the 'flag_reason' is either absent or a generic 'SYSTEM_ERROR', indicating potential automated account takeover and immediate asset stripping."
+        },
+        {
+          "ts": 1770473111.703,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "Using custom SQL prompt for domain: security"
+        },
+        {
+          "ts": 1770473111.705,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770473113.65,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: WITH UserLoginCounts AS (\n  SELECT\n    user_id,\n  ..."
+        },
+        {
+          "ts": 1770473113.652,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "SQL Generated and cleaned: WITH UserLoginCounts AS (\n  SELECT\n    user_id,\n  ..."
+        },
+        {
+          "ts": 1770473113.653,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "SQL Generated: WITH UserLoginCounts AS (\n  SELECT\n    user_id,\n  ..."
+        },
+        {
+          "ts": 1770473121.101,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [validate_sql]"
+        },
+        {
+          "ts": 1770473121.141,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [execute_query]"
+        },
+        {
+          "ts": 1770473121.142,
+          "level": "INFO",
+          "node": "DB_EXEC",
+          "msg": "Executing SQL: WITH UserLoginCounts AS (\n  SELECT\n    user_id,\n    COUNT(DISTINCT country) AS distinct_countries,\n    COUNT(*) AS successful_logins,\n    MAX(created_at) AS last_login_time,\n    MIN(created_at) AS first_login_time\n  FROM login_events\n  WHERE\n    UPPER(status) LIKE '%SUCCESS%'\n  GROUP BY\n    user_id\n  HAVING\n    COUNT(DISTINCT country) > 5\n), User30DayAvg AS (\n  SELECT\n    user_id,\n    AVG(amount_usd) AS avg_amount_usd\n  FROM transactions\n  WHERE\n    created_at BETWEEN date('2026-02-07', '-30 day') AND '2026-02-07 19:35:11'\n  GROUP BY\n    user_id\n)\nSELECT DISTINCT\n  u.username\nFROM users AS u\nJOIN UserLoginCounts AS ulc\n  ON u.user_id = ulc.user_id\nJOIN transactions AS t\n  ON u.user_id = t.user_id\nJOIN User30DayAvg AS u30da\n  ON u.user_id = u30da.user_id\nWHERE\n  (\n    ulc.last_login_time - ulc.first_login_time\n  ) <= 12 * 60 * 60 AND t.amount_usd > (\n    u30da.avg_amount_usd * 0.75\n  ) AND (\n    UPPER(t.flag_reason) LIKE '%SYSTEM_ERROR%' OR t.flag_reason IS NULL\n  ) AND UPPER(t.txn_type) LIKE '%OUTFLOW%';"
+        },
+        {
+          "ts": 1770473121.147,
+          "level": "INFO",
+          "node": "DB_EXEC",
+          "msg": "Execution complete. Returned 0 rows."
+        },
+        {
+          "ts": 1770473121.147,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Query execution successful. Rows: 0"
+        },
+        {
+          "ts": 1770473121.162,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [insight_recommendation]"
+        },
+        {
+          "ts": 1770473121.166,
+          "level": "INFO",
+          "node": "INSIGHT",
+          "msg": "Generating insights for 0 rows in domain: security"
+        },
+        {
+          "ts": 1770473121.167,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Insights generated successfully."
+        },
+        {
+          "ts": 1770473121.168,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [recommend_visualization]"
+        },
+        {
+          "ts": 1770473121.168,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "No results for visualization recommendation."
+        }
+      ]
+    },
+    {
+      "mission_id": "ops_001",
+      "mission_name": "Systemic Payment Failure Choke Points",
+      "domain": "operations",
+      "severity": "LOW",
+      "risk_score": 0,
+      "risk_factors": {},
+      "sql": "SELECT u.username, t.payment_method, t.instrument, t.flag_reason, COUNT(t.txn_id) AS failed_txn_count\nFROM users u\nJOIN transactions t ON u.user_id = t.user_id\nWHERE UPPER(t.status) LIKE '%FAILED%'\nGROUP BY u.user_id, u.username, t.payment_method, t.instrument, t.flag_reason\nHAVING COUNT(t.txn_id) > 10\nORDER BY failed_txn_count DESC;",
+      "data_count": 0,
+      "results": [],
+      "visualization_config": null,
+      "insight": "No data found to analyze.",
+      "recommendation": "Try broadening your search criteria or checking if the data for this period is available.",
+      "original_query": "Investigate users who have experienced more than 10 failed transactions ('status' = 'FAILED') within a 7-day period, across a variety of 'payment_method's and 'instrument's. Analyze the 'flag_reason' for these failures to identify common patterns or specific error codes that are not isolated to individual users but suggest systemic processing issues, bottlenecks, or targeted attacks impacting specific payment infrastructure components.",
+      "depth": 0,
+      "parent_mission_id": null,
+      "rationale": "",
+      "timestamp": "LIVE AUDIT",
+      "logs": [
+        {
+          "ts": 1770473089.755,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [classify_intent]"
+        },
+        {
+          "ts": 1770473089.761,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Starting Intent Classification and Preprocessing in parallel for domain: operations"
+        },
+        {
+          "ts": 1770473093.654,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classifying intent for domain: operations | Query: Investigate users who have experienced more than 10 failed transactions ('status' = 'FAILED') within a 7-day period, across a variety of 'payment_method's and 'instrument's. Analyze the 'flag_reason' for these failures to identify common patterns or specific error codes that are not isolated to individual users but suggest systemic processing issues, bottlenecks, or targeted attacks impacting specific payment infrastructure components."
+        },
+        {
+          "ts": 1770473093.654,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770473094.331,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"intent\": \"SELECT\",\n  \"confidence\": 0...."
+        },
+        {
+          "ts": 1770473094.331,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classification Result: SELECT (conf: 0.9) | Needs Clarification: False"
+        },
+        {
+          "ts": 1770473104.001,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770473104.593,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: [\"transactions\", \"users\"]..."
+        },
+        {
+          "ts": 1770473104.611,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770473105.46,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"resolved_entities\": {\n    \"transactio..."
+        },
+        {
+          "ts": 1770473105.46,
+          "level": "INFO",
+          "node": "entity_extractor.py",
+          "msg": "Final Extracted/Resolved Entities: {'transactions.status': 'FAILED', 'transactions.flag_reason': ['AML alert', 'Geo mismatch', 'Unusual pattern', 'Velocity check', 'PEP transaction', 'Sanctions match', 'High amount']}"
+        },
+        {
+          "ts": 1770473110.316,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Intent classified: SELECT (conf: 0.9) | Needs Clarification: False"
+        },
+        {
+          "ts": 1770473116.116,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [generate_sql]"
+        },
+        {
+          "ts": 1770473116.116,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "Generating SQL for domain: operations | Query: Investigate users who have experienced more than 10 failed transactions ('status' = 'FAILED') within a 7-day period, across a variety of 'payment_method's and 'instrument's. Analyze the 'flag_reason' for these failures to identify common patterns or specific error codes that are not isolated to individual users but suggest systemic processing issues, bottlenecks, or targeted attacks impacting specific payment infrastructure components."
+        },
+        {
+          "ts": 1770473116.121,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "Using custom SQL prompt for domain: operations"
+        },
+        {
+          "ts": 1770473116.121,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770473117.161,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: SELECT u.username, t.payment_method, t.instrument,..."
+        },
+        {
+          "ts": 1770473117.163,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "SQL Generated and cleaned: SELECT u.username, t.payment_method, t.instrument,..."
+        },
+        {
+          "ts": 1770473117.163,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "SQL Generated: SELECT u.username, t.payment_method, t.instrument,..."
+        },
+        {
+          "ts": 1770473121.126,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [validate_sql]"
+        },
+        {
+          "ts": 1770473121.147,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [execute_query]"
+        },
+        {
+          "ts": 1770473121.147,
+          "level": "INFO",
+          "node": "DB_EXEC",
+          "msg": "Executing SQL: SELECT u.username, t.payment_method, t.instrument, t.flag_reason, COUNT(t.txn_id) AS failed_txn_count\nFROM users u\nJOIN transactions t ON u.user_id = t.user_id\nWHERE UPPER(t.status) LIKE '%FAILED%'\nGROUP BY u.user_id, u.username, t.payment_method, t.instrument, t.flag_reason\nHAVING COUNT(t.txn_id) > 10\nORDER BY failed_txn_count DESC;"
+        },
+        {
+          "ts": 1770473121.154,
+          "level": "INFO",
+          "node": "DB_EXEC",
+          "msg": "Execution complete. Returned 0 rows."
+        },
+        {
+          "ts": 1770473121.157,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Query execution successful. Rows: 0"
+        },
+        {
+          "ts": 1770473121.17,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [insight_recommendation]"
+        },
+        {
+          "ts": 1770473121.171,
+          "level": "INFO",
+          "node": "INSIGHT",
+          "msg": "Generating insights for 0 rows in domain: operations"
+        },
+        {
+          "ts": 1770473121.173,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Insights generated successfully."
+        },
+        {
+          "ts": 1770473121.174,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [recommend_visualization]"
+        },
+        {
+          "ts": 1770473121.176,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "No results for visualization recommendation."
+        }
+      ]
+    }
+  ],
+  "clusters": [],
+  "narrative": {
+    "executive_summary": "Our real-time threat scan, covering security, compliance, risk, and operations, has completed 8 missions.  While no critical or high-severity threats were detected at this moment, the current landscape indicates potential vulnerabilities.  Specifically, we are seeing a consistent pattern of low-severity alerts across multiple domains, suggesting a need for proactive review and strengthening of our defenses before these coalesce into more significant issues.  The absence of data for critical security missions like Account Takeover Velocity warrants immediate attention.",
+    "threat_vectors": [
+      {
+        "name": "Emerging High-Risk Instrument Adoption by Low-Risk Users",
+        "severity": "LOW",
+        "description": "Users typically associated with lower risk profiles are showing increased adoption of highly volatile financial instruments, indicating a potential mismatch in risk appetite or a precursor to unusual trading behavior."
+      },
+      {
+        "name": "KYC Degradation & High-Risk Instrument Adoption",
+        "severity": "LOW",
+        "description": "Detections suggest a potential weakening in our Know Your Customer (KYC) processes, coinciding with an increase in the adoption of high-risk instruments, which could indicate compromised accounts or policy circumvention."
+      },
+      {
+        "name": "Account Takeover Velocity & Asset Stripping",
+        "severity": "LOW",
+        "description": "No data was found to analyze this critical security threat. This lack of visibility into potential account takeovers and asset stripping is a significant blind spot."
+      },
+      {
+        "name": "Systemic Payment Failure Choke Points",
+        "severity": "LOW",
+        "description": "No data was found to analyze potential systemic payment failures. Understanding these choke points is crucial for operational stability."
+      }
+    ],
+    "immediate_actions": [
+      "Prioritize immediate investigation into the 'Account Takeover Velocity & Asset Stripping' mission to establish data collection and analysis capabilities.",
+      "Conduct an urgent review of the 'KYC Degradation & High-Risk Instrument Adoption' findings, focusing on the root cause of potential KYC weaknesses and their correlation with high-risk instrument usage.",
+      "Initiate a deep-dive analysis into the 'Emerging High-Risk Instrument Adoption by Low-Risk Users' to understand user behavior drivers and implement targeted risk mitigation strategies.",
+      "Allocate resources to investigate the 'Systemic Payment Failure Choke Points' to ensure robust operational resilience."
+    ],
+    "monitoring_recommendations": [
+      "Establish continuous monitoring for anomalies in user risk profiling versus instrument adoption, with automated alerts for concerning deviations.",
+      "Implement enhanced real-time anomaly detection for user login patterns and subsequent transaction behavior, particularly after any system updates or maintenance."
+    ],
+    "overall_risk": 0,
+    "overall_severity": "LOW",
+    "title": "Intelligence Brief - LIVE"
+  }
+}

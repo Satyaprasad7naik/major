@@ -1,0 +1,1378 @@
+[
+  {
+    "timestamp": "2026-02-07T10:43:16.626972",
+    "missions": [
+      {
+        "name": "Anomalous Login Geolocation & Device Spikes",
+        "query": "Identify users exhibiting a sudden, significant increase in login attempts from geographically diverse or unusual device types within a short timeframe, potentially indicating credential stuffing or account takeover attempts.",
+        "domain": "security",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "High-Frequency Transaction Anomalies Post-Login",
+        "query": "Correlate login event success with subsequent high-frequency, low-value transactions across multiple instruments for the same user, a pattern indicative of automated fraud or bot activity.",
+        "domain": "security",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "KYC Status Drift in High-Risk Users",
+        "query": "Analyze users whose KYC status has recently been updated from 'verified' to 'pending' or 'failed', especially those with a high-risk_score or flagged as PEP, to detect potential circumvention or evolving risk profiles.",
+        "domain": "compliance",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "PEP Transactional Behavior Divergence",
+        "query": "Investigate PEP users whose transaction patterns (volume, frequency, instrument types) significantly deviate from their historical norms or from the average transactional behavior of non-PEP users within similar risk tiers.",
+        "domain": "compliance",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Payment Method Failure Clustering by User Segment",
+        "query": "Identify specific user segments (defined by age, risk_level, or KYC status) that exhibit a disproportionately high rate of transaction failures across particular payment methods, suggesting systemic issues or targeted exploitation.",
+        "domain": "operations",
+        "risk_score": 48,
+        "severity": "MEDIUM",
+        "data_count": 61
+      },
+      {
+        "name": "Account Status Changes Preceding Transactional Drop-offs",
+        "query": "Examine users whose account_status has recently changed, and analyze their transactional activity (or lack thereof) in the preceding period to identify potential precursor indicators of user churn or service disruption.",
+        "domain": "operations",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Concentrated High-Risk Transactions by Instrument",
+        "query": "Determine if a significant portion of total transaction volume (especially in USD equivalent) for high-risk_score users is concentrated in a single instrument or a narrow range of instruments, indicating potential systemic risk exposure.",
+        "domain": "risk",
+        "risk_score": 47,
+        "severity": "MEDIUM",
+        "data_count": 24
+      },
+      {
+        "name": "Risk Score Correlation with Transactional Flags",
+        "query": "Quantify the correlation between a user's risk_score and the occurrence of flagged transactions (based on flag_reason), focusing on identifying thresholds where high risk scores do not adequately predict concerning transactional behavior.",
+        "domain": "risk",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      }
+    ],
+    "domain_scores": {
+      "security": 0,
+      "compliance": 0,
+      "operations": 24,
+      "risk": 24
+    },
+    "critical_domains": []
+  },
+  {
+    "timestamp": "2026-02-07T11:07:17.129357",
+    "missions": [
+      {
+        "name": "PEP Transactional Anomaly Detection",
+        "query": "For PEP users, identify deviations in transaction volume, frequency, and instrument usage that are not explained by their historical patterns or the typical behavior of users in similar risk tiers, but specifically look for patterns that might suggest illicit financial flows or sanctions evasion.",
+        "domain": "compliance",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Payment Failure Root Cause Segmentation",
+        "query": "Segment users experiencing payment failures by the 'flag_reason' and analyze if specific user demographics (age, risk_level) or transaction types are disproportionately affected by particular failure reasons, suggesting targeted vulnerabilities or exploitable weaknesses in payment processing.",
+        "domain": "operations",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Instrument Concentration Risk Evolution",
+        "query": "Track the evolution of instrument concentration for high-risk_score users over time. Identify if users are shifting their high-volume transactions to a single or few instruments, and if this shift correlates with an increase in their risk_score or the emergence of new 'flag_reason' types.",
+        "domain": "operations",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "High Risk Score Transaction Velocity Analysis",
+        "query": "For users with a risk_score above a defined high threshold, analyze their transaction velocity (amount and frequency) across different instruments and currencies. Identify if there are specific velocity patterns that are not adequately captured by the current risk scoring model, suggesting potential underestimation of risk.",
+        "domain": "risk",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Interconnected Risk Indicators Synergy",
+        "query": "Develop a model to identify users exhibiting a synergistic combination of multiple moderate risk indicators (e.g., unusual login country + moderate risk_score + recent KYC change + specific transaction pattern) that, individually, might be overlooked, but collectively represent a significantly elevated risk profile.",
+        "domain": "risk",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "KYC Risk Score Drift Analysis",
+        "query": "Investigate users whose KYC status has recently transitioned to 'pending' or 'failed', and analyze if there's a statistically significant correlation between this change and a recent increase in their risk_score, particularly for users who have previously conducted high-value transactions.",
+        "domain": "compliance",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Unusual Login Pattern Clustering",
+        "query": "Identify clusters of users exhibiting highly similar, yet individually anomalous, login patterns (e.g., same device type, close time proximity, but from different countries or cities) that do not fit standard account takeover or credential stuffing models, to uncover sophisticated, coordinated malicious activity.",
+        "domain": "security",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Device Spoofing Detection",
+        "query": "Analyze login events for users who frequently switch between distinct device types in rapid succession, especially when originating from the same or geographically proximate locations, to detect potential device spoofing indicative of advanced account takeover techniques.",
+        "domain": "security",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Transaction Volume vs. Login Activity Correlation",
+        "query": "Examine the correlation between periods of unusually high transaction volume for a user and their subsequent login activity (frequency, success rate, country of origin), to identify potential anomalies where high transaction activity might be initiated by unauthorized access.",
+        "domain": "operations",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Portfolio Imbalance by KYC Status and Risk Level",
+        "query": "Analyze if there are significant imbalances in transaction volume and instrument exposure across different KYC statuses and risk_levels. Specifically, look for scenarios where users with 'pending' or 'failed' KYC, or higher risk_levels, are concentrated in specific high-risk instruments or transaction types.",
+        "domain": "risk",
+        "risk_score": 52,
+        "severity": "HIGH",
+        "data_count": 128
+      },
+      {
+        "name": "High-Risk PENDING KYC Users and Instrument Exposure",
+        "query": "For users with 'PENDING' KYC status and 'CRITICAL' risk_level, what is the total transaction volume and the specific instruments they have interacted with, particularly GOOGL and Gold?",
+        "domain": "risk",
+        "risk_score": 16,
+        "severity": "LOW",
+        "data_count": 3
+      },
+      {
+        "name": "Geographic Concentration of High-Risk Activity",
+        "query": "What are the countries and IP addresses associated with transactions involving users who have 'PENDING' KYC status and 'CRITICAL' risk_level, specifically for the GOOGL deposit and Gold fee transactions?",
+        "domain": "risk",
+        "risk_score": 21,
+        "severity": "LOW",
+        "data_count": 5
+      }
+    ],
+    "domain_scores": {
+      "compliance": 0,
+      "operations": 0,
+      "risk": 18,
+      "security": 0
+    },
+    "critical_domains": []
+  },
+  {
+    "timestamp": "2026-02-07T11:31:57.922223",
+    "missions": [
+      {
+        "name": "PEP Transactional Anomaly Detection Beyond Standard Deviations",
+        "query": "For Politically Exposed Persons (PEPs), identify significant deviations in transaction volume, frequency, and instrument usage that exceed a predefined multi-standard deviation threshold compared to their own historical patterns and the behavior of non-PEP users in similar risk tiers, specifically looking for patterns that might suggest sanctions evasion or illicit financial flows.",
+        "domain": "compliance",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Systemic Impact of Payment Method Vulnerabilities",
+        "query": "Identify if a significant proportion of transaction failures are attributable to a single or a limited set of payment methods, and analyze the correlation between these failures and specific user segments (e.g., high-risk users, new users) to understand potential systemic vulnerabilities in payment processing infrastructure.",
+        "domain": "operations",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Synergistic Risk Indicator Aggregation for Overlooked Threats",
+        "query": "Develop a model to identify users exhibiting a synergistic combination of multiple moderate risk indicators (e.g., unusual login country + moderate risk_score + recent KYC change + specific transaction pattern in a high-risk instrument) that, individually, might be overlooked, but collectively represent a significantly elevated risk profile.",
+        "domain": "risk",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Velocity-Based Risk Undervaluation in High-Risk Users",
+        "query": "For users with a risk_score above a defined high threshold, analyze their transaction velocity (amount and frequency) across different instruments and currencies. Identify if there are specific velocity patterns that are not adequately captured by the current risk scoring model, suggesting potential underestimation of risk and opportunities for rapid capital flight or illicit accumulation.",
+        "domain": "risk",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Coordinated Account Takeover via Geographically Dispersed Anomalous Logins",
+        "query": "Identify clusters of users who have experienced simultaneous or near-simultaneous successful login events from geographically distant and disparate countries and cities, using identical or highly similar device types, to detect sophisticated, coordinated account takeover attempts.",
+        "domain": "security",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Device Fingerprint Spoofing for Account Takeover",
+        "query": "Analyze login events for users who exhibit rapid and frequent changes in device type and operating system within a short timeframe, especially when originating from the same IP address or a narrow range of IPs, to identify potential device fingerprint spoofing indicative of advanced account takeover techniques.",
+        "domain": "security",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "High-Volume Transactions from Unverified/High-Risk Users",
+        "query": "Quantify the total transaction volume and identify the specific instruments utilized by users whose KYC status is 'PENDING' or 'FAILED', and whose risk_level is 'HIGH' or 'CRITICAL', to assess potential exposure to illicit financial activities.",
+        "domain": "compliance",
+        "risk_score": 47,
+        "severity": "MEDIUM",
+        "data_count": 23
+      },
+      {
+        "name": "Payment Failure Root Cause Analysis by Transaction Type and User Segment",
+        "query": "Segment users experiencing payment failures by the 'flag_reason' and analyze if specific transaction types (e.g., deposits, withdrawals, specific instrument trades) and user demographics (age, risk_level, kyc_status) are disproportionately affected by particular failure reasons, suggesting targeted vulnerabilities or systemic weaknesses in payment processing.",
+        "domain": "operations",
+        "risk_score": 48,
+        "severity": "MEDIUM",
+        "data_count": 54
+      },
+      {
+        "name": "Concentrated High-Risk Instrument Exposure in Unverified Users",
+        "query": "Analyze if there are significant imbalances in transaction volume and instrument exposure across different KYC statuses. Specifically, look for scenarios where users with 'PENDING' or 'FAILED' KYC are disproportionately concentrated in specific high-risk instruments or transaction types, indicating potential money laundering or fraud vectors.",
+        "domain": "risk",
+        "risk_score": 52,
+        "severity": "HIGH",
+        "data_count": 57
+      },
+      {
+        "name": "Investigate High-Volume BTC/USD and ETH/USD Transactions by Risky Users",
+        "query": "Show me the user IDs and total transaction amounts for all transactions involving BTC/USD and ETH/USD where the user's KYC status is 'PENDING' or 'FAILED' and their risk level is 'HIGH' or 'CRITICAL'.",
+        "domain": "compliance",
+        "risk_score": 20,
+        "severity": "LOW",
+        "data_count": 6
+      },
+      {
+        "name": "Analyze Transaction Locations for Unverified High-Risk Users",
+        "query": "For users with 'PENDING' or 'FAILED' KYC status and 'HIGH' or 'CRITICAL' risk levels, what are the top originating countries and the total transaction volume associated with each country?",
+        "domain": "compliance",
+        "risk_score": 26,
+        "severity": "MEDIUM",
+        "data_count": 8
+      },
+      {
+        "name": "Investigate Uncategorized Withdrawal Failures",
+        "query": "For all users who experienced a WITHDRAWAL failure with no 'flag_reason', what are their user_ids and what were the specific payment_methods used?",
+        "domain": "operations",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Analyze Deposit Failures for High-Risk, Pending KYC Users",
+        "query": "For users with 'risk_level' as 'CRITICAL' and 'kyc_status' as 'PENDING' who experienced DEPOSIT failures, what are their user_ids and what were the amounts and currencies of these failed transactions?",
+        "domain": "operations",
+        "risk_score": 7,
+        "severity": "LOW",
+        "data_count": 1
+      },
+      {
+        "name": "High-Risk Instrument Exposure for PENDING KYC Users",
+        "query": "Show me all users with 'PENDING' KYC status who have traded 'DAX', 'GOOGL', 'META', 'MSFT', 'Natural Gas', or 'Nikkei' instruments, and list the total transaction count and average transaction amount in USD for each.",
+        "domain": "risk",
+        "risk_score": 36,
+        "severity": "MEDIUM",
+        "data_count": 12
+      },
+      {
+        "name": "Withdrawal Patterns of PENDING KYC Users",
+        "query": "For users with 'PENDING' KYC status, list all withdrawals made. Include the total number of withdrawals, the total amount withdrawn in USD, and the payment methods used for these withdrawals.",
+        "domain": "risk",
+        "risk_score": 35,
+        "severity": "MEDIUM",
+        "data_count": 10
+      }
+    ],
+    "domain_scores": {
+      "compliance": 23,
+      "operations": 14,
+      "risk": 25,
+      "security": 0
+    },
+    "critical_domains": []
+  },
+  {
+    "timestamp": "2026-02-07T11:34:39.175572",
+    "missions": [
+      {
+        "name": "PEP Sanctions Evasion Pattern Analysis",
+        "query": "For Politically Exposed Persons (PEPs), identify significant deviations in transaction volume, frequency, and instrument usage that exceed a predefined multi-standard deviation threshold compared to their own historical patterns and the behavior of non-PEP users in similar risk tiers, specifically looking for patterns that might suggest sanctions evasion or illicit financial flows.",
+        "domain": "risk",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Payment Method Failure Synergy with User Segments",
+        "query": "Identify if a significant proportion of transaction failures are attributable to a single or a limited set of payment methods, and analyze the correlation between these failures and specific user segments (e.g., high-risk users, new users) to understand potential systemic vulnerabilities in payment processing infrastructure.",
+        "domain": "risk",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Composite Risk Indicator Model",
+        "query": "Develop a model to identify users exhibiting a synergistic combination of multiple moderate risk indicators (e.g., unusual login country + moderate risk_score + recent KYC change + specific transaction pattern in a high-risk instrument) that, individually, might be overlooked, but collectively represent a significantly elevated risk profile.",
+        "domain": "risk",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Coordinated Geo-Drifted ATO Detection",
+        "query": "Identify clusters of users exhibiting simultaneous or near-simultaneous successful login events originating from geographically distant and disparate countries and cities, utilizing identical or highly similar device types, to detect sophisticated, coordinated account takeover attempts.",
+        "domain": "security",
+        "risk_score": 15,
+        "severity": "LOW",
+        "data_count": 1
+      },
+      {
+        "name": "Advanced Device Spoofing for ATO",
+        "query": "Analyze login events for users exhibiting rapid and frequent changes in device type and operating system within a short timeframe, especially when originating from the same IP address or a narrow range of IPs, to identify potential device fingerprint spoofing indicative of advanced account takeover techniques.",
+        "domain": "security",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Pending KYC & High-Risk Instrument Exposure",
+        "query": "Quantify the total transaction volume and identify the specific instruments utilized by users whose KYC status is 'PENDING' or 'FAILED', and whose risk_level is 'HIGH' or 'CRITICAL', to assess potential exposure to illicit financial activities.",
+        "domain": "compliance",
+        "risk_score": 47,
+        "severity": "MEDIUM",
+        "data_count": 23
+      },
+      {
+        "name": "Unflagged Withdrawal Failures & Payment Methods",
+        "query": "For all users who experienced a WITHDRAWAL failure with no 'flag_reason', what are their user_ids and what were the specific payment_methods used?",
+        "domain": "compliance",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Critical-Pending Users & Deposit Failures",
+        "query": "For users with 'risk_level' as 'CRITICAL' and 'kyc_status' as 'PENDING' who experienced DEPOSIT failures, what are their user_ids and what were the amounts and currencies of these failed transactions?",
+        "domain": "operations",
+        "risk_score": 10,
+        "severity": "LOW",
+        "data_count": 1
+      },
+      {
+        "name": "Pending KYC & High-Risk Instrument Concentration",
+        "query": "Show me all users with 'PENDING' KYC status who have traded 'DAX', 'GOOGL', 'META', 'MSFT', 'Natural Gas', or 'Nikkei' instruments, and list the total transaction count and average transaction amount in USD for each.",
+        "domain": "operations",
+        "risk_score": 33,
+        "severity": "MEDIUM",
+        "data_count": 12
+      },
+      {
+        "name": "High-Risk Crypto Transactions from Specific Locations",
+        "query": "What are the total transaction volumes for BTC/USD and ETH/USD from users with PENDING or FAILED KYC and HIGH or CRITICAL risk_level, specifically originating from IP addresses located in the United States and Germany?",
+        "domain": "compliance",
+        "risk_score": 6,
+        "severity": "LOW",
+        "data_count": 1
+      },
+      {
+        "name": "User-Specific Exposure to High-Volatility Instruments",
+        "query": "For the user_id associated with the highest total_transaction_volume for ETH/USD (58072.82), what are all the instruments they have transacted with, and what are their respective KYC status and risk_level?",
+        "domain": "compliance",
+        "risk_score": 18,
+        "severity": "LOW",
+        "data_count": 5
+      }
+    ],
+    "domain_scores": {
+      "risk": 0,
+      "security": 8,
+      "compliance": 18,
+      "operations": 22
+    },
+    "critical_domains": []
+  },
+  {
+    "timestamp": "2026-02-07T11:57:16.412420",
+    "missions": [
+      {
+        "name": "PEP Status Discrepancies in High-Volume Trading",
+        "query": "Analyze transactions for users flagged as 'is_pep' (Politically Exposed Person) and having a 'risk_level' of 'HIGH' or 'CRITICAL'. Specifically, look for significant transaction volumes in instruments not typically associated with public office or for transactions that bypass standard due diligence checks, suggesting potential misuse of PEP status for illicit financial activities.",
+        "domain": "compliance",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Intermittent Payment Method Failures",
+        "query": "Investigate users who repeatedly experience payment failures across multiple transaction types (deposit/withdrawal) using the same 'payment_method' within a 24-hour period, but with no consistent 'flag_reason'. This could indicate a systemic issue with a specific payment processor or an emerging fraud vector targeting particular payment channels.",
+        "domain": "operations",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "User Performance Drop Post-Login Anomaly",
+        "query": "For users who have experienced an 'unusual login' event (e.g., from a new country or device type), analyze their subsequent transaction success rate and volume for a 48-hour period. Identify if there's a statistically significant drop in their trading activity or an increase in transaction failures, which could indicate account compromise or user distress.",
+        "domain": "operations",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Concentrated High-Risk Instrument Exposure by Age",
+        "query": "Segment users by age groups and analyze their exposure to high-risk instruments (e.g., highly volatile cryptocurrencies, leveraged derivatives). Identify if specific age demographics are disproportionately concentrated in these instruments, particularly if their 'risk_score' is also elevated, suggesting potential predatory targeting or immature risk assessment.",
+        "domain": "risk",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Collateralization Risk in High-Risk Accounts",
+        "query": "Examine users with a 'risk_level' of 'HIGH' or 'CRITICAL' and a 'kyc_status' of 'PENDING'. Analyze their transaction history to determine if they are engaging in significant leveraged trading or depositing assets that are highly susceptible to market volatility without adequate collateralization. This aims to identify potential cascading failures within a vulnerable user segment.",
+        "domain": "risk",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Suspicious Login Pattern Correlation",
+        "query": "Identify user clusters exhibiting successful logins from geographically disparate locations within a single hour, where the same user_id simultaneously attempts logins from multiple distinct cities and countries, using different device types but originating from a narrow range of IP addresses. This aims to detect advanced credential stuffing or botnet-driven account takeovers.",
+        "domain": "security",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Anomalous Transactional Behavior Post-Login",
+        "query": "For users who experience a failed login attempt followed immediately by a successful login from a different country within 5 minutes, analyze their subsequent transaction patterns for any high-value transfers, exotic instrument trades, or rapid liquidation of assets within the next hour. This seeks to identify potential account takeovers where compromised credentials were used for immediate illicit activity.",
+        "domain": "security",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Unflagged High-Risk International Transactions",
+        "query": "Identify all transactions where the 'flag_reason' is null, but the transaction involves users with 'PENDING' or 'FAILED' KYC status, a 'risk_level' of 'HIGH' or 'CRITICAL', and the transaction originated from a country not on a predefined list of low-risk jurisdictions. This aims to uncover potential AML/KYC evasion through unflagged international activity.",
+        "domain": "compliance",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      }
+    ],
+    "domain_scores": {
+      "compliance": 0,
+      "operations": 0,
+      "risk": 0,
+      "security": 0
+    },
+    "critical_domains": []
+  },
+  {
+    "timestamp": "2026-02-07T13:03:44.498431",
+    "missions": [
+      {
+        "name": "Rapid Device Change & Transaction Spikes",
+        "query": "For users who have changed their primary device type more than three times within a 24-hour period, analyze their transaction patterns for any significant increase in transaction volume or introduction of high-risk instruments immediately following a device change. Flag users with a high 'risk_score' and any unusual transaction spikes.",
+        "domain": "security",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "PEP Unusual Instrument Diversification",
+        "query": "Identify users flagged as 'is_pep' who have recently (last 30 days) diversified their transaction activity into a significant number of new and diverse instruments, particularly those with high volatility or not typically associated with their known public profile. Analyze transaction amounts and frequency for any anomalies.",
+        "domain": "compliance",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Age-Gated High-Risk Instrument Concentration",
+        "query": "Analyze users within the 18-25 age bracket who have a 'risk_level' of 'HIGH' or 'CRITICAL' and are heavily concentrated in highly speculative instruments (e.g., penny cryptos, leveraged derivatives). Compare their transaction volumes and frequency against older age groups with similar risk profiles to identify potential predatory targeting or lack of understanding.",
+        "domain": "compliance",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Cross-Payment Method Failure Correlation",
+        "query": "Investigate users who experience payment failures across at least two different 'payment_method' types within a 7-day period. Analyze if these failures are correlated with specific 'instrument' types, 'currency' values, or if there's a common 'flag_reason' that was previously overlooked or is intermittently absent. Focus on users with a 'risk_score' above the median.",
+        "domain": "operations",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Login Failure Churn and Success Rate",
+        "query": "For users who experience more than 5 failed login attempts from distinct countries or device types within a 12-hour window, analyze their subsequent successful login and transaction success rates for the following 72 hours. Identify if a high churn in login attempts correlates with a subsequent drop in transaction success or volume, indicating potential credential stuffing or account lockout attempts.",
+        "domain": "operations",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Age and Risk Score Instrument Imbalance",
+        "query": "Segment users by age groups (e.g., 18-24, 25-34, 35-54, 55+). For each segment, analyze the concentration of their 'risk_score' against the 'instrument' types they trade. Identify any age segments that disproportionately hold high-risk instruments despite having a generally lower average 'risk_score', or vice versa, indicating potential misaligned risk appetite or platform exposure.",
+        "domain": "risk",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Cross-Geo Login Device Spoofing",
+        "query": "Identify user_ids that have exhibited successful login events within a 15-minute window originating from two or more distinct countries, where each login event utilized a highly similar device type (e.g., same browser version, OS family) but from different cities within those countries. Analyze the subsequent transaction activity for any immediate high-value transfers or trades.",
+        "domain": "security",
+        "risk_score": 58,
+        "severity": "HIGH",
+        "data_count": 9
+      },
+      {
+        "name": "Critical Risk Unflagged International Activity",
+        "query": "Identify users with a 'risk_level' of 'CRITICAL' and a 'kyc_status' of 'VERIFIED' or 'PENDING' who have conducted significant international transactions (across different countries) without any 'flag_reason' recorded. Analyze the 'instrument', 'amount_usd', and 'payment_method' for any patterns suggestive of sophisticated AML evasion.",
+        "domain": "risk",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Investigate Patrick Murphy's Login History for Anomalies",
+        "query": "Show all login events for user_id '57' (patrick_murphy) that occurred within 24 hours of the high-value transfer TXN-000240 for $128,901.11, and list the country and city for each login.",
+        "domain": "security",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Analyze Device and Location Patterns for User 6",
+        "query": "For user_id '6' (olivia_garcia), list all distinct device_types and their associated country and city combinations for login events occurring within a 24-hour window around the transactions TXN-000100 ($1,293.27) and TXN-000084 ($1,509.96).",
+        "domain": "security",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      }
+    ],
+    "domain_scores": {
+      "security": 14,
+      "compliance": 0,
+      "operations": 0,
+      "risk": 0
+    },
+    "critical_domains": []
+  },
+  {
+    "timestamp": "2026-02-07T13:29:33.121710",
+    "missions": [
+      {
+        "name": "Cross-Geographic Login Anomalies with Account Takeover Indicators",
+        "query": "Identify users exhibiting successful logins from two or more distinct countries within a 1-hour window, where each login session occurred on a different device type but originated from a very similar IP address range. Analyze subsequent transaction activity for any immediate high-value outbound transfers or liquidation of assets within 24 hours.",
+        "domain": "security",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Unusual Transaction Patterns Post Multiple Login Failures",
+        "query": "For users experiencing more than 3 failed login attempts from different countries and device types within a 6-hour period, analyze their transaction patterns for the subsequent 48 hours. Identify if there's a significant increase in the volume or frequency of transactions involving high-risk instruments, or a sudden shift in 'payment_method' usage, suggesting potential credential stuffing followed by opportunistic fraud.",
+        "domain": "security",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "PEP Transaction Diversification Risk Assessment",
+        "query": "Identify all Politically Exposed Persons (PEPs) who have significantly diversified their transaction activity in the last 90 days, engaging with more than 5 new and distinct 'instrument' types. Analyze the 'amount_usd', 'currency', and 'txn_type' for any patterns that deviate from typical investment profiles or suggest potential illicit fund movement or influence peddling.",
+        "domain": "compliance",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "KYC Gap and AML Evasion in International Transactions",
+        "query": "Identify all transactions involving users with a 'kyc_status' of 'PENDING' or 'FAILED', a 'risk_level' of 'HIGH' or 'CRITICAL', and originating from a country not on a predefined list of low-risk jurisdictions. Analyze these unflagged transactions for patterns of high 'amount_usd' transfers, use of exotic 'instrument' types, or specific 'payment_method' that might indicate sophisticated AML evasion tactics.",
+        "domain": "compliance",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Payment Failure Correlation with Risk Score and Instrument Type",
+        "query": "Investigate users experiencing payment failures across at least two different 'payment_method' types within a 14-day period. Analyze if these failures are correlated with specific high-risk 'instrument' types, a 'flag_reason' that is intermittently absent, or if users with a 'risk_score' above the 75th percentile are disproportionately affected, suggesting systemic issues with high-risk payment processing.",
+        "domain": "operations",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Systemic Login Failures and User Performance Impact",
+        "query": "Analyze the 'login_events' table for any user_ids that experience a sustained period (over 24 hours) of more than 10 failed login attempts per hour, across various 'device_type' and 'country' combinations. Correlate these systemic login failures with the user's subsequent transaction activity, looking for a decrease in transaction volume or success rate, to identify potential impacts on user experience or targeted denial-of-service attacks.",
+        "domain": "operations",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Account Takeover Indicators and Asset Liquidation Patterns",
+        "query": "Identify users who have experienced a successful login from a country significantly different from their usual login locations, within 12 hours of a series of failed login attempts from multiple distinct IP addresses. Analyze their subsequent transaction patterns for rapid liquidation of assets, transfers to new beneficiaries, or engagement with high-risk instruments, indicative of account takeover and immediate fund misappropriation.",
+        "domain": "risk",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "High-Risk Instrument Concentration by Age and Risk Profile",
+        "query": "Segment users by age groups (18-24, 25-34, 35-54, 55+). For each segment, analyze the concentration of their 'risk_score' in relation to the 'instrument' types they trade. Identify any age segments that disproportionately hold high-risk instruments despite having a generally lower average 'risk_score', or vice versa, indicating potential misaligned risk appetite or platform exposure.",
+        "domain": "risk",
+        "risk_score": 18,
+        "severity": "LOW",
+        "data_count": 4
+      }
+    ],
+    "domain_scores": {
+      "security": 0,
+      "compliance": 0,
+      "operations": 0,
+      "risk": 9
+    },
+    "critical_domains": []
+  },
+  {
+    "timestamp": "2026-02-07T13:33:50.182498",
+    "missions": [
+      {
+        "name": "Anomalous Login Activity Preceding High-Risk Transactions",
+        "query": "Identify users who have experienced a successful login from a country significantly different from their usual login locations, within 12 hours of a series of failed login attempts from multiple distinct IP addresses. Analyze their subsequent transaction patterns for rapid liquidation of assets, transfers to new beneficiaries, or engagement with high-risk instruments, indicative of account takeover and immediate fund misappropriation.",
+        "domain": "security",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "PEP Transaction Diversification and Potential Fund Movement",
+        "query": "Identify all Politically Exposed Persons (PEPs) who have significantly diversified their transaction activity in the last 90 days, engaging with more than 5 new and distinct 'instrument' types. Analyze the 'amount_usd', 'currency', and 'txn_type' for any patterns that deviate from typical investment profiles or suggest potential illicit fund movement or influence peddling.",
+        "domain": "compliance",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "High-Risk International Transactions Without Flags",
+        "query": "Identify all transactions involving users with a 'kyc_status' of 'PENDING' or 'FAILED', a 'risk_level' of 'HIGH' or 'CRITICAL', and originating from a country not on a predefined list of low-risk jurisdictions. Analyze these unflagged transactions for patterns of high 'amount_usd' transfers, use of exotic 'instrument' types, or specific 'payment_method' that might indicate sophisticated AML evasion tactics.",
+        "domain": "compliance",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Impact of Sustained Login Failures on User Activity",
+        "query": "Analyze the 'login_events' table for any user_ids that experience a sustained period (over 24 hours) of more than 10 failed login attempts per hour, across various 'device_type' and 'country' combinations. Correlate these systemic login failures with the user's subsequent transaction activity, looking for a decrease in transaction volume or success rate, to identify potential impacts on user experience or targeted denial-of-service attacks.",
+        "domain": "operations",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Cross-Method Payment Failures in High-Risk Users",
+        "query": "Investigate users experiencing payment failures across at least two different 'payment_method' types within a 14-day period. Analyze if these failures are correlated with specific high-risk 'instrument' types, a 'flag_reason' that is intermittently absent, or if users with a 'risk_score' above the 75th percentile are disproportionately affected, suggesting systemic issues with high-risk payment processing.",
+        "domain": "operations",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Credential Stuffing Followed by Opportunistic Fraud",
+        "query": "For users experiencing more than 3 failed login attempts from different countries and device types within a 6-hour period, analyze their transaction patterns for the subsequent 48 hours. Identify if there's a significant increase in the volume or frequency of transactions involving high-risk instruments, or a sudden shift in 'payment_method' usage, suggesting potential credential stuffing followed by opportunistic fraud.",
+        "domain": "risk",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Sophisticated Account Takeover via Geographically Dispersed Logins",
+        "query": "Identify users exhibiting successful logins from two or more distinct countries within a 1-hour window, where each login session occurred on a different device type but originated from a very similar IP address range. Analyze subsequent transaction activity for any immediate high-value outbound transfers or liquidation of assets within 24 hours.",
+        "domain": "security",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Age-Based Risk Appetite and Instrument Exposure Mismatch",
+        "query": "Segment users by age groups (18-24, 25-34, 35-54, 55+). For each segment, analyze the concentration of their 'risk_score' in relation to the 'instrument' types they trade. Identify any age segments that disproportionately hold high-risk instruments despite having a generally lower average 'risk_score', or vice versa, indicating potential misaligned risk appetite or platform exposure.",
+        "domain": "risk",
+        "risk_score": 18,
+        "severity": "LOW",
+        "data_count": 4
+      }
+    ],
+    "domain_scores": {
+      "security": 0,
+      "compliance": 0,
+      "operations": 0,
+      "risk": 9
+    },
+    "critical_domains": []
+  },
+  {
+    "timestamp": "2026-02-07T13:40:33.860788",
+    "missions": [
+      {
+        "name": "Credential Stuffing and Subsequent Fraud Correlation",
+        "query": "For users experiencing more than 3 failed login attempts from different countries and device types within a 6-hour period, analyze their transaction patterns for the subsequent 48 hours. Identify if there's a significant increase in the volume or frequency of transactions involving high-risk instruments, or a sudden shift in 'payment_method' usage, suggesting potential credential stuffing followed by opportunistic fraud.",
+        "domain": "security",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "PEP Diversified Activity and AML Risk",
+        "query": "Identify all Politically Exposed Persons (PEPs) who have significantly diversified their transaction activity in the last 90 days, engaging with more than 5 new and distinct 'instrument' types. Analyze the 'amount_usd', 'currency', and 'txn_type' for any patterns that deviate from typical investment profiles or suggest potential illicit fund movement or influence peddling.",
+        "domain": "compliance",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Unflagged High-Risk Transactions and AML Evasion",
+        "query": "Identify all transactions involving users with a 'kyc_status' of 'PENDING' or 'FAILED', a 'risk_level' of 'HIGH' or 'CRITICAL', and originating from a country not on a predefined list of low-risk jurisdictions. Analyze these unflagged transactions for patterns of high 'amount_usd' transfers, use of exotic 'instrument' types, or specific 'payment_method' that might indicate sophisticated AML evasion tactics.",
+        "domain": "compliance",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Payment Failure and High-Risk Processing Discrepancies",
+        "query": "Investigate users experiencing payment failures across at least two different 'payment_method' types within a 14-day period. Analyze if these failures are correlated with specific high-risk 'instrument' types, a 'flag_reason' that is intermittently absent, or if users with a 'risk_score' above the 75th percentile are disproportionately affected, suggesting systemic issues with high-risk payment processing.",
+        "domain": "operations",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Anomalous Login Activity Indicative of Account Takeover",
+        "query": "Identify users who have experienced successful logins from a country significantly different from their usual login locations, within 12 hours of a series of failed login attempts from multiple distinct IP addresses. Analyze their subsequent transaction patterns for rapid liquidation of assets, transfers to new beneficiaries, or engagement with high-risk instruments, indicative of account takeover and immediate fund misappropriation.",
+        "domain": "security",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Sustained Login Failures and User Impact Analysis",
+        "query": "Analyze the 'login_events' table for any user_ids that experience a sustained period (over 24 hours) of more than 10 failed login attempts per hour, across various 'device_type' and 'country' combinations. Correlate these systemic login failures with the user's subsequent transaction activity, looking for a decrease in transaction volume or success rate, to identify potential impacts on user experience or targeted denial-of-service attacks.",
+        "domain": "operations",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Age-Based Risk Score and Instrument Concentration Analysis",
+        "query": "Segment users by age groups (18-24, 25-34, 35-54, 55+). For each segment, analyze the concentration of their 'risk_score' in relation to the 'instrument' types they trade. Identify any age segments that disproportionately hold high-risk instruments despite having a generally lower average 'risk_score', or vice versa, indicating potential misaligned risk appetite or platform exposure.",
+        "domain": "risk",
+        "risk_score": 18,
+        "severity": "LOW",
+        "data_count": 4
+      },
+      {
+        "name": "Geographic IP and Device Type Transaction Anomalies",
+        "query": "Identify users exhibiting successful logins from two or more distinct countries within a 1-hour window, where each login session occurred on a different device type but originated from a very similar IP address range. Analyze subsequent transaction activity for any immediate high-value outbound transfers or liquidation of assets within 24 hours.",
+        "domain": "risk",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      }
+    ],
+    "domain_scores": {
+      "security": 0,
+      "compliance": 0,
+      "operations": 0,
+      "risk": 9
+    },
+    "critical_domains": []
+  },
+  {
+    "timestamp": "2026-02-07T13:44:22.008574",
+    "missions": [
+      {
+        "name": "Stealthy Account Takeover via Device Hopping",
+        "query": "Detect users who have experienced a series of successful logins across a wide range of 'device_type' within a short timeframe (e.g., 48 hours), originating from the same or very similar IP address ranges but from distinct geographical locations. Investigate subsequent transaction patterns for any unusual outflows or transfers to newly added beneficiaries, suggesting sophisticated account takeover facilitated by compromised credentials and obfuscated access points.",
+        "domain": "security",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Payment Method Failure Cascades and User Impact",
+        "query": "Investigate users who have experienced a sustained pattern (more than 5 failures over 7 days) of failed transactions across multiple 'payment_method' types. Correlate these failures with specific 'instrument' types or transaction volumes, and analyze if users with a 'risk_level' of 'HIGH' or 'CRITICAL' are disproportionately affected, indicating potential systemic issues impacting high-value users or specific transaction flows.",
+        "domain": "operations",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "High-Risk Instrument Concentration by User Segment",
+        "query": "Analyze the distribution of 'risk_score' across different user segments (e.g., defined by age or transaction volume) and their corresponding 'instrument' holdings. Identify any segments that exhibit a disproportionately high concentration of high-risk instruments with a low average 'risk_score', or vice versa, indicating potential misaligned risk appetite or undiscovered systemic risk exposures within specific user demographics.",
+        "domain": "risk",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "KYC Drift and High-Risk Activity Correlation",
+        "query": "Analyze users whose 'kyc_status' has transitioned from 'APPROVED' to 'PENDING' or 'FAILED' within the last 90 days, correlating this with a significant increase in their transaction volume or the introduction of high-risk 'instrument' types. Identify if these users exhibit 'is_pep' as 'TRUE' or possess a high 'risk_score', suggesting potential circumvention of KYC regulations or exploitation of system oversight for illicit activities.",
+        "domain": "compliance",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Anomalous Login & Transaction Velocity",
+        "query": "Identify users exhibiting a high rate of successful logins from geographically diverse locations coupled with an abnormally high transaction velocity (frequency and volume) within a 24-hour period. Analyze if this activity is concentrated around specific 'instrument' types or 'txn_type' that are not typical for their historical profile, potentially indicating automated fraud or account takeover with rapid fund movement.",
+        "domain": "security",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "PEP Transactional Diversification & Red Flags",
+        "query": "For Politically Exposed Persons (PEPs), identify any significant diversification of transaction types and instruments in the last 60 days, specifically looking for sudden engagement with high-value outbound transfers ('txn_type' = 'TRANSFER', 'amount_usd' > X) to jurisdictions not previously interacted with, or the introduction of novel and complex financial instruments. Flag any associated 'flag_reason' or lack thereof that might indicate regulatory arbitrage or influence peddling.",
+        "domain": "compliance",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Systemic Login Vulnerabilities and User Experience Degradation",
+        "query": "Identify user segments that consistently experience a high rate of failed login attempts ('status' = 'FAILED' in 'login_events') across various countries and device types over an extended period (e.g., 7 days). Analyze if this correlates with a noticeable drop in their successful transaction rates or a decrease in overall transaction volume, suggesting potential denial-of-service attacks impacting user experience and operational efficiency.",
+        "domain": "operations",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Unusual Transactional Outflows from High-Risk Accounts",
+        "query": "Identify users with a 'risk_level' of 'HIGH' or 'CRITICAL' who have executed a series of outbound transactions ('txn_type' = 'TRANSFER' or 'WITHDRAWAL') with an 'amount_usd' exceeding a defined threshold within a 48-hour window. Analyze the 'currency', 'payment_method', and destination of these transfers against their historical transaction patterns and KYC information for any unusual velocity or destination, suggesting potential money laundering or illicit fund diversion.",
+        "domain": "risk",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      }
+    ],
+    "domain_scores": {
+      "security": 0,
+      "operations": 0,
+      "risk": 0,
+      "compliance": 0
+    },
+    "critical_domains": []
+  },
+  {
+    "timestamp": "2026-02-07T13:45:26.745129",
+    "missions": [
+      {
+        "name": "Account Takeover Pattern Detection via Login & Transaction Anomalies",
+        "query": "Identify users who exhibit a pattern of successful logins from geographically disparate locations ('country') across different 'device_type' within a short timeframe (e.g., 72 hours), immediately followed by a significant increase in outbound 'txn_type' transactions ('TRANSFER', 'WITHDRAWAL') with high 'amount_usd' values. Analyze if the 'flag_reason' for these transactions is consistently absent or generic, suggesting sophisticated account takeover and immediate fund extraction.",
+        "domain": "security",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "PEP Sanction Screening & Transaction Linkage",
+        "query": "For users flagged as 'is_pep' = TRUE, analyze their transaction history for any direct or indirect links ('user_id' in 'transactions' table linked to other users who are also PEPs or have high 'risk_score') to sanctioned entities or individuals. Investigate if these transactions involve high-risk 'instrument' types or unusual 'payment_method' that could bypass standard compliance checks.",
+        "domain": "compliance",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Payment Failure Root Cause Analysis by User Segment",
+        "query": "Investigate users who consistently experience payment failures across multiple 'payment_method' types, particularly those with a 'risk_level' of 'HIGH' or 'CRITICAL'. Analyze if these failures are correlated with specific 'instrument' types, transaction volumes, or a pattern of 'flag_reason' that suggests underlying system inefficiencies or targeted disruption impacting high-value users.",
+        "domain": "operations",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Instrument Risk Concentration & User Exposure",
+        "query": "Analyze the concentration of high-risk 'instrument' types held by users with a 'risk_score' in the top 10% and compare it against users with a 'risk_score' in the bottom 10%. Identify if there's a disproportionate exposure to volatile or speculative instruments within segments that have a low perceived risk, indicating potential for significant portfolio imbalances and unexpected losses.",
+        "domain": "risk",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Portfolio Imbalance by Age & Instrument Risk",
+        "query": "Segment users by age groups (18-24, 25-34, 35-54, 55+). For each segment, analyze the concentration of their 'risk_score' in relation to the 'instrument' types they trade. Identify any age segments that disproportionately hold high-risk instruments despite having a generally lower average 'risk_score', or vice versa, indicating potential misaligned risk appetite or undiscovered systemic risk exposures within specific user demographics.",
+        "domain": "risk",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "KYC Drift and Evolving AML Risk",
+        "query": "Identify users whose 'kyc_status' has recently transitioned from 'APPROVED' to 'PENDING' or 'FAILED' within the last 90 days, AND who have simultaneously increased their transaction volume or introduced high-risk 'instrument' types. Analyze if these users also have 'is_pep' = TRUE or a significantly elevated 'risk_score', suggesting a deliberate attempt to circumvent enhanced due diligence or exploit regulatory gaps.",
+        "domain": "compliance",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Unusual Login Velocity & Fraudulent Transaction Link",
+        "query": "Identify users who experience a sudden spike in successful logins ('status' = 'SUCCESS') from a wide range of 'country' and 'device_type' within a very short period (e.g., 1 hour), indicating potential bot activity or credential stuffing. Correlate this login velocity with a subsequent surge in 'txn_type' = 'TRANSFER' or 'WITHDRAWAL' with high 'amount_usd', looking for immediate fund diversion.",
+        "domain": "security",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Systemic Transaction Failures & High-Risk User Impact",
+        "query": "Investigate users with a 'risk_level' of 'HIGH' or 'CRITICAL' who have experienced a sustained pattern (more than 5 failures over 7 days) of failed transactions across multiple 'payment_method' types. Analyze if these failures are correlated with specific 'instrument' types or transaction volumes, indicating potential systemic issues in processing for high-value, high-risk transactions.",
+        "domain": "operations",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      }
+    ],
+    "domain_scores": {
+      "security": 0,
+      "compliance": 0,
+      "operations": 0,
+      "risk": 0
+    },
+    "critical_domains": []
+  },
+  {
+    "timestamp": "2026-02-07T13:49:12.959899",
+    "missions": [
+      {
+        "name": "PEP Transactional Shielding",
+        "query": "For users flagged as 'is_pep' = TRUE, analyze their transaction history for any direct or indirect links ('user_id' in 'transactions' table linked to other users who are also PEPs or have high 'risk_score') to sanctioned entities or individuals. Investigate if these transactions involve high-risk 'instrument' types or unusual 'payment_method' that appear designed to bypass standard compliance checks, especially focusing on outbound transfers to non-traditional jurisdictions.",
+        "domain": "security",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "KYC Drift and High-Risk Instrument Infiltration",
+        "query": "Analyze users whose 'kyc_status' has transitioned from 'APPROVED' to 'PENDING' or 'FAILED' within the last 90 days. Correlate these status changes with a significant increase in their transaction volume or the introduction of high-risk 'instrument' types. Identify if these users exhibit 'is_pep' as 'TRUE' or possess a high 'risk_score', suggesting potential circumvention of enhanced due diligence or exploitation of system oversight for illicit activities.",
+        "domain": "compliance",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "PEP High-Value Outbound Transaction Anomaly",
+        "query": "For Politically Exposed Persons (PEPs), identify any significant diversification of transaction types and instruments in the last 60 days, specifically looking for sudden engagement with high-value outbound transfers ('txn_type' = 'TRANSFER', 'amount_usd' > X) to jurisdictions not previously interacted with, or the introduction of novel and complex financial instruments. Flag any associated 'flag_reason' or lack thereof that might indicate regulatory arbitrage or influence peddling.",
+        "domain": "compliance",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Sustained Payment Failure Impact on High-Risk Users",
+        "query": "Investigate users with a 'risk_level' of 'HIGH' or 'CRITICAL' who have experienced a sustained pattern (more than 5 failures over 7 days) of failed transactions across multiple 'payment_method' types. Analyze if these failures are correlated with specific 'instrument' types, transaction volumes, or a pattern of 'flag_reason' that suggests underlying system inefficiencies or targeted disruption impacting high-value, high-risk transactions.",
+        "domain": "operations",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Disproportionate High-Risk Instrument Concentration in Low-Risk Segments",
+        "query": "Analyze the concentration of high-risk 'instrument' types held by users with a 'risk_score' in the top 10% and compare it against users with a 'risk_score' in the bottom 10%. Identify if there's a disproportionate exposure to volatile or speculative instruments within segments that have a low perceived risk, indicating potential for significant portfolio imbalances and unexpected losses.",
+        "domain": "risk",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Anomalous Login Velocity and Fund Diversion",
+        "query": "Identify users exhibiting a sudden, extreme spike in successful logins ('status' = 'SUCCESS' in 'login_events') from a highly diverse range of 'country' and 'device_type' within a very short timeframe (e.g., 1 hour). Correlate this login velocity with a subsequent surge in outbound 'txn_type' transactions ('TRANSFER', 'WITHDRAWAL') with high 'amount_usd' values, specifically looking for immediate fund diversion and analyzing the absence of 'flag_reason' for these transactions.",
+        "domain": "security",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Login Disruption and Transactional Downturn Correlation",
+        "query": "Identify user segments that consistently experience a high rate of failed login attempts ('status' = 'FAILED' in 'login_events') across various countries and device types over an extended period (e.g., 7 days). Analyze if this correlates with a noticeable drop in their successful transaction rates or a decrease in overall transaction volume, suggesting potential denial-of-service attacks impacting user experience and operational efficiency.",
+        "domain": "operations",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Age-Based Risk-Instrument Misalignment",
+        "query": "Segment users by age groups (18-24, 25-34, 35-54, 55+). For each segment, analyze the concentration of their 'risk_score' in relation to the 'instrument' types they trade. Identify any age segments that disproportionately hold high-risk instruments despite having a generally lower average 'risk_score', or vice versa, indicating potential misaligned risk appetite or undiscovered systemic risk exposures within specific user demographics.",
+        "domain": "risk",
+        "risk_score": 42,
+        "severity": "MEDIUM",
+        "data_count": 83
+      },
+      {
+        "name": "Investigate High Risk Instruments within Low Average Risk Score Segment (18-24)",
+        "query": "For users in the 18-24 age group, identify any transactions involving instruments with an average risk score greater than 5.0 that are not listed in the provided sample findings.",
+        "domain": "risk",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Analyze Transaction Volume and Risk Score Correlation for 18-24 Segment",
+        "query": "For users in the 18-24 age group, what is the distribution of transaction counts for instruments that have an average risk score between 4.0 and 6.0?",
+        "domain": "risk",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      }
+    ],
+    "domain_scores": {
+      "security": 0,
+      "compliance": 0,
+      "operations": 0,
+      "risk": 10
+    },
+    "critical_domains": []
+  },
+  {
+    "timestamp": "2026-02-07T13:57:24.264593",
+    "missions": [
+      {
+        "name": "PEP Transaction Network to Sanction Evasion",
+        "query": "For users identified as Politically Exposed Persons ('is_pep' = TRUE), construct a transaction network by analyzing direct and indirect 'user_id' links within the 'transactions' table. Focus on identifying sub-networks where PEPs transact with other PEPs or users with high 'risk_score'. Investigate if these sub-networks engage in transactions involving high-risk 'instrument' types or unusual 'payment_method' that could facilitate evasion of sanctions or regulatory oversight, particularly those involving frequent, small-value transfers to obscure destinations.",
+        "domain": "compliance",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "High-Risk User Payment Failure Correlation with Systemic Issues",
+        "query": "Investigate users with 'risk_level' of 'HIGH' or 'CRITICAL' who have experienced a sustained pattern of more than 7 payment failures across different 'payment_method' types within a 14-day period. Analyze if these failures are correlated with specific 'instrument' types, transaction volumes, or a recurring 'flag_reason' that indicates systemic processing issues or bottlenecks impacting high-value, high-risk transactions, rather than individual user error.",
+        "domain": "operations",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Unusual Transaction Patterns Preceding Account Suspension",
+        "query": "Analyze users whose 'account_status' has recently changed to 'SUSPENDED' or 'CLOSED'. For these users, examine their transaction history in the 7 days preceding the status change. Identify any unusual patterns such as a sudden spike in outbound 'txn_type' = 'TRANSFER' or 'WITHDRAWAL' with high 'amount_usd', a significant shift in 'instrument' types used, or a high frequency of transactions flagged with specific 'flag_reason' that were not previously observed. This aims to identify precursors to account closure that might indicate illicit activity or policy violations.",
+        "domain": "operations",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Emerging Risk in Under-Monitored User Segments",
+        "query": "Identify users with a 'risk_score' below 3.0 who have recently (within the last 30 days) begun transacting with 'instrument' types that have an average 'risk_score' above 6.0. Analyze the frequency and 'amount_usd' of these transactions. Specifically, look for users in younger age demographics (18-34) who are exhibiting this shift, as they may be entering higher-risk investment areas without fully understanding the implications or having sufficient risk mitigation in place.",
+        "domain": "risk",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "KYC Degradation and PEP/High-Risk Transaction Escalation",
+        "query": "Identify users whose 'kyc_status' has transitioned from 'APPROVED' to 'PENDING' or 'FAILED' within the last 60 days. For these users, analyze if they are also flagged as 'is_pep' = TRUE or possess a 'risk_score' in the top 20% of all users. Investigate if this KYC degradation is accompanied by a significant increase in transaction volume or the introduction of high-risk 'instrument' types, suggesting a potential circumvention of enhanced due diligence or an attempt to exploit regulatory blind spots before KYC is fully resolved.",
+        "domain": "compliance",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Anomalous Login Velocity to Account Takeover Trigger",
+        "query": "Identify users who exhibit an unusually high velocity of successful logins ('status' = 'SUCCESS' in 'login_events') originating from a diverse set of 'country' and 'device_type' within a rolling 24-hour window. For these users, analyze if this login anomaly is immediately followed by a series of high-value outbound transactions ('txn_type' = 'TRANSFER' or 'WITHDRAWAL') with 'amount_usd' exceeding 50% of their historical average, and if the 'flag_reason' for these transactions is consistently absent or generic. This aims to detect sophisticated account takeovers where attackers rapidly compromise multiple access points before draining funds.",
+        "domain": "security",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Instrument Concentration Risk in Low-Risk Demographics",
+        "query": "Analyze users grouped by 'age' into segments (18-24, 25-34, 35-54, 55+). Within each age segment, identify the concentration of high-risk 'instrument' types (defined as those with an average 'risk_score' above 7.0). Compare this concentration against the average 'risk_score' of users within that segment. Highlight any age segments that disproportionately hold highly speculative instruments despite having a generally lower average 'risk_score', indicating a potential misaligned risk appetite or a lack of awareness of underlying portfolio risks.",
+        "domain": "risk",
+        "risk_score": 42,
+        "severity": "MEDIUM",
+        "data_count": 83
+      },
+      {
+        "name": "Geographically Dispersed Login to Outbound Fund Velocity",
+        "query": "Identify users exhibiting a pattern of successful logins ('status' = 'SUCCESS' in 'login_events') from at least three distinct 'country' locations within a 48-hour window. For these users, analyze the subsequent transaction activity for a rapid increase in outbound 'txn_type' transactions ('TRANSFER', 'WITHDRAWAL') with 'amount_usd' exceeding their daily average by more than 150%. Examine the 'payment_method' and 'instrument' used for any deviation from their typical patterns, suggesting a coordinated effort to exfiltrate funds after compromising multiple geographical access points.",
+        "domain": "security",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Investigate User Behavior with High-Risk Instruments in 18-24 Segment",
+        "query": "For users in the '18-24' age segment who hold 'META' or 'AMZN' instruments, what are their recent transaction types, amounts, and statuses?",
+        "domain": "risk",
+        "risk_score": 28,
+        "severity": "MEDIUM",
+        "data_count": 2
+      },
+      {
+        "name": "Analyze Geographic Concentration of 18-24 Users with High-Risk Instruments",
+        "query": "From which countries are the users in the '18-24' age segment primarily accessing their accounts when transacting with 'META' or 'AMZN' instruments?",
+        "domain": "risk",
+        "risk_score": 20,
+        "severity": "LOW",
+        "data_count": 6
+      }
+    ],
+    "domain_scores": {
+      "compliance": 0,
+      "operations": 0,
+      "risk": 22,
+      "security": 0
+    },
+    "critical_domains": []
+  },
+  {
+    "timestamp": "2026-02-07T14:05:24.805421",
+    "missions": [
+      {
+        "name": "Anomalous PEP Transaction Sieving",
+        "query": "Identify Politically Exposed Persons (PEPs) whose transaction patterns exhibit a significant deviation from their historical norms, specifically focusing on a sudden increase in transactions with newly introduced high-risk 'instrument' types or a disproportionate use of 'payment_method's not previously utilized. Analyze if these deviations correlate with an elevated 'risk_score' or a change in 'kyc_status' within the preceding 90 days, suggesting potential attempts to bypass enhanced due diligence through complex financial maneuvers.",
+        "domain": "security",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Sanctions Evasion Through Layered Transactions",
+        "query": "Construct transaction graphs for users flagged with 'is_pep' = TRUE and a 'risk_level' of 'HIGH' or 'CRITICAL'. Analyze these graphs for multi-hop transaction chains (at least three levels deep) involving intermediary users who themselves have high 'risk_score' or are also PEPs. Focus on identifying if these layered transactions utilize obscure 'payment_method's or 'instrument's that are not typically associated with standard financial flows, potentially indicative of sanctions evasion or money laundering.",
+        "domain": "compliance",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "User Performance Degradation Post-Login Anomaly",
+        "query": "Identify users who, after exhibiting a pattern of failed login attempts ('status' = 'FAILED' in 'login_events') from diverse locations and devices over a week, show a subsequent significant drop in their successful transaction rates or overall transaction volume for the following two weeks. This mission aims to identify potential long-term impacts of persistent cyber threats on user engagement and platform utilization.",
+        "domain": "operations",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Concentration Risk in Highly Volatile Instruments",
+        "query": "Analyze users across all 'age' segments who hold a disproportionate concentration of their total 'amount_usd' within 'instrument' types classified as having a 'risk_score' above 7.0. Specifically, identify if any 'age' segments show a statistically significant higher percentage of their portfolio invested in these high-risk instruments compared to others, indicating potential sector-specific or demographic-driven speculative behavior.",
+        "domain": "risk",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "KYC Degradation & High-Risk Instrument Adoption",
+        "query": "Identify users whose 'kyc_status' has degraded from 'APPROVED' to 'PENDING' or 'FAILED' within the last 90 days. For these users, analyze if they have concurrently increased their engagement with 'instrument' types having an average 'risk_score' above 7.0, particularly if their 'risk_level' has also escalated or if they are flagged as 'is_pep' = TRUE. This mission aims to uncover potential attempts to exploit regulatory loopholes or circumvent enhanced due diligence processes during KYC re-evaluation.",
+        "domain": "compliance",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Emerging High-Risk Instrument Adoption by Low-Risk Users",
+        "query": "Identify users with a 'risk_score' below 3.0 and an 'age' between 18 and 30 who have recently (within the last 60 days) started transacting with 'instrument' types that have an average 'risk_score' above 8.0. Analyze the frequency, 'amount_usd', and 'txn_type' of these transactions to assess the user's understanding of the associated risks and potential for rapid portfolio deterioration.",
+        "domain": "risk",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Account Takeover Velocity & Asset Stripping",
+        "query": "Detect users who have experienced a high velocity of successful logins ('status' = 'SUCCESS' in 'login_events') originating from geographically diverse locations (more than 5 distinct 'country' codes within 12 hours) coupled with a subsequent rapid outflow of funds. Specifically, analyze transactions where the 'amount_usd' represents over 75% of the user's 30-day average transaction value, and the 'flag_reason' is either absent or a generic 'SYSTEM_ERROR', indicating potential automated account takeover and immediate asset stripping.",
+        "domain": "security",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Systemic Payment Failure Choke Points",
+        "query": "Investigate users who have experienced more than 10 failed transactions ('status' = 'FAILED') within a 7-day period, across a variety of 'payment_method's and 'instrument's. Analyze the 'flag_reason' for these failures to identify common patterns or specific error codes that are not isolated to individual users but suggest systemic processing issues, bottlenecks, or targeted attacks impacting specific payment infrastructure components.",
+        "domain": "operations",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      }
+    ],
+    "domain_scores": {
+      "security": 0,
+      "compliance": 0,
+      "operations": 0,
+      "risk": 0
+    },
+    "critical_domains": []
+  },
+  {
+    "timestamp": "2026-02-07T14:12:20.762642",
+    "missions": [
+      {
+        "name": "PEP Transaction Pattern Deviation with KYC/Risk Escalation",
+        "query": "Identify Politically Exposed Persons (PEPs) whose transaction patterns exhibit a significant deviation from their historical norms, specifically focusing on a sudden increase in transactions with newly introduced high-risk 'instrument' types or a disproportionate use of 'payment_method's not previously utilized. Analyze if these deviations correlate with an elevated 'risk_score' or a change in 'kyc_status' within the preceding 90 days, suggesting potential attempts to bypass enhanced due diligence through complex financial maneuvers.",
+        "domain": "compliance",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Age Segment High-Risk Instrument Concentration",
+        "query": "Analyze users across all 'age' segments who hold a disproportionate concentration of their total 'amount_usd' within 'instrument' types classified as having a 'risk_score' above 7.0. Specifically, identify if any 'age' segments show a statistically significant higher percentage of their portfolio invested in these high-risk instruments compared to others, indicating potential sector-specific or demographic-driven speculative behavior.",
+        "domain": "risk",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Compromised Accounts & Fund Exfiltration via Geo-Spoofing",
+        "query": "Identify users who exhibit an unusually high velocity of successful logins ('status' = 'SUCCESS' in 'login_events') originating from a diverse set of 'country' and 'device_type' within a rolling 24-hour window. For these users, analyze if this login anomaly is immediately followed by a series of high-value outbound transactions ('txn_type' = 'TRANSFER' or 'WITHDRAWAL') with 'amount_usd' exceeding 50% of their historical average, and if the 'flag_reason' for these transactions is consistently absent or generic. This aims to detect sophisticated account takeovers where attackers rapidly compromise multiple access points before draining funds.",
+        "domain": "security",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "User Engagement Impact from Persistent Login Threats",
+        "query": "Identify users who, after exhibiting a pattern of failed login attempts ('status' = 'FAILED' in 'login_events') from diverse locations and devices over a week, show a subsequent significant drop in their successful transaction rates or overall transaction volume for the following two weeks. This mission aims to identify potential long-term impacts of persistent cyber threats on user engagement and platform utilization.",
+        "domain": "operations",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Young Investor Entry into High-Risk Instruments",
+        "query": "Identify users with a 'risk_score' below 3.0 and an 'age' between 18 and 30 who have recently (within the last 60 days) started transacting with 'instrument' types that have an average 'risk_score' above 8.0. Analyze the frequency, 'amount_usd', and 'txn_type' of these transactions to assess the user's understanding of the associated risks and potential for rapid portfolio deterioration.",
+        "domain": "risk",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "KYC Degradation & High-Risk Instrument Engagement",
+        "query": "Identify users whose 'kyc_status' has degraded from 'APPROVED' to 'PENDING' or 'FAILED' within the last 90 days. For these users, analyze if they have concurrently increased their engagement with 'instrument' types having an average 'risk_score' above 7.0, particularly if their 'risk_level' has also escalated or if they are flagged as 'is_pep' = TRUE. This mission aims to uncover potential attempts to exploit regulatory loopholes or circumvent enhanced due diligence processes during KYC re-evaluation.",
+        "domain": "compliance",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Geographically Dispersed Login & Rapid Asset Drain",
+        "query": "Detect users who have experienced a high velocity of successful logins ('status' = 'SUCCESS' in 'login_events') originating from geographically diverse locations (more than 5 distinct 'country' codes within 12 hours) coupled with a subsequent rapid outflow of funds. Specifically, analyze transactions where the 'amount_usd' represents over 75% of the user's 30-day average transaction value, and the 'flag_reason' is either absent or a generic 'SYSTEM_ERROR', indicating potential automated account takeover and immediate asset stripping.",
+        "domain": "security",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Systemic Transaction Failure Analysis",
+        "query": "Investigate users who have experienced more than 10 failed transactions ('status' = 'FAILED') within a 7-day period, across a variety of 'payment_method's and 'instrument's. Analyze the 'flag_reason' for these failures to identify common patterns or specific error codes that are not isolated to individual users but suggest systemic processing issues, bottlenecks, or targeted attacks impacting specific payment infrastructure components.",
+        "domain": "operations",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      }
+    ],
+    "domain_scores": {
+      "compliance": 0,
+      "risk": 0,
+      "security": 0,
+      "operations": 0
+    },
+    "critical_domains": []
+  },
+  {
+    "timestamp": "2026-02-07T14:21:00.404441",
+    "missions": [
+      {
+        "name": "PEP Transaction Deviation & KYC Changes",
+        "query": "Identify Politically Exposed Persons (PEPs) whose transaction patterns exhibit a significant deviation from their historical norms, specifically focusing on a sudden increase in transactions with newly introduced high-risk 'instrument' types or a disproportionate use of 'payment_method's not previously utilized. Analyze if these deviations correlate with an elevated 'risk_score' or a change in 'kyc_status' within the preceding 90 days, suggesting potential attempts to bypass enhanced due diligence through complex financial maneuvers.",
+        "domain": "compliance",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Systemic Payment Failure Analysis",
+        "query": "Investigate users who have experienced more than 10 failed transactions ('status' = 'FAILED') within a 7-day period, across a variety of 'payment_method's and 'instrument's. Analyze the 'flag_reason' for these failures to identify common patterns or specific error codes that are not isolated to individual users but suggest systemic processing issues, bottlenecks, or targeted attacks impacting specific payment infrastructure components.",
+        "domain": "operations",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Age Segment High-Risk Instrument Concentration",
+        "query": "Analyze users across all 'age' segments who hold a disproportionate concentration of their total 'amount_usd' within 'instrument' types classified as having a 'risk_score' above 7.0. Specifically, identify if any 'age' segments show a statistically significant higher percentage of their portfolio invested in these high-risk instruments compared to others, indicating potential sector-specific or demographic-driven speculative behavior.",
+        "domain": "risk",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Post-Cyber Threat Engagement Drop",
+        "query": "Identify users who, after exhibiting a pattern of failed login attempts ('status' = 'FAILED' in 'login_events') from diverse locations and devices over a week, show a subsequent significant drop in their successful transaction rates or overall transaction volume for the following two weeks. This mission aims to identify potential long-term impacts of persistent cyber threats on user engagement and platform utilization.",
+        "domain": "operations",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "KYC Degradation & High-Risk Instrument Engagement",
+        "query": "Identify users whose 'kyc_status' has degraded from 'APPROVED' to 'PENDING' or 'FAILED' within the last 90 days. For these users, analyze if they have concurrently increased their engagement with 'instrument' types having an average 'risk_score' above 7.0, particularly if their 'risk_level' has also escalated or if they are flagged as 'is_pep' = TRUE. This mission aims to uncover potential attempts to exploit regulatory loopholes or circumvent enhanced due diligence processes during KYC re-evaluation.",
+        "domain": "compliance",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Young User Entry into High-Risk Instruments",
+        "query": "Identify users with a 'risk_score' below 3.0 and an 'age' between 18 and 30 who have recently (within the last 60 days) started transacting with 'instrument' types that have an average 'risk_score' above 8.0. Analyze the frequency, 'amount_usd', and 'txn_type' of these transactions to assess the user's understanding of the associated risks and potential for rapid portfolio deterioration.",
+        "domain": "risk",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Anomalous Login Velocity & Fund Exfiltration",
+        "query": "Identify users who exhibit an unusually high velocity of successful logins ('status' = 'SUCCESS' in 'login_events') originating from a diverse set of 'country' and 'device_type' within a rolling 24-hour window. For these users, analyze if this login anomaly is immediately followed by a series of high-value outbound transactions ('txn_type' = 'TRANSFER' or 'WITHDRAWAL') with 'amount_usd' exceeding 50% of their historical average, and if the 'flag_reason' for these transactions is consistently absent or generic. This aims to detect sophisticated account takeovers where attackers rapidly compromise multiple access points before draining funds.",
+        "domain": "security",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      },
+      {
+        "name": "Geographically Diverse Login & Rapid Fund Outflow",
+        "query": "Detect users who have experienced a high velocity of successful logins ('status' = 'SUCCESS' in 'login_events') originating from geographically diverse locations (more than 5 distinct 'country' codes within 12 hours) coupled with a subsequent rapid outflow of funds. Specifically, analyze transactions where the 'amount_usd' represents over 75% of the user's 30-day average transaction value, and the 'flag_reason' is either absent or a generic 'SYSTEM_ERROR', indicating potential automated account takeover and immediate asset stripping.",
+        "domain": "security",
+        "risk_score": 0,
+        "severity": "LOW",
+        "data_count": 0
+      }
+    ],
+    "domain_scores": {
+      "compliance": 0,
+      "operations": 0,
+      "risk": 0,
+      "security": 0
+    },
+    "critical_domains": []
+  }
+]

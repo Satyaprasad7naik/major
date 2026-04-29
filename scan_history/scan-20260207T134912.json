@@ -1,0 +1,2031 @@
+{
+  "scan_id": "scan-20260207T134912",
+  "timestamp": "2026-02-07T13:49:12.969015",
+  "stats": {
+    "total_missions": 10,
+    "critical_count": 0,
+    "high_count": 0,
+    "overall_risk": 42,
+    "overall_severity": "LOW"
+  },
+  "detections": [
+    {
+      "mission_id": "sec_002",
+      "mission_name": "PEP Transactional Shielding",
+      "domain": "security",
+      "severity": "LOW",
+      "risk_score": 0,
+      "risk_factors": {},
+      "sql": null,
+      "data_count": 0,
+      "results": [],
+      "visualization_config": null,
+      "insight": null,
+      "recommendation": null,
+      "original_query": "For users flagged as 'is_pep' = TRUE, analyze their transaction history for any direct or indirect links ('user_id' in 'transactions' table linked to other users who are also PEPs or have high 'risk_score') to sanctioned entities or individuals. Investigate if these transactions involve high-risk 'instrument' types or unusual 'payment_method' that appear designed to bypass standard compliance checks, especially focusing on outbound transfers to non-traditional jurisdictions.",
+      "depth": 0,
+      "parent_mission_id": null,
+      "rationale": "",
+      "timestamp": "LIVE AUDIT",
+      "logs": [
+        {
+          "ts": 1770472080.259,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [classify_intent]"
+        },
+        {
+          "ts": 1770472080.266,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Starting Intent Classification and Preprocessing in parallel for domain: security"
+        },
+        {
+          "ts": 1770472081.037,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classifying intent for domain: security | Query: For users flagged as 'is_pep' = TRUE, analyze their transaction history for any direct or indirect links ('user_id' in 'transactions' table linked to other users who are also PEPs or have high 'risk_score') to sanctioned entities or individuals. Investigate if these transactions involve high-risk 'instrument' types or unusual 'payment_method' that appear designed to bypass standard compliance checks, especially focusing on outbound transfers to non-traditional jurisdictions."
+        },
+        {
+          "ts": 1770472081.041,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770472081.791,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"intent\": \"SELECT\",\n  \"confidence\": 1...."
+        },
+        {
+          "ts": 1770472081.793,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classification Result: SELECT (conf: 1.0) | Needs Clarification: True"
+        },
+        {
+          "ts": 1770472087.127,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770472087.734,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: [\"users\", \"transactions\"]..."
+        },
+        {
+          "ts": 1770472087.737,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770472089.226,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"resolved_entities\": {\n    \"users.is_p..."
+        },
+        {
+          "ts": 1770472089.233,
+          "level": "INFO",
+          "node": "entity_extractor.py",
+          "msg": "Final Extracted/Resolved Entities: {'users.is_pep': '1', 'transactions.flag_reason': 'PEP transaction', 'transactions.instrument': ['XRP/USD', 'AMZN', 'AAPL', 'DAX', 'FTSE100', 'GOOGL', 'AUD/USD', 'Natural Gas', 'Nikkei', 'Oil', 'NVDA', 'EUR/USD', 'BTC/USD', 'ETH/USD', 'NASDAQ', 'GBP/USD', 'USD/JPY', 'MSFT', 'TSLA'], 'transactions.payment_method': ['Wire Transfer', 'Bank Transfer', 'E-Wallet', 'Debit Card', 'SEPA', 'ACH', 'Crypto Wallet', 'Credit Card'], 'transactions.currency': ['AUD', 'CAD', 'USD', 'CHF', 'SGD', 'GBP', 'AED', 'EUR', 'JPY', 'SAR']}"
+        },
+        {
+          "ts": 1770472098.979,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Intent classified: SELECT (conf: 1.0) | Needs Clarification: True"
+        },
+        {
+          "ts": 1770472100.574,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770472102.184,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: I understand you're looking to analyze transaction..."
+        }
+      ]
+    },
+    {
+      "mission_id": "comp_001",
+      "mission_name": "KYC Drift and High-Risk Instrument Infiltration",
+      "domain": "compliance",
+      "severity": "LOW",
+      "risk_score": 0,
+      "risk_factors": {},
+      "sql": null,
+      "data_count": 0,
+      "results": [],
+      "visualization_config": null,
+      "insight": null,
+      "recommendation": null,
+      "original_query": "Analyze users whose 'kyc_status' has transitioned from 'APPROVED' to 'PENDING' or 'FAILED' within the last 90 days. Correlate these status changes with a significant increase in their transaction volume or the introduction of high-risk 'instrument' types. Identify if these users exhibit 'is_pep' as 'TRUE' or possess a high 'risk_score', suggesting potential circumvention of enhanced due diligence or exploitation of system oversight for illicit activities.",
+      "depth": 0,
+      "parent_mission_id": null,
+      "rationale": "",
+      "timestamp": "LIVE AUDIT",
+      "logs": [
+        {
+          "ts": 1770472080.274,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [classify_intent]"
+        },
+        {
+          "ts": 1770472080.293,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Starting Intent Classification and Preprocessing in parallel for domain: compliance"
+        },
+        {
+          "ts": 1770472081.794,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classifying intent for domain: compliance | Query: Analyze users whose 'kyc_status' has transitioned from 'APPROVED' to 'PENDING' or 'FAILED' within the last 90 days. Correlate these status changes with a significant increase in their transaction volume or the introduction of high-risk 'instrument' types. Identify if these users exhibit 'is_pep' as 'TRUE' or possess a high 'risk_score', suggesting potential circumvention of enhanced due diligence or exploitation of system oversight for illicit activities."
+        },
+        {
+          "ts": 1770472081.798,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770472082.401,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"intent\": \"SELECT\",\n  \"confidence\": 1...."
+        },
+        {
+          "ts": 1770472082.403,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classification Result: SELECT (conf: 1.0) | Needs Clarification: True"
+        },
+        {
+          "ts": 1770472089.238,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770472089.779,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: [\"users\", \"transactions\"]..."
+        },
+        {
+          "ts": 1770472089.782,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770472090.82,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: {\n  \"resolved_entities\": {\n    \"users.kyc_status\":..."
+        },
+        {
+          "ts": 1770472090.823,
+          "level": "INFO",
+          "node": "entity_extractor.py",
+          "msg": "Final Extracted/Resolved Entities: {'users.kyc_status': ['PENDING', 'FAILED'], 'transactions.instrument': ['High amount'], 'users.is_pep': '1', 'users.risk_score': 'HIGH'}"
+        },
+        {
+          "ts": 1770472098.983,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Intent classified: SELECT (conf: 1.0) | Needs Clarification: True"
+        },
+        {
+          "ts": 1770472102.184,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770472103.588,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: I understand you're interested in analyzing user b..."
+        }
+      ]
+    },
+    {
+      "mission_id": "comp_002",
+      "mission_name": "PEP High-Value Outbound Transaction Anomaly",
+      "domain": "compliance",
+      "severity": "LOW",
+      "risk_score": 0,
+      "risk_factors": {},
+      "sql": null,
+      "data_count": 0,
+      "results": [],
+      "visualization_config": null,
+      "insight": null,
+      "recommendation": null,
+      "original_query": "For Politically Exposed Persons (PEPs), identify any significant diversification of transaction types and instruments in the last 60 days, specifically looking for sudden engagement with high-value outbound transfers ('txn_type' = 'TRANSFER', 'amount_usd' > X) to jurisdictions not previously interacted with, or the introduction of novel and complex financial instruments. Flag any associated 'flag_reason' or lack thereof that might indicate regulatory arbitrage or influence peddling.",
+      "depth": 0,
+      "parent_mission_id": null,
+      "rationale": "",
+      "timestamp": "LIVE AUDIT",
+      "logs": [
+        {
+          "ts": 1770472080.307,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [classify_intent]"
+        },
+        {
+          "ts": 1770472080.316,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Starting Intent Classification and Preprocessing in parallel for domain: compliance"
+        },
+        {
+          "ts": 1770472082.403,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classifying intent for domain: compliance | Query: For Politically Exposed Persons (PEPs), identify any significant diversification of transaction types and instruments in the last 60 days, specifically looking for sudden engagement with high-value outbound transfers ('txn_type' = 'TRANSFER', 'amount_usd' > X) to jurisdictions not previously interacted with, or the introduction of novel and complex financial instruments. Flag any associated 'flag_reason' or lack thereof that might indicate regulatory arbitrage or influence peddling."
+        },
+        {
+          "ts": 1770472082.408,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770472083.007,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"intent\": \"SELECT\",\n  \"confidence\": 1...."
+        },
+        {
+          "ts": 1770472083.024,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classification Result: SELECT (conf: 1.0) | Needs Clarification: True"
+        },
+        {
+          "ts": 1770472090.825,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770472091.317,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: [\"users\", \"transactions\"]..."
+        },
+        {
+          "ts": 1770472091.331,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770472092.041,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"resolved_entities\": {\n    \"users.is_p..."
+        },
+        {
+          "ts": 1770472092.045,
+          "level": "INFO",
+          "node": "entity_extractor.py",
+          "msg": "Final Extracted/Resolved Entities: {'users.is_pep': '1', 'transactions.txn_type': 'TRANSFER', 'transactions.status': ['COMPLETED', 'FLAGGED', 'PENDING'], 'transactions.flag_reason': ['AML alert', 'Geo mismatch', 'Unusual pattern', 'Velocity check', 'PEP transaction', 'Sanctions match', 'High amount']}"
+        },
+        {
+          "ts": 1770472098.992,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Intent classified: SELECT (conf: 1.0) | Needs Clarification: True"
+        },
+        {
+          "ts": 1770472103.595,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770472104.997,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: I understand you're interested in identifying sign..."
+        }
+      ]
+    },
+    {
+      "mission_id": "ops_001",
+      "mission_name": "Sustained Payment Failure Impact on High-Risk Users",
+      "domain": "operations",
+      "severity": "LOW",
+      "risk_score": 0,
+      "risk_factors": {},
+      "sql": null,
+      "data_count": 0,
+      "results": [],
+      "visualization_config": null,
+      "insight": null,
+      "recommendation": null,
+      "original_query": "Investigate users with a 'risk_level' of 'HIGH' or 'CRITICAL' who have experienced a sustained pattern (more than 5 failures over 7 days) of failed transactions across multiple 'payment_method' types. Analyze if these failures are correlated with specific 'instrument' types, transaction volumes, or a pattern of 'flag_reason' that suggests underlying system inefficiencies or targeted disruption impacting high-value, high-risk transactions.",
+      "depth": 0,
+      "parent_mission_id": null,
+      "rationale": "",
+      "timestamp": "LIVE AUDIT",
+      "logs": [
+        {
+          "ts": 1770472080.326,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [classify_intent]"
+        },
+        {
+          "ts": 1770472080.341,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Starting Intent Classification and Preprocessing in parallel for domain: operations"
+        },
+        {
+          "ts": 1770472083.042,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classifying intent for domain: operations | Query: Investigate users with a 'risk_level' of 'HIGH' or 'CRITICAL' who have experienced a sustained pattern (more than 5 failures over 7 days) of failed transactions across multiple 'payment_method' types. Analyze if these failures are correlated with specific 'instrument' types, transaction volumes, or a pattern of 'flag_reason' that suggests underlying system inefficiencies or targeted disruption impacting high-value, high-risk transactions."
+        },
+        {
+          "ts": 1770472083.081,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770472083.705,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"intent\": \"SELECT\",\n  \"confidence\": 1...."
+        },
+        {
+          "ts": 1770472083.709,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classification Result: SELECT (conf: 1.0) | Needs Clarification: True"
+        },
+        {
+          "ts": 1770472092.053,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770472092.615,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: [\"users\", \"transactions\"]..."
+        },
+        {
+          "ts": 1770472092.644,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770472093.353,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"resolved_entities\": {\n    \"users.risk..."
+        },
+        {
+          "ts": 1770472093.359,
+          "level": "INFO",
+          "node": "entity_extractor.py",
+          "msg": "Final Extracted/Resolved Entities: {'users.risk_level': ['HIGH', 'CRITICAL'], 'transactions.status': 'FAILED', 'transactions.flag_reason': ['AML alert', 'Geo mismatch', 'Unusual pattern', 'Velocity check', 'PEP transaction', 'Sanctions match', 'High amount']}"
+        },
+        {
+          "ts": 1770472098.998,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Intent classified: SELECT (conf: 1.0) | Needs Clarification: True"
+        },
+        {
+          "ts": 1770472105.005,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770472105.941,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: I understand you're looking to investigate users w..."
+        }
+      ]
+    },
+    {
+      "mission_id": "risk_001",
+      "mission_name": "Disproportionate High-Risk Instrument Concentration in Low-Risk Segments",
+      "domain": "risk",
+      "severity": "LOW",
+      "risk_score": 0,
+      "risk_factors": {},
+      "sql": null,
+      "data_count": 0,
+      "results": [],
+      "visualization_config": null,
+      "insight": null,
+      "recommendation": null,
+      "original_query": "Analyze the concentration of high-risk 'instrument' types held by users with a 'risk_score' in the top 10% and compare it against users with a 'risk_score' in the bottom 10%. Identify if there's a disproportionate exposure to volatile or speculative instruments within segments that have a low perceived risk, indicating potential for significant portfolio imbalances and unexpected losses.",
+      "depth": 0,
+      "parent_mission_id": null,
+      "rationale": "",
+      "timestamp": "LIVE AUDIT",
+      "logs": [
+        {
+          "ts": 1770472080.363,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [classify_intent]"
+        },
+        {
+          "ts": 1770472080.368,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Starting Intent Classification and Preprocessing in parallel for domain: risk"
+        },
+        {
+          "ts": 1770472084.316,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classifying intent for domain: risk | Query: Analyze the concentration of high-risk 'instrument' types held by users with a 'risk_score' in the top 10% and compare it against users with a 'risk_score' in the bottom 10%. Identify if there's a disproportionate exposure to volatile or speculative instruments within segments that have a low perceived risk, indicating potential for significant portfolio imbalances and unexpected losses."
+        },
+        {
+          "ts": 1770472084.316,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770472084.864,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"intent\": \"SELECT\",\n  \"confidence\": 0...."
+        },
+        {
+          "ts": 1770472084.866,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classification Result: SELECT (conf: 0.9) | Needs Clarification: True"
+        },
+        {
+          "ts": 1770472095.725,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770472096.248,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: [\"users\", \"transactions\"]..."
+        },
+        {
+          "ts": 1770472096.263,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770472097.106,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"resolved_entities\": {\n    \"users.risk..."
+        },
+        {
+          "ts": 1770472097.111,
+          "level": "INFO",
+          "node": "entity_extractor.py",
+          "msg": "Final Extracted/Resolved Entities: {'users.risk_score': ['89', '75', '72', '71', '68'], 'transactions.instrument': ['AAPL', 'AMZN', 'GOOGL', 'NVDA', 'MSFT', 'TSLA', 'DAX', 'FTSE100', 'NASDAQ', 'BTC/USD', 'ETH/USD', 'XRP/USD', 'AUD/USD', 'EUR/USD', 'GBP/USD', 'USD/JPY', 'Oil', 'Natural Gas'], 'users.risk_level': ['HIGH', 'CRITICAL', 'MEDIUM']}"
+        },
+        {
+          "ts": 1770472099.005,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Intent classified: SELECT (conf: 0.9) | Needs Clarification: True"
+        },
+        {
+          "ts": 1770472107.707,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770472109.293,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: I see you're interested in analyzing the concentra..."
+        }
+      ]
+    },
+    {
+      "mission_id": "sec_001",
+      "mission_name": "Anomalous Login Velocity and Fund Diversion",
+      "domain": "security",
+      "severity": "LOW",
+      "risk_score": 0,
+      "risk_factors": {},
+      "sql": "SELECT u.username, COUNT(DISTINCT le.country) AS distinct_countries, COUNT(DISTINCT le.device_type) AS distinct_devices, COUNT(t.txn_id) AS outgoing_transactions FROM users u JOIN login_events le ON u.user_id = le.user_id JOIN transactions t ON u.user_id = t.user_id WHERE le.status = 'SUCCESS' AND t.txn_type IN ('TRANSFER', 'WITHDRAWAL') AND t.flag_reason IS NULL AND le.created_at BETWEEN '2026-02-07 18:18:19' AND '2026-02-07 19:18:19' AND t.created_at BETWEEN '2026-02-07 18:18:19' AND '2026-02-07 19:18:19' GROUP BY u.user_id, u.username HAVING distinct_countries > 5 AND distinct_devices > 5 AND outgoing_transactions > 5;",
+      "data_count": 0,
+      "results": [],
+      "visualization_config": null,
+      "insight": "No data found to analyze.",
+      "recommendation": "Try broadening your search criteria or checking if the data for this period is available.",
+      "original_query": "Identify users exhibiting a sudden, extreme spike in successful logins ('status' = 'SUCCESS' in 'login_events') from a highly diverse range of 'country' and 'device_type' within a very short timeframe (e.g., 1 hour). Correlate this login velocity with a subsequent surge in outbound 'txn_type' transactions ('TRANSFER', 'WITHDRAWAL') with high 'amount_usd' values, specifically looking for immediate fund diversion and analyzing the absence of 'flag_reason' for these transactions.",
+      "depth": 0,
+      "parent_mission_id": null,
+      "rationale": "",
+      "timestamp": "LIVE AUDIT",
+      "logs": [
+        {
+          "ts": 1770472080.225,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [classify_intent]"
+        },
+        {
+          "ts": 1770472080.245,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Starting Intent Classification and Preprocessing in parallel for domain: security"
+        },
+        {
+          "ts": 1770472080.383,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classifying intent for domain: security | Query: Identify users exhibiting a sudden, extreme spike in successful logins ('status' = 'SUCCESS' in 'login_events') from a highly diverse range of 'country' and 'device_type' within a very short timeframe (e.g., 1 hour). Correlate this login velocity with a subsequent surge in outbound 'txn_type' transactions ('TRANSFER', 'WITHDRAWAL') with high 'amount_usd' values, specifically looking for immediate fund diversion and analyzing the absence of 'flag_reason' for these transactions."
+        },
+        {
+          "ts": 1770472080.392,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770472081.02,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"intent\": \"SELECT\",\n  \"confidence\": 1...."
+        },
+        {
+          "ts": 1770472081.031,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classification Result: SELECT (conf: 1.0) | Needs Clarification: False"
+        },
+        {
+          "ts": 1770472085.701,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770472086.407,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: [\"users\", \"transactions\", \"login_events\"]..."
+        },
+        {
+          "ts": 1770472086.41,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770472087.126,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"resolved_entities\": {\n    \"login_even..."
+        },
+        {
+          "ts": 1770472087.127,
+          "level": "INFO",
+          "node": "entity_extractor.py",
+          "msg": "Final Extracted/Resolved Entities: {'login_events.status': 'SUCCESS', 'transactions.txn_type': ['TRANSFER', 'WITHDRAWAL'], 'transactions.flag_reason': ''}"
+        },
+        {
+          "ts": 1770472098.973,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Intent classified: SELECT (conf: 1.0) | Needs Clarification: False"
+        },
+        {
+          "ts": 1770472099.05,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [generate_sql]"
+        },
+        {
+          "ts": 1770472099.059,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "Generating SQL for domain: security | Query: Identify users exhibiting a sudden, extreme spike in successful logins ('status' = 'SUCCESS' in 'login_events') from a highly diverse range of 'country' and 'device_type' within a very short timeframe (e.g., 1 hour). Correlate this login velocity with a subsequent surge in outbound 'txn_type' transactions ('TRANSFER', 'WITHDRAWAL') with high 'amount_usd' values, specifically looking for immediate fund diversion and analyzing the absence of 'flag_reason' for these transactions."
+        },
+        {
+          "ts": 1770472099.089,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "Using custom SQL prompt for domain: security"
+        },
+        {
+          "ts": 1770472099.095,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770472100.556,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: SELECT u.username, COUNT(DISTINCT le.country) AS d..."
+        },
+        {
+          "ts": 1770472100.561,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "SQL Generated and cleaned: SELECT u.username, COUNT(DISTINCT le.country) AS d..."
+        },
+        {
+          "ts": 1770472100.563,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "SQL Generated: SELECT u.username, COUNT(DISTINCT le.country) AS d..."
+        },
+        {
+          "ts": 1770472110.88,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [validate_sql]"
+        },
+        {
+          "ts": 1770472111.095,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [execute_query]"
+        },
+        {
+          "ts": 1770472111.12,
+          "level": "INFO",
+          "node": "DB_EXEC",
+          "msg": "Executing SQL: SELECT u.username, COUNT(DISTINCT le.country) AS distinct_countries, COUNT(DISTINCT le.device_type) AS distinct_devices, COUNT(t.txn_id) AS outgoing_transactions FROM users u JOIN login_events le ON u.user_id = le.user_id JOIN transactions t ON u.user_id = t.user_id WHERE le.status = 'SUCCESS' AND t.txn_type IN ('TRANSFER', 'WITHDRAWAL') AND t.flag_reason IS NULL AND le.created_at BETWEEN '2026-02-07 18:18:19' AND '2026-02-07 19:18:19' AND t.created_at BETWEEN '2026-02-07 18:18:19' AND '2026-02-07 19:18:19' GROUP BY u.user_id, u.username HAVING distinct_countries > 5 AND distinct_devices > 5 AND outgoing_transactions > 5;"
+        },
+        {
+          "ts": 1770472111.164,
+          "level": "INFO",
+          "node": "DB_EXEC",
+          "msg": "Execution complete. Returned 0 rows."
+        },
+        {
+          "ts": 1770472111.211,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Query execution successful. Rows: 0"
+        },
+        {
+          "ts": 1770472111.811,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [insight_recommendation]"
+        },
+        {
+          "ts": 1770472111.823,
+          "level": "INFO",
+          "node": "INSIGHT",
+          "msg": "Generating insights for 0 rows in domain: security"
+        },
+        {
+          "ts": 1770472111.839,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Insights generated successfully."
+        },
+        {
+          "ts": 1770472111.86,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [recommend_visualization]"
+        },
+        {
+          "ts": 1770472111.869,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "No results for visualization recommendation."
+        }
+      ]
+    },
+    {
+      "mission_id": "ops_002",
+      "mission_name": "Login Disruption and Transactional Downturn Correlation",
+      "domain": "operations",
+      "severity": "LOW",
+      "risk_score": 0,
+      "risk_factors": {},
+      "sql": "WITH RecentFailedLogins AS (\n  SELECT\n    le.user_id,\n    le.country,\n    le.device_type,\n    COUNT(le.event_id) AS failed_login_count\n  FROM login_events AS le\n  WHERE\n    UPPER(le.status) LIKE '%FAILED%' AND le.created_at >= DATE('2026-02-07 19:18:26', '-7 day')\n  GROUP BY\n    le.user_id,\n    le.country,\n    le.device_type\n  HAVING\n    COUNT(le.event_id) > 1\n), UserTransactionSummary AS (\n  SELECT\n    t.user_id,\n    COUNT(CASE WHEN UPPER(t.status) LIKE '%SUCCESS%' THEN t.txn_id ELSE NULL END) AS successful_txn_count,\n    COUNT(t.txn_id) AS total_txn_count\n  FROM transactions AS t\n  WHERE\n    t.created_at >= DATE('2026-02-07 19:18:26', '-7 day')\n  GROUP BY\n    t.user_id\n)\nSELECT\n  u.username,\n  u.user_id,\n  rfl.country,\n  rfl.device_type,\n  rfl.failed_login_count,\n  COALESCE(uts.successful_txn_count, 0) AS successful_txn_count_last_7_days,\n  COALESCE(uts.total_txn_count, 0) AS total_txn_count_last_7_days\nFROM RecentFailedLogins AS rfl\nJOIN users AS u\n  ON rfl.user_id = u.user_id\nLEFT JOIN UserTransactionSummary AS uts\n  ON rfl.user_id = uts.user_id\nWHERE\n  (\n    COALESCE(uts.successful_txn_count, 0) < (\n      SELECT\n        COUNT(t_prev.txn_id)\n      FROM transactions AS t_prev\n      WHERE\n        t_prev.user_id = rfl.user_id AND t_prev.created_at < DATE('2026-02-07 19:18:26', '-7 day') AND UPPER(t_prev.status) LIKE '%SUCCESS%'\n    ) * 0.8\n  ) OR (COALESCE(uts.total_txn_count, 0) < (\n    SELECT\n      COUNT(t_prev.txn_id)\n    FROM transactions AS t_prev\n    WHERE\n      t_prev.user_id = rfl.user_id AND t_prev.created_at < DATE('2026-02-07 19:18:26', '-7 day')\n  ) * 0.8);",
+      "data_count": 0,
+      "results": [],
+      "visualization_config": null,
+      "insight": "No data found to analyze.",
+      "recommendation": "Try broadening your search criteria or checking if the data for this period is available.",
+      "original_query": "Identify user segments that consistently experience a high rate of failed login attempts ('status' = 'FAILED' in 'login_events') across various countries and device types over an extended period (e.g., 7 days). Analyze if this correlates with a noticeable drop in their successful transaction rates or a decrease in overall transaction volume, suggesting potential denial-of-service attacks impacting user experience and operational efficiency.",
+      "depth": 0,
+      "parent_mission_id": null,
+      "rationale": "",
+      "timestamp": "LIVE AUDIT",
+      "logs": [
+        {
+          "ts": 1770472080.347,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [classify_intent]"
+        },
+        {
+          "ts": 1770472080.357,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Starting Intent Classification and Preprocessing in parallel for domain: operations"
+        },
+        {
+          "ts": 1770472083.709,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classifying intent for domain: operations | Query: Identify user segments that consistently experience a high rate of failed login attempts ('status' = 'FAILED' in 'login_events') across various countries and device types over an extended period (e.g., 7 days). Analyze if this correlates with a noticeable drop in their successful transaction rates or a decrease in overall transaction volume, suggesting potential denial-of-service attacks impacting user experience and operational efficiency."
+        },
+        {
+          "ts": 1770472083.717,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770472084.313,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"intent\": \"SELECT\",\n  \"confidence\": 1...."
+        },
+        {
+          "ts": 1770472084.315,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classification Result: SELECT (conf: 1.0) | Needs Clarification: False"
+        },
+        {
+          "ts": 1770472093.367,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770472094.034,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: [\"users\", \"login_events\", \"transactions\"]..."
+        },
+        {
+          "ts": 1770472094.071,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770472095.719,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"resolved_entities\": {\n    \"login_even..."
+        },
+        {
+          "ts": 1770472095.722,
+          "level": "INFO",
+          "node": "entity_extractor.py",
+          "msg": "Final Extracted/Resolved Entities: {'login_events.status': 'FAILED', 'transactions.status': 'FAILED'}"
+        },
+        {
+          "ts": 1770472099.003,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Intent classified: SELECT (conf: 1.0) | Needs Clarification: False"
+        },
+        {
+          "ts": 1770472105.947,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [generate_sql]"
+        },
+        {
+          "ts": 1770472105.957,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "Generating SQL for domain: operations | Query: Identify user segments that consistently experience a high rate of failed login attempts ('status' = 'FAILED' in 'login_events') across various countries and device types over an extended period (e.g., 7 days). Analyze if this correlates with a noticeable drop in their successful transaction rates or a decrease in overall transaction volume, suggesting potential denial-of-service attacks impacting user experience and operational efficiency."
+        },
+        {
+          "ts": 1770472106.019,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "Using custom SQL prompt for domain: operations"
+        },
+        {
+          "ts": 1770472106.042,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770472107.629,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: WITH RecentFailedLogins AS (\n  SELECT\n    le.user_..."
+        },
+        {
+          "ts": 1770472107.638,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "SQL Generated and cleaned: WITH RecentFailedLogins AS (\n  SELECT\n    le.user_..."
+        },
+        {
+          "ts": 1770472107.672,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "SQL Generated: WITH RecentFailedLogins AS (\n  SELECT\n    le.user_..."
+        },
+        {
+          "ts": 1770472110.941,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [validate_sql]"
+        },
+        {
+          "ts": 1770472111.262,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [execute_query]"
+        },
+        {
+          "ts": 1770472111.326,
+          "level": "INFO",
+          "node": "DB_EXEC",
+          "msg": "Executing SQL: WITH RecentFailedLogins AS (\n  SELECT\n    le.user_id,\n    le.country,\n    le.device_type,\n    COUNT(le.event_id) AS failed_login_count\n  FROM login_events AS le\n  WHERE\n    UPPER(le.status) LIKE '%FAILED%' AND le.created_at >= DATE('2026-02-07 19:18:26', '-7 day')\n  GROUP BY\n    le.user_id,\n    le.country,\n    le.device_type\n  HAVING\n    COUNT(le.event_id) > 1\n), UserTransactionSummary AS (\n  SELECT\n    t.user_id,\n    COUNT(CASE WHEN UPPER(t.status) LIKE '%SUCCESS%' THEN t.txn_id ELSE NULL END) AS successful_txn_count,\n    COUNT(t.txn_id) AS total_txn_count\n  FROM transactions AS t\n  WHERE\n    t.created_at >= DATE('2026-02-07 19:18:26', '-7 day')\n  GROUP BY\n    t.user_id\n)\nSELECT\n  u.username,\n  u.user_id,\n  rfl.country,\n  rfl.device_type,\n  rfl.failed_login_count,\n  COALESCE(uts.successful_txn_count, 0) AS successful_txn_count_last_7_days,\n  COALESCE(uts.total_txn_count, 0) AS total_txn_count_last_7_days\nFROM RecentFailedLogins AS rfl\nJOIN users AS u\n  ON rfl.user_id = u.user_id\nLEFT JOIN UserTransactionSummary AS uts\n  ON rfl.user_id = uts.user_id\nWHERE\n  (\n    COALESCE(uts.successful_txn_count, 0) < (\n      SELECT\n        COUNT(t_prev.txn_id)\n      FROM transactions AS t_prev\n      WHERE\n        t_prev.user_id = rfl.user_id AND t_prev.created_at < DATE('2026-02-07 19:18:26', '-7 day') AND UPPER(t_prev.status) LIKE '%SUCCESS%'\n    ) * 0.8\n  ) OR (COALESCE(uts.total_txn_count, 0) < (\n    SELECT\n      COUNT(t_prev.txn_id)\n    FROM transactions AS t_prev\n    WHERE\n      t_prev.user_id = rfl.user_id AND t_prev.created_at < DATE('2026-02-07 19:18:26', '-7 day')\n  ) * 0.8);"
+        },
+        {
+          "ts": 1770472111.454,
+          "level": "INFO",
+          "node": "DB_EXEC",
+          "msg": "Execution complete. Returned 0 rows."
+        },
+        {
+          "ts": 1770472111.509,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Query execution successful. Rows: 0"
+        },
+        {
+          "ts": 1770472111.876,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [insight_recommendation]"
+        },
+        {
+          "ts": 1770472111.894,
+          "level": "INFO",
+          "node": "INSIGHT",
+          "msg": "Generating insights for 0 rows in domain: operations"
+        },
+        {
+          "ts": 1770472111.911,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Insights generated successfully."
+        },
+        {
+          "ts": 1770472111.935,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [recommend_visualization]"
+        },
+        {
+          "ts": 1770472111.957,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "No results for visualization recommendation."
+        }
+      ]
+    },
+    {
+      "mission_id": "risk_002",
+      "mission_name": "Age-Based Risk-Instrument Misalignment",
+      "domain": "risk",
+      "severity": "MEDIUM",
+      "risk_score": 42,
+      "risk_factors": {
+        "affected_entities": {
+          "value": 83,
+          "score": 100,
+          "detail": "83 unique entities"
+        },
+        "dollar_exposure": {
+          "value": 0,
+          "score": 0,
+          "detail": "$0 exposure"
+        },
+        "velocity": {
+          "value": 83,
+          "score": 100,
+          "detail": "83 events"
+        },
+        "pep_involvement": {
+          "value": 0,
+          "score": 0,
+          "detail": "0 PEP accounts"
+        },
+        "kyc_gaps": {
+          "value": 0,
+          "score": 0,
+          "detail": "0 KYC gaps"
+        },
+        "severity_escalation": {
+          "value": "HIGH",
+          "score": 50,
+          "detail": "Base: HIGH"
+        }
+      },
+      "sql": "SELECT\n  CASE\n    WHEN u.age BETWEEN 18 AND 24\n    THEN '18-24'\n    WHEN u.age BETWEEN 25 AND 34\n    THEN '25-34'\n    WHEN u.age BETWEEN 35 AND 54\n    THEN '35-54'\n    WHEN u.age >= 55\n    THEN '55+'\n    ELSE 'Unknown'\n  END AS age_group,\n  t.instrument,\n  AVG(u.risk_score) AS average_risk_score,\n  COUNT(t.txn_id) AS transaction_count,\n  CASE\n    WHEN AVG(u.risk_score) > 70\n    THEN 'High Average Risk Score'\n    ELSE 'Low Average Risk Score'\n  END AS risk_score_category\nFROM users AS u\nJOIN transactions AS t\n  ON u.user_id = t.user_id\nGROUP BY\n  age_group,\n  t.instrument\nORDER BY\n  age_group,\n  transaction_count DESC;",
+      "data_count": 83,
+      "results": [
+        {
+          "age_group": "18-24",
+          "instrument": "FTSE100",
+          "average_risk_score": 5.0,
+          "transaction_count": 2,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "18-24",
+          "instrument": "AUD/USD",
+          "average_risk_score": 5.0,
+          "transaction_count": 2,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "18-24",
+          "instrument": "AMZN",
+          "average_risk_score": 5.5,
+          "transaction_count": 2,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "18-24",
+          "instrument": "Silver",
+          "average_risk_score": 5.0,
+          "transaction_count": 1,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "18-24",
+          "instrument": "Nikkei",
+          "average_risk_score": 4.0,
+          "transaction_count": 1,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "18-24",
+          "instrument": "NVDA",
+          "average_risk_score": 4.0,
+          "transaction_count": 1,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "18-24",
+          "instrument": "META",
+          "average_risk_score": 6.0,
+          "transaction_count": 1,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "18-24",
+          "instrument": "GOOGL",
+          "average_risk_score": 5.0,
+          "transaction_count": 1,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "18-24",
+          "instrument": "GBP/USD",
+          "average_risk_score": 4.0,
+          "transaction_count": 1,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "18-24",
+          "instrument": "DAX",
+          "average_risk_score": 4.0,
+          "transaction_count": 1,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "18-24",
+          "instrument": "BTC/USD",
+          "average_risk_score": 4.0,
+          "transaction_count": 1,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "25-34",
+          "instrument": "",
+          "average_risk_score": 9.16,
+          "transaction_count": 25,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "25-34",
+          "instrument": "ETH/USD",
+          "average_risk_score": 11.5,
+          "transaction_count": 10,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "25-34",
+          "instrument": "Oil",
+          "average_risk_score": 10.444444444444445,
+          "transaction_count": 9,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "25-34",
+          "instrument": "NASDAQ",
+          "average_risk_score": 11.0,
+          "transaction_count": 9,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "25-34",
+          "instrument": "BTC/USD",
+          "average_risk_score": 10.777777777777779,
+          "transaction_count": 9,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "25-34",
+          "instrument": "NVDA",
+          "average_risk_score": 9.25,
+          "transaction_count": 8,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "25-34",
+          "instrument": "GOOGL",
+          "average_risk_score": 7.875,
+          "transaction_count": 8,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "25-34",
+          "instrument": "AMZN",
+          "average_risk_score": 11.75,
+          "transaction_count": 8,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "25-34",
+          "instrument": "FTSE100",
+          "average_risk_score": 10.428571428571429,
+          "transaction_count": 7,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "25-34",
+          "instrument": "Natural Gas",
+          "average_risk_score": 10.166666666666666,
+          "transaction_count": 6,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "25-34",
+          "instrument": "MSFT",
+          "average_risk_score": 11.5,
+          "transaction_count": 6,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "25-34",
+          "instrument": "EUR/USD",
+          "average_risk_score": 10.5,
+          "transaction_count": 6,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "25-34",
+          "instrument": "XRP/USD",
+          "average_risk_score": 10.6,
+          "transaction_count": 5,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "25-34",
+          "instrument": "TSLA",
+          "average_risk_score": 12.2,
+          "transaction_count": 5,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "25-34",
+          "instrument": "S&P500",
+          "average_risk_score": 9.6,
+          "transaction_count": 5,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "25-34",
+          "instrument": "DAX",
+          "average_risk_score": 10.2,
+          "transaction_count": 5,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "25-34",
+          "instrument": "AAPL",
+          "average_risk_score": 11.4,
+          "transaction_count": 5,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "25-34",
+          "instrument": "META",
+          "average_risk_score": 11.25,
+          "transaction_count": 4,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "25-34",
+          "instrument": "GBP/USD",
+          "average_risk_score": 8.5,
+          "transaction_count": 4,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "25-34",
+          "instrument": "USD/JPY",
+          "average_risk_score": 11.333333333333334,
+          "transaction_count": 3,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "25-34",
+          "instrument": "Silver",
+          "average_risk_score": 10.333333333333334,
+          "transaction_count": 3,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "25-34",
+          "instrument": "Nikkei",
+          "average_risk_score": 9.666666666666666,
+          "transaction_count": 3,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "25-34",
+          "instrument": "Gold",
+          "average_risk_score": 14.0,
+          "transaction_count": 3,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "25-34",
+          "instrument": "AUD/USD",
+          "average_risk_score": 11.0,
+          "transaction_count": 3,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "35-54",
+          "instrument": "",
+          "average_risk_score": 38.1578947368421,
+          "transaction_count": 19,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "35-54",
+          "instrument": "Natural Gas",
+          "average_risk_score": 54.285714285714285,
+          "transaction_count": 14,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "35-54",
+          "instrument": "DAX",
+          "average_risk_score": 46.642857142857146,
+          "transaction_count": 14,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "35-54",
+          "instrument": "AAPL",
+          "average_risk_score": 50.0,
+          "transaction_count": 13,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "35-54",
+          "instrument": "ETH/USD",
+          "average_risk_score": 40.0,
+          "transaction_count": 12,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "35-54",
+          "instrument": "XRP/USD",
+          "average_risk_score": 54.18181818181818,
+          "transaction_count": 11,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "35-54",
+          "instrument": "FTSE100",
+          "average_risk_score": 59.36363636363637,
+          "transaction_count": 11,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "35-54",
+          "instrument": "MSFT",
+          "average_risk_score": 49.5,
+          "transaction_count": 10,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "35-54",
+          "instrument": "GOOGL",
+          "average_risk_score": 55.5,
+          "transaction_count": 10,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "35-54",
+          "instrument": "EUR/USD",
+          "average_risk_score": 49.8,
+          "transaction_count": 10,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "35-54",
+          "instrument": "AUD/USD",
+          "average_risk_score": 38.2,
+          "transaction_count": 10,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "35-54",
+          "instrument": "Gold",
+          "average_risk_score": 66.55555555555556,
+          "transaction_count": 9,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "35-54",
+          "instrument": "BTC/USD",
+          "average_risk_score": 55.333333333333336,
+          "transaction_count": 9,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "35-54",
+          "instrument": "Silver",
+          "average_risk_score": 43.625,
+          "transaction_count": 8,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "35-54",
+          "instrument": "Oil",
+          "average_risk_score": 44.375,
+          "transaction_count": 8,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "35-54",
+          "instrument": "Nikkei",
+          "average_risk_score": 63.285714285714285,
+          "transaction_count": 7,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "35-54",
+          "instrument": "META",
+          "average_risk_score": 56.857142857142854,
+          "transaction_count": 7,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "35-54",
+          "instrument": "AMZN",
+          "average_risk_score": 50.57142857142857,
+          "transaction_count": 7,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "35-54",
+          "instrument": "USD/JPY",
+          "average_risk_score": 53.666666666666664,
+          "transaction_count": 6,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "35-54",
+          "instrument": "NVDA",
+          "average_risk_score": 29.333333333333332,
+          "transaction_count": 6,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "35-54",
+          "instrument": "NASDAQ",
+          "average_risk_score": 49.333333333333336,
+          "transaction_count": 6,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "35-54",
+          "instrument": "GBP/USD",
+          "average_risk_score": 48.0,
+          "transaction_count": 6,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "35-54",
+          "instrument": "TSLA",
+          "average_risk_score": 55.0,
+          "transaction_count": 5,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "35-54",
+          "instrument": "S&P500",
+          "average_risk_score": 40.6,
+          "transaction_count": 5,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "55+",
+          "instrument": "",
+          "average_risk_score": 64.45454545454545,
+          "transaction_count": 11,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "55+",
+          "instrument": "Natural Gas",
+          "average_risk_score": 64.71428571428571,
+          "transaction_count": 7,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "55+",
+          "instrument": "FTSE100",
+          "average_risk_score": 60.42857142857143,
+          "transaction_count": 7,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "55+",
+          "instrument": "S&P500",
+          "average_risk_score": 72.66666666666667,
+          "transaction_count": 6,
+          "risk_score_category": "High Average Risk Score"
+        },
+        {
+          "age_group": "55+",
+          "instrument": "USD/JPY",
+          "average_risk_score": 67.8,
+          "transaction_count": 5,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "55+",
+          "instrument": "NVDA",
+          "average_risk_score": 61.4,
+          "transaction_count": 5,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "55+",
+          "instrument": "GBP/USD",
+          "average_risk_score": 58.6,
+          "transaction_count": 5,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "55+",
+          "instrument": "EUR/USD",
+          "average_risk_score": 60.4,
+          "transaction_count": 5,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "55+",
+          "instrument": "ETH/USD",
+          "average_risk_score": 66.6,
+          "transaction_count": 5,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "55+",
+          "instrument": "DAX",
+          "average_risk_score": 65.0,
+          "transaction_count": 5,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "55+",
+          "instrument": "AAPL",
+          "average_risk_score": 70.2,
+          "transaction_count": 5,
+          "risk_score_category": "High Average Risk Score"
+        },
+        {
+          "age_group": "55+",
+          "instrument": "Nikkei",
+          "average_risk_score": 69.0,
+          "transaction_count": 4,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "55+",
+          "instrument": "MSFT",
+          "average_risk_score": 69.5,
+          "transaction_count": 4,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "55+",
+          "instrument": "BTC/USD",
+          "average_risk_score": 67.75,
+          "transaction_count": 4,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "55+",
+          "instrument": "AUD/USD",
+          "average_risk_score": 62.25,
+          "transaction_count": 4,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "55+",
+          "instrument": "XRP/USD",
+          "average_risk_score": 62.0,
+          "transaction_count": 3,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "55+",
+          "instrument": "Silver",
+          "average_risk_score": 68.33333333333333,
+          "transaction_count": 3,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "55+",
+          "instrument": "Oil",
+          "average_risk_score": 55.333333333333336,
+          "transaction_count": 3,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "55+",
+          "instrument": "NASDAQ",
+          "average_risk_score": 54.666666666666664,
+          "transaction_count": 3,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "55+",
+          "instrument": "Gold",
+          "average_risk_score": 46.333333333333336,
+          "transaction_count": 3,
+          "risk_score_category": "Low Average Risk Score"
+        },
+        {
+          "age_group": "55+",
+          "instrument": "TSLA",
+          "average_risk_score": 74.0,
+          "transaction_count": 2,
+          "risk_score_category": "High Average Risk Score"
+        },
+        {
+          "age_group": "55+",
+          "instrument": "META",
+          "average_risk_score": 78.0,
+          "transaction_count": 2,
+          "risk_score_category": "High Average Risk Score"
+        },
+        {
+          "age_group": "55+",
+          "instrument": "AMZN",
+          "average_risk_score": 75.0,
+          "transaction_count": 2,
+          "risk_score_category": "High Average Risk Score"
+        },
+        {
+          "age_group": "55+",
+          "instrument": "GOOGL",
+          "average_risk_score": 71.0,
+          "transaction_count": 1,
+          "risk_score_category": "High Average Risk Score"
+        }
+      ],
+      "visualization_config": {
+        "chart_type": "scatter",
+        "title": "Risk Score vs. Transaction Volume by Instrument and Age Group",
+        "x_axis_key": "average_risk_score",
+        "y_axis_key": "transaction_count",
+        "label": "Instrument Risk Exposure",
+        "description": "A scatter plot is the most effective way to identify disproportionate relationships between two numeric variables. By plotting the average risk score against the transaction count, we can easily spot outliers where specific user segments are heavily trading high-volume instruments that may not align with their average risk profile, highlighting potential systemic risk."
+      },
+      "insight": "Our preliminary analysis reveals a potential disconnect between risk appetite and observed trading behavior across different age segments. Notably, the 18-24 age group, despite exhibiting a generally low average risk score across their instrument trades, demonstrates a broad diversification of instruments.  Conversely, the 25-34 age group, while also categorized with 'Low Average Risk Scores' in this sample, shows a higher concentration in instruments with seemingly higher individual average risk scores (e.g., ETH/USD, NASDAQ, BTC/USD). This suggests a possible gap in understanding or managing the inherent risks associated with certain instrument types within this demographic, potentially exposing the company to higher-than-anticipated systemic risk if these concentrated positions experience adverse market movements. Further investigation is warranted to confirm if this pattern holds across the full dataset and to quantify the potential financial exposure.",
+      "recommendation": "1. **Deep Dive into 25-34 Age Segment Risk Concentration:** Initiate a targeted analysis for the 25-34 age group to identify the top 5-10 instruments where they exhibit the highest concentration of their total trading volume and the associated aggregate risk score. Compare this concentration against industry benchmarks and risk tolerance thresholds to quantify potential exposure. \n2. **Proactive Risk Education & Tooling Enhancement:** Based on the findings, develop and deploy targeted educational content and potentially enhanced risk assessment tools within our platform specifically for the 25-34 demographic, focusing on the risks associated with instruments where they demonstrate higher concentrations. This proactive measure aims to empower users to make more informed trading decisions aligned with their stated risk appetite.",
+      "original_query": "Segment users by age groups (18-24, 25-34, 35-54, 55+). For each segment, analyze the concentration of their 'risk_score' in relation to the 'instrument' types they trade. Identify any age segments that disproportionately hold high-risk instruments despite having a generally lower average 'risk_score', or vice versa, indicating potential misaligned risk appetite or undiscovered systemic risk exposures within specific user demographics.",
+      "depth": 0,
+      "parent_mission_id": null,
+      "rationale": "",
+      "timestamp": "LIVE AUDIT",
+      "logs": [
+        {
+          "ts": 1770472080.375,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [classify_intent]"
+        },
+        {
+          "ts": 1770472080.378,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Starting Intent Classification and Preprocessing in parallel for domain: risk"
+        },
+        {
+          "ts": 1770472084.871,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classifying intent for domain: risk | Query: Segment users by age groups (18-24, 25-34, 35-54, 55+). For each segment, analyze the concentration of their 'risk_score' in relation to the 'instrument' types they trade. Identify any age segments that disproportionately hold high-risk instruments despite having a generally lower average 'risk_score', or vice versa, indicating potential misaligned risk appetite or undiscovered systemic risk exposures within specific user demographics."
+        },
+        {
+          "ts": 1770472084.874,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770472085.685,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"intent\": \"SELECT\",\n  \"confidence\": 1...."
+        },
+        {
+          "ts": 1770472085.69,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classification Result: SELECT (conf: 1.0) | Needs Clarification: False"
+        },
+        {
+          "ts": 1770472097.118,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770472097.972,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: [\"users\", \"transactions\"]..."
+        },
+        {
+          "ts": 1770472097.979,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770472098.799,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"resolved_entities\": {},\n  \"metadata\":..."
+        },
+        {
+          "ts": 1770472098.799,
+          "level": "INFO",
+          "node": "entity_extractor.py",
+          "msg": "Final Extracted/Resolved Entities: {}"
+        },
+        {
+          "ts": 1770472099.011,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Intent classified: SELECT (conf: 1.0) | Needs Clarification: False"
+        },
+        {
+          "ts": 1770472109.299,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [generate_sql]"
+        },
+        {
+          "ts": 1770472109.319,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "Generating SQL for domain: risk | Query: Segment users by age groups (18-24, 25-34, 35-54, 55+). For each segment, analyze the concentration of their 'risk_score' in relation to the 'instrument' types they trade. Identify any age segments that disproportionately hold high-risk instruments despite having a generally lower average 'risk_score', or vice versa, indicating potential misaligned risk appetite or undiscovered systemic risk exposures within specific user demographics."
+        },
+        {
+          "ts": 1770472109.452,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "Using custom SQL prompt for domain: risk"
+        },
+        {
+          "ts": 1770472109.482,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770472110.803,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: SELECT\n  CASE\n    WHEN u.age BETWEEN 18 AND 24\n   ..."
+        },
+        {
+          "ts": 1770472110.804,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "SQL Generated and cleaned: SELECT\n  CASE\n    WHEN u.age BETWEEN 18 AND 24\n   ..."
+        },
+        {
+          "ts": 1770472110.808,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "SQL Generated: SELECT\n  CASE\n    WHEN u.age BETWEEN 18 AND 24\n   ..."
+        },
+        {
+          "ts": 1770472111.017,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [validate_sql]"
+        },
+        {
+          "ts": 1770472111.544,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [execute_query]"
+        },
+        {
+          "ts": 1770472111.577,
+          "level": "INFO",
+          "node": "DB_EXEC",
+          "msg": "Executing SQL: SELECT\n  CASE\n    WHEN u.age BETWEEN 18 AND 24\n    THEN '18-24'\n    WHEN u.age BETWEEN 25 AND 34\n    THEN '25-34'\n    WHEN u.age BETWEEN 35 AND 54\n    THEN '35-54'\n    WHEN u.age >= 55\n    THEN '55+'\n    ELSE 'Unknown'\n  END AS age_group,\n  t.instrument,\n  AVG(u.risk_score) AS average_risk_score,\n  COUNT(t.txn_id) AS transaction_count,\n  CASE\n    WHEN AVG(u.risk_score) > 70\n    THEN 'High Average Risk Score'\n    ELSE 'Low Average Risk Score'\n  END AS risk_score_category\nFROM users AS u\nJOIN transactions AS t\n  ON u.user_id = t.user_id\nGROUP BY\n  age_group,\n  t.instrument\nORDER BY\n  age_group,\n  transaction_count DESC;"
+        },
+        {
+          "ts": 1770472111.679,
+          "level": "INFO",
+          "node": "DB_EXEC",
+          "msg": "Execution complete. Returned 83 rows."
+        },
+        {
+          "ts": 1770472111.756,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Query execution successful. Rows: 83"
+        },
+        {
+          "ts": 1770472111.997,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [insight_recommendation]"
+        },
+        {
+          "ts": 1770472112.003,
+          "level": "INFO",
+          "node": "INSIGHT",
+          "msg": "Generating insights for 83 rows in domain: risk"
+        },
+        {
+          "ts": 1770472112.016,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770472114.4,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"insight\": \"Our preliminary analysis r..."
+        },
+        {
+          "ts": 1770472114.405,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Insights generated successfully."
+        },
+        {
+          "ts": 1770472114.409,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [recommend_visualization]"
+        },
+        {
+          "ts": 1770472114.414,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-3-flash-preview] generating response..."
+        },
+        {
+          "ts": 1770472140.406,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-3-flash-preview]. Snippet: ```json\n{\n  \"chart_type\": \"scatter\",\n  \"title\": \"R..."
+        },
+        {
+          "ts": 1770472140.406,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Visualization recommended: scatter"
+        }
+      ]
+    },
+    {
+      "mission_id": "dd-risk_002-1-0",
+      "mission_name": "Investigate High Risk Instruments within Low Average Risk Score Segment (18-24)",
+      "domain": "risk",
+      "severity": "LOW",
+      "risk_score": 0,
+      "risk_factors": {},
+      "sql": null,
+      "data_count": 0,
+      "results": [],
+      "visualization_config": null,
+      "insight": null,
+      "recommendation": null,
+      "original_query": "For users in the 18-24 age group, identify any transactions involving instruments with an average risk score greater than 5.0 that are not listed in the provided sample findings.",
+      "depth": 1,
+      "parent_mission_id": "risk_002",
+      "rationale": "The provided sample for the 18-24 age group shows low average risk scores. This query aims to uncover if there are any 'hidden' high-risk instrument trades within this segment that were not captured in the initial sample, potentially indicating a misjudgment of risk or a specific strategy.",
+      "timestamp": "LIVE AUDIT",
+      "logs": [
+        {
+          "ts": 1770472142.317,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [classify_intent]"
+        },
+        {
+          "ts": 1770472142.319,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Starting Intent Classification and Preprocessing in parallel for domain: risk"
+        },
+        {
+          "ts": 1770472142.323,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classifying intent for domain: risk | Query: For users in the 18-24 age group, identify any transactions involving instruments with an average risk score greater than 5.0 that are not listed in the provided sample findings."
+        },
+        {
+          "ts": 1770472142.326,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770472144.209,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"intent\": \"SELECT\",\n  \"confidence\": 1...."
+        },
+        {
+          "ts": 1770472144.209,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classification Result: SELECT (conf: 1.0) | Needs Clarification: True"
+        },
+        {
+          "ts": 1770472145.237,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770472145.721,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: [\"users\", \"transactions\"]..."
+        },
+        {
+          "ts": 1770472145.722,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770472146.595,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"resolved_entities\": {},\n  \"metadata\":..."
+        },
+        {
+          "ts": 1770472146.596,
+          "level": "INFO",
+          "node": "entity_extractor.py",
+          "msg": "Final Extracted/Resolved Entities: {}"
+        },
+        {
+          "ts": 1770472148.15,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Intent classified: SELECT (conf: 1.0) | Needs Clarification: True"
+        },
+        {
+          "ts": 1770472148.156,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770472149.638,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: I understand you're interested in identifying tran..."
+        }
+      ]
+    },
+    {
+      "mission_id": "dd-risk_002-1-1",
+      "mission_name": "Analyze Transaction Volume and Risk Score Correlation for 18-24 Segment",
+      "domain": "risk",
+      "severity": "LOW",
+      "risk_score": 0,
+      "risk_factors": {},
+      "sql": null,
+      "data_count": 0,
+      "results": [],
+      "visualization_config": null,
+      "insight": null,
+      "recommendation": null,
+      "original_query": "For users in the 18-24 age group, what is the distribution of transaction counts for instruments that have an average risk score between 4.0 and 6.0?",
+      "depth": 1,
+      "parent_mission_id": "risk_002",
+      "rationale": "The initial findings show a variety of instruments for the 18-24 age group with low average risk scores. This query seeks to understand the volume of trades within this specific risk score range to see if certain instruments are more actively traded, which could highlight a preference for specific risk profiles despite the overall low average score.",
+      "timestamp": "LIVE AUDIT",
+      "logs": [
+        {
+          "ts": 1770472142.321,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [classify_intent]"
+        },
+        {
+          "ts": 1770472142.323,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Starting Intent Classification and Preprocessing in parallel for domain: risk"
+        },
+        {
+          "ts": 1770472144.209,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classifying intent for domain: risk | Query: For users in the 18-24 age group, what is the distribution of transaction counts for instruments that have an average risk score between 4.0 and 6.0?"
+        },
+        {
+          "ts": 1770472144.209,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770472145.232,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"intent\": \"SELECT\",\n  \"confidence\": 1...."
+        },
+        {
+          "ts": 1770472145.232,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classification Result: SELECT (conf: 1.0) | Needs Clarification: False"
+        },
+        {
+          "ts": 1770472146.596,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770472147.02,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: [\"users\", \"transactions\"]..."
+        },
+        {
+          "ts": 1770472147.024,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770472148.144,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"resolved_entities\": {\n    \"users.age\"..."
+        },
+        {
+          "ts": 1770472148.146,
+          "level": "INFO",
+          "node": "entity_extractor.py",
+          "msg": "Final Extracted/Resolved Entities: {'users.age': ['24', '22', '25'], 'transactions.instrument': ['XRP/USD', 'AAPL', 'GOOGL', 'AUD/USD', 'EUR/USD', 'BTC/USD', 'ETH/USD', 'GBP/USD', 'USD/JPY', 'MSFT']}"
+        },
+        {
+          "ts": 1770472148.152,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Intent classified: SELECT (conf: 1.0) | Needs Clarification: False"
+        },
+        {
+          "ts": 1770472149.638,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [generate_sql]"
+        },
+        {
+          "ts": 1770472149.638,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "Generating SQL for domain: risk | Query: For users in the 18-24 age group, what is the distribution of transaction counts for instruments that have an average risk score between 4.0 and 6.0?"
+        },
+        {
+          "ts": 1770472149.649,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "Using custom SQL prompt for domain: risk"
+        },
+        {
+          "ts": 1770472149.649,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770472150.398,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: Error: I cannot determine the risk score of instru..."
+        },
+        {
+          "ts": 1770472150.398,
+          "level": "WARNING",
+          "node": "SQL_GEN",
+          "msg": "SQL Generation guidance response for query: For users in the 18-24 age group, what is the distribution of transaction counts for instruments that have an average risk score between 4.0 and 6.0? | Msg: Error: I cannot determine the risk score of instru..."
+        },
+        {
+          "ts": 1770472150.398,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "SQL Generator returned guidance instead of SQL: Error: I cannot determine the risk score of instru..."
+        }
+      ]
+    }
+  ],
+  "clusters": [],
+  "narrative": {
+    "executive_summary": "Our latest scan reveals a concerning misalignment in risk appetite within our 18-24 user segment. While this group generally exhibits low-risk trading behavior, our analysis indicates a potential disconnect with a broad diversification of instruments, suggesting a possible underestimation of inherent risks. This could lead to unexpected losses or increased exposure for this demographic and, by extension, the platform.  While other detected anomalies are currently assessed as low severity, this specific finding warrants immediate attention to prevent future escalations.",
+    "threat_vectors": [
+      {
+        "name": "Age-Based Risk-Instrument Misalignment (18-24 Segment)",
+        "severity": "MEDIUM",
+        "description": "Users aged 18-24, despite a generally low average risk score on their instrument trades, are exhibiting broad diversification. This suggests a potential disconnect between their perceived risk appetite and actual exposure, which could lead to unforeseen financial outcomes."
+      }
+    ],
+    "immediate_actions": [
+      "Initiate a deep-dive analysis into the specific instruments being diversified by the 18-24 age segment to identify any high-risk outliers.",
+      "Review and potentially update risk assessment frameworks for younger demographics to better align with observed trading behaviors.",
+      "Develop targeted educational content for the 18-24 segment on risk management and instrument diversification.",
+      "Assess the potential financial impact on the platform should this misalignment lead to significant losses within the 18-24 user base."
+    ],
+    "monitoring_recommendations": [
+      "Continuously monitor the trading behavior and risk profiles of the 18-24 user segment for any shifts or further deviations.",
+      "Establish automated alerts for significant increases in high-risk instrument exposure within low-risk demographic segments."
+    ],
+    "overall_risk": 42,
+    "overall_severity": "MEDIUM",
+    "title": "Intelligence Brief - LIVE"
+  }
+}

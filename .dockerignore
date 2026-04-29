@@ -1,0 +1,63 @@
+# Git and version control
+.git
+.gitignore
+
+# Python
+__pycache__
+*.py[cod]
+*$py.class
+*.so
+.Python
+env
+venv
+.venv
+derivenv
+*.egg-info
+.eggs
+
+# Environment and secrets (inject at runtime in ECS)
+.env
+.env.*
+!.env.example
+
+# IDE and OS
+.vscode
+.idea
+.DS_Store
+Thumbs.db
+
+# Local databases (use EFS or RDS in production; do not bake into image)
+*.db
+
+# Logs and temp
+logs
+*.log
+tmp
+temp
+
+# Documentation and non-runtime files
+*.md
+*.docx
+*.pptx
+*.pdf
+Archive
+
+# Scripts not needed in container
+*.bat
+# create_db.py
+# create_new_db.py
+# fast_init_db.py
+# fix_few_shots.py
+# generate_hackathon_data.py
+# clean_domains.py
+# hardcore_clean_domains.py
+# import_data.py
+# init_alerts_db.py
+# init_db.py
+# rename_col.py
+# run_alerts_engine.py
+# run_learning.py
+# test_*.py
+# update_*.py
+# validate_db.py
+.agent

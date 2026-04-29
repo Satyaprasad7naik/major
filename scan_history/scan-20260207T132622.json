@@ -1,0 +1,2647 @@
+{
+  "scan_id": "scan-20260207T132622",
+  "timestamp": "2026-02-07T13:26:22.796601",
+  "stats": {
+    "total_missions": 10,
+    "critical_count": 0,
+    "high_count": 0,
+    "overall_risk": 42,
+    "overall_severity": "LOW"
+  },
+  "detections": [
+    {
+      "mission_id": "comp_001",
+      "mission_name": "PEP High-Risk Instrument Engagement",
+      "domain": "compliance",
+      "severity": "LOW",
+      "risk_score": 0,
+      "risk_factors": {},
+      "sql": null,
+      "data_count": 0,
+      "results": [],
+      "visualization_config": null,
+      "insight": null,
+      "recommendation": null,
+      "original_query": "Identify all users marked as 'is_pep' who have a 'risk_score' below the median for their age group, but have recently (last 60 days) engaged in transactions involving high-risk instruments (e.g., leveraged derivatives, volatile cryptocurrencies) with an 'amount_usd' exceeding $50,000. Analyze the 'txn_type' and 'instrument' for any patterns that suggest potential illicit financial activities or circumvention of compliance controls.",
+      "depth": 0,
+      "parent_mission_id": null,
+      "rationale": "",
+      "timestamp": "LIVE AUDIT",
+      "logs": [
+        {
+          "ts": 1770470714.959,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [classify_intent]"
+        },
+        {
+          "ts": 1770470714.972,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Starting Intent Classification and Preprocessing in parallel for domain: compliance"
+        },
+        {
+          "ts": 1770470717.576,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classifying intent for domain: compliance | Query: Identify all users marked as 'is_pep' who have a 'risk_score' below the median for their age group, but have recently (last 60 days) engaged in transactions involving high-risk instruments (e.g., leveraged derivatives, volatile cryptocurrencies) with an 'amount_usd' exceeding $50,000. Analyze the 'txn_type' and 'instrument' for any patterns that suggest potential illicit financial activities or circumvention of compliance controls."
+        },
+        {
+          "ts": 1770470717.644,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770470718.376,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"intent\": \"SELECT\",\n  \"confidence\": 0...."
+        },
+        {
+          "ts": 1770470718.383,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classification Result: SELECT (conf: 0.9) | Needs Clarification: True"
+        },
+        {
+          "ts": 1770470730.205,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770470730.739,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: [\"users\", \"transactions\"]..."
+        },
+        {
+          "ts": 1770470730.85,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770470732.391,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"resolved_entities\": {\n    \"users.is_p..."
+        },
+        {
+          "ts": 1770470732.4,
+          "level": "INFO",
+          "node": "entity_extractor.py",
+          "msg": "Final Extracted/Resolved Entities: {'users.is_pep': '1', 'transactions.amount_usd': '50000.00', 'transactions.instrument': ['XRP/USD', 'BTC/USD', 'ETH/USD'], 'transactions.txn_type': 'TRADE', 'transactions.status': 'FLAGGED'}"
+        },
+        {
+          "ts": 1770470744.684,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Intent classified: SELECT (conf: 0.9) | Needs Clarification: True"
+        },
+        {
+          "ts": 1770470750.382,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770470753.847,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: I understand you're looking to identify users who ..."
+        }
+      ]
+    },
+    {
+      "mission_id": "comp_002",
+      "mission_name": "KYC Bypass for Significant Financial Flows",
+      "domain": "compliance",
+      "severity": "LOW",
+      "risk_score": 0,
+      "risk_factors": {},
+      "sql": null,
+      "data_count": 0,
+      "results": [],
+      "visualization_config": null,
+      "insight": null,
+      "recommendation": null,
+      "original_query": "Find all transactions where 'kyc_status' is 'PENDING' or 'FAILED', and the 'amount_usd' is greater than $10,000, with the transaction originating from a country not typically associated with the user's primary location (inferred from multiple login events). Analyze these transactions for any recurring 'instrument' types or 'payment_method' that might indicate a deliberate attempt to bypass KYC for significant financial flows.",
+      "depth": 0,
+      "parent_mission_id": null,
+      "rationale": "",
+      "timestamp": "LIVE AUDIT",
+      "logs": [
+        {
+          "ts": 1770470714.992,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [classify_intent]"
+        },
+        {
+          "ts": 1770470715.021,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Starting Intent Classification and Preprocessing in parallel for domain: compliance"
+        },
+        {
+          "ts": 1770470718.4,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classifying intent for domain: compliance | Query: Find all transactions where 'kyc_status' is 'PENDING' or 'FAILED', and the 'amount_usd' is greater than $10,000, with the transaction originating from a country not typically associated with the user's primary location (inferred from multiple login events). Analyze these transactions for any recurring 'instrument' types or 'payment_method' that might indicate a deliberate attempt to bypass KYC for significant financial flows."
+        },
+        {
+          "ts": 1770470718.431,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770470719.065,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"intent\": \"SELECT\",\n  \"confidence\": 1...."
+        },
+        {
+          "ts": 1770470719.089,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classification Result: SELECT (conf: 1.0) | Needs Clarification: True"
+        },
+        {
+          "ts": 1770470732.412,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770470732.918,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: [\"users\", \"transactions\", \"login_events\"]..."
+        },
+        {
+          "ts": 1770470733.024,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770470734.053,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"resolved_entities\": {\n    \"transactio..."
+        },
+        {
+          "ts": 1770470734.062,
+          "level": "INFO",
+          "node": "entity_extractor.py",
+          "msg": "Final Extracted/Resolved Entities: {'transactions.kyc_status': ['PENDING', 'FAILED'], 'transactions.amount_usd': {'operator': '>', 'value': 10000}, 'login_events.country': {'operator': '!=', 'value': ['United States']}}"
+        },
+        {
+          "ts": 1770470744.75,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Intent classified: SELECT (conf: 1.0) | Needs Clarification: True"
+        },
+        {
+          "ts": 1770470753.858,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770470755.156,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: I understand you're interested in analyzing transa..."
+        }
+      ]
+    },
+    {
+      "mission_id": "ops_002",
+      "mission_name": "Account Closure Drivers & High Volatility Exposure",
+      "domain": "operations",
+      "severity": "LOW",
+      "risk_score": 0,
+      "risk_factors": {},
+      "sql": null,
+      "data_count": 0,
+      "results": [],
+      "visualization_config": null,
+      "insight": null,
+      "recommendation": null,
+      "original_query": "Identify users whose 'account_status' has recently changed from 'ACTIVE' to 'SUSPENDED' or 'CLOSED' within the last 90 days. For these users, analyze their transaction history prior to the status change, focusing on their exposure to instruments with high historical volatility (e.g., certain cryptocurrencies, leveraged ETFs) and compare this against their 'risk_score' and 'is_pep' status to identify potential drivers for account closure.",
+      "depth": 0,
+      "parent_mission_id": null,
+      "rationale": "",
+      "timestamp": "LIVE AUDIT",
+      "logs": [
+        {
+          "ts": 1770470715.092,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [classify_intent]"
+        },
+        {
+          "ts": 1770470715.122,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Starting Intent Classification and Preprocessing in parallel for domain: operations"
+        },
+        {
+          "ts": 1770470720.163,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classifying intent for domain: operations | Query: Identify users whose 'account_status' has recently changed from 'ACTIVE' to 'SUSPENDED' or 'CLOSED' within the last 90 days. For these users, analyze their transaction history prior to the status change, focusing on their exposure to instruments with high historical volatility (e.g., certain cryptocurrencies, leveraged ETFs) and compare this against their 'risk_score' and 'is_pep' status to identify potential drivers for account closure."
+        },
+        {
+          "ts": 1770470720.233,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770470721.029,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"intent\": \"SELECT\",\n  \"confidence\": 0...."
+        },
+        {
+          "ts": 1770470721.037,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classification Result: SELECT (conf: 0.9) | Needs Clarification: True"
+        },
+        {
+          "ts": 1770470736.742,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770470737.414,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: [\"users\", \"transactions\"]..."
+        },
+        {
+          "ts": 1770470737.479,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770470738.437,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"resolved_entities\": {\n    \"users.acco..."
+        },
+        {
+          "ts": 1770470738.447,
+          "level": "INFO",
+          "node": "entity_extractor.py",
+          "msg": "Final Extracted/Resolved Entities: {'users.account_status': ['ACTIVE', 'SUSPENDED'], 'transactions.instrument': ['BTC/USD', 'ETH/USD', 'XRP/USD']}"
+        },
+        {
+          "ts": 1770470744.957,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Intent classified: SELECT (conf: 0.9) | Needs Clarification: True"
+        },
+        {
+          "ts": 1770470756.215,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770470757.716,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: I understand you're interested in identifying user..."
+        }
+      ]
+    },
+    {
+      "mission_id": "risk_002",
+      "mission_name": "Age-Based Instrument Risk Mismatch",
+      "domain": "risk",
+      "severity": "LOW",
+      "risk_score": 0,
+      "risk_factors": {},
+      "sql": null,
+      "data_count": 0,
+      "results": [],
+      "visualization_config": null,
+      "insight": null,
+      "recommendation": null,
+      "original_query": "Segment users by age groups (e.g., 18-24, 25-34, 35-54, 55+). For each segment, analyze the concentration of their 'risk_score' against the 'instrument' types they trade. Identify any age segments that disproportionately hold high-risk instruments despite having a generally lower average 'risk_score', or vice versa, indicating potential misaligned risk appetite or platform exposure.",
+      "depth": 0,
+      "parent_mission_id": null,
+      "rationale": "",
+      "timestamp": "LIVE AUDIT",
+      "logs": [
+        {
+          "ts": 1770470715.215,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [classify_intent]"
+        },
+        {
+          "ts": 1770470715.249,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Starting Intent Classification and Preprocessing in parallel for domain: risk"
+        },
+        {
+          "ts": 1770470723.666,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classifying intent for domain: risk | Query: Segment users by age groups (e.g., 18-24, 25-34, 35-54, 55+). For each segment, analyze the concentration of their 'risk_score' against the 'instrument' types they trade. Identify any age segments that disproportionately hold high-risk instruments despite having a generally lower average 'risk_score', or vice versa, indicating potential misaligned risk appetite or platform exposure."
+        },
+        {
+          "ts": 1770470723.688,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770470724.386,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"intent\": \"SELECT\",\n  \"confidence\": 1...."
+        },
+        {
+          "ts": 1770470724.435,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classification Result: SELECT (conf: 1.0) | Needs Clarification: True"
+        },
+        {
+          "ts": 1770470740.543,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770470741.233,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: [\"users\", \"transactions\"]..."
+        },
+        {
+          "ts": 1770470741.318,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770470742.701,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"resolved_entities\": {\n    \"users.age\"..."
+        },
+        {
+          "ts": 1770470742.738,
+          "level": "INFO",
+          "node": "entity_extractor.py",
+          "msg": "Final Extracted/Resolved Entities: {'users.age': [{'gte': 18, 'lt': 25}, {'gte': 25, 'lt': 35}, {'gte': 35, 'lt': 55}, {'gte': 55}], 'transactions.instrument': ['XRP/USD', 'AMZN', 'AAPL', 'DAX', 'FTSE100', 'GOOGL', 'AUD/USD', 'Natural Gas', 'Nikkei', 'Oil', 'NVDA', 'EUR/USD', 'BTC/USD', 'ETH/USD', 'NASDAQ', 'GBP/USD', 'USD/JPY', 'MSFT', 'TSLA'], 'transactions.risk_level': ['HIGH', 'CRITICAL']}"
+        },
+        {
+          "ts": 1770470745.202,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Intent classified: SELECT (conf: 1.0) | Needs Clarification: True"
+        },
+        {
+          "ts": 1770470759.231,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770470760.468,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: I understand you're interested in analyzing user r..."
+        }
+      ]
+    },
+    {
+      "mission_id": "sec_002",
+      "mission_name": "Compromised Account Asset Movement Detection",
+      "domain": "security",
+      "severity": "LOW",
+      "risk_score": 0,
+      "risk_factors": {},
+      "sql": null,
+      "data_count": 0,
+      "results": [],
+      "visualization_config": null,
+      "insight": null,
+      "recommendation": null,
+      "original_query": "Identify users who experience a login event with a 'failure_reason' indicating 'unusual_country' or 'unusual_device_type', followed immediately by a successful login and a subsequent transaction volume spike exceeding 3 standard deviations of their average daily transaction volume within the next 6 hours. Analyze the types of transactions and instruments involved to detect potential compromised accounts being used for rapid asset movement.",
+      "depth": 0,
+      "parent_mission_id": null,
+      "rationale": "",
+      "timestamp": "LIVE AUDIT",
+      "logs": [
+        {
+          "ts": 1770470714.914,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [classify_intent]"
+        },
+        {
+          "ts": 1770470714.933,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Starting Intent Classification and Preprocessing in parallel for domain: security"
+        },
+        {
+          "ts": 1770470716.733,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classifying intent for domain: security | Query: Identify users who experience a login event with a 'failure_reason' indicating 'unusual_country' or 'unusual_device_type', followed immediately by a successful login and a subsequent transaction volume spike exceeding 3 standard deviations of their average daily transaction volume within the next 6 hours. Analyze the types of transactions and instruments involved to detect potential compromised accounts being used for rapid asset movement."
+        },
+        {
+          "ts": 1770470716.771,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770470717.498,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"intent\": \"SELECT\",\n  \"confidence\": 1...."
+        },
+        {
+          "ts": 1770470717.542,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classification Result: SELECT (conf: 1.0) | Needs Clarification: False"
+        },
+        {
+          "ts": 1770470728.398,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770470728.964,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: [\"users\", \"transactions\", \"login_events\"]..."
+        },
+        {
+          "ts": 1770470729.036,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770470730.153,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"resolved_entities\": {\n    \"login_even..."
+        },
+        {
+          "ts": 1770470730.169,
+          "level": "INFO",
+          "node": "entity_extractor.py",
+          "msg": "Final Extracted/Resolved Entities: {'login_events.failure_reason': 'Suspicious activity', 'login_events.status': 'SUCCESS', 'login_events.country': 'Kuwait', 'login_events.device_type': 'Tablet'}"
+        },
+        {
+          "ts": 1770470744.536,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Intent classified: SELECT (conf: 1.0) | Needs Clarification: False"
+        },
+        {
+          "ts": 1770470748.493,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [generate_sql]"
+        },
+        {
+          "ts": 1770470748.58,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "Generating SQL for domain: security | Query: Identify users who experience a login event with a 'failure_reason' indicating 'unusual_country' or 'unusual_device_type', followed immediately by a successful login and a subsequent transaction volume spike exceeding 3 standard deviations of their average daily transaction volume within the next 6 hours. Analyze the types of transactions and instruments involved to detect potential compromised accounts being used for rapid asset movement."
+        },
+        {
+          "ts": 1770470748.801,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "Using custom SQL prompt for domain: security"
+        },
+        {
+          "ts": 1770470748.87,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770470750.185,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: Error: I cannot fulfill this request as it require..."
+        },
+        {
+          "ts": 1770470750.2,
+          "level": "WARNING",
+          "node": "SQL_GEN",
+          "msg": "SQL Generation guidance response for query: Identify users who experience a login event with a 'failure_reason' indicating 'unusual_country' or 'unusual_device_type', followed immediately by a successful login and a subsequent transaction volume spike exceeding 3 standard deviations of their average daily transaction volume within the next 6 hours. Analyze the types of transactions and instruments involved to detect potential compromised accounts being used for rapid asset movement. | Msg: Error: I cannot fulfill this request as it require..."
+        },
+        {
+          "ts": 1770470750.233,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "SQL Generator returned guidance instead of SQL: Error: I cannot fulfill this request as it require..."
+        }
+      ]
+    },
+    {
+      "mission_id": "sec_001",
+      "mission_name": "Anomalous Login Velocity & Transaction Spikes",
+      "domain": "security",
+      "severity": "LOW",
+      "risk_score": 0,
+      "risk_factors": {},
+      "sql": "WITH UserLoginCounts AS (\n  SELECT\n    user_id,\n    COUNT(event_id) AS successful_logins,\n    COUNT(DISTINCT country) AS distinct_countries\n  FROM login_events\n  WHERE\n    UPPER(status) LIKE '%SUCCESS%'\n    AND created_at BETWEEN DATETIME('2026-02-07 18:55:46', '-1 hour') AND DATETIME('2026-02-07 18:55:46')\n  GROUP BY\n    user_id\n  HAVING\n    COUNT(event_id) > 5 AND COUNT(DISTINCT country) >= 3\n)\nSELECT\n  DISTINCT u.username\nFROM users AS u\nJOIN UserLoginCounts AS ulc\n  ON u.user_id = ulc.user_id\nJOIN transactions AS t\n  ON u.user_id = t.user_id\nWHERE\n  t.created_at BETWEEN DATETIME('2026-02-07 18:55:46', '+1 minute') AND DATETIME('2026-02-07 18:55:46', '+24 hours');",
+      "data_count": 0,
+      "results": [],
+      "visualization_config": null,
+      "insight": "No data found to analyze.",
+      "recommendation": "Try broadening your search criteria or checking if the data for this period is available.",
+      "original_query": "Identify users who exhibit a login velocity of more than 5 successful logins within a 1-hour period, originating from at least 3 different countries. For these users, analyze their transaction history within the subsequent 24 hours for any unusual spikes in transaction volume, high-risk instrument trading, or rapid asset liquidation that deviates significantly from their historical patterns.",
+      "depth": 0,
+      "parent_mission_id": null,
+      "rationale": "",
+      "timestamp": "LIVE AUDIT",
+      "logs": [
+        {
+          "ts": 1770470714.882,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [classify_intent]"
+        },
+        {
+          "ts": 1770470714.893,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Starting Intent Classification and Preprocessing in parallel for domain: security"
+        },
+        {
+          "ts": 1770470715.302,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classifying intent for domain: security | Query: Identify users who exhibit a login velocity of more than 5 successful logins within a 1-hour period, originating from at least 3 different countries. For these users, analyze their transaction history within the subsequent 24 hours for any unusual spikes in transaction volume, high-risk instrument trading, or rapid asset liquidation that deviates significantly from their historical patterns."
+        },
+        {
+          "ts": 1770470715.351,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770470716.685,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"intent\": \"SELECT\",\n  \"confidence\": 1...."
+        },
+        {
+          "ts": 1770470716.702,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classification Result: SELECT (conf: 1.0) | Needs Clarification: False"
+        },
+        {
+          "ts": 1770470724.537,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770470725.145,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: [\"users\", \"login_events\", \"transactions\"]..."
+        },
+        {
+          "ts": 1770470725.269,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770470728.33,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"resolved_entities\": {\n    \"login_even..."
+        },
+        {
+          "ts": 1770470728.364,
+          "level": "INFO",
+          "node": "entity_extractor.py",
+          "msg": "Final Extracted/Resolved Entities: {'login_events.status': 'SUCCESS', 'login_events.country': ['Saudi Arabia', 'Singapore', 'France', 'India', 'Brazil', 'United Kingdom', 'Canada', 'Japan', 'Germany', 'UAE', 'Kuwait', 'Qatar', 'United States', 'Australia', 'Bahrain'], 'transactions.instrument': ['XRP/USD', 'AMZN', 'AAPL', 'DAX', 'FTSE100', 'GOOGL', 'AUD/USD', 'Natural Gas', 'Nikkei', 'Oil', 'NVDA', 'EUR/USD', 'BTC/USD', 'ETH/USD', 'NASDAQ', 'GBP/USD', 'USD/JPY', 'MSFT', 'TSLA'], 'transactions.flag_reason': ['AML alert', 'Geo mismatch', 'Unusual pattern', 'Velocity check', 'PEP transaction', 'Sanctions match', 'High amount']}"
+        },
+        {
+          "ts": 1770470744.381,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Intent classified: SELECT (conf: 1.0) | Needs Clarification: False"
+        },
+        {
+          "ts": 1770470746.166,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [generate_sql]"
+        },
+        {
+          "ts": 1770470746.201,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "Generating SQL for domain: security | Query: Identify users who exhibit a login velocity of more than 5 successful logins within a 1-hour period, originating from at least 3 different countries. For these users, analyze their transaction history within the subsequent 24 hours for any unusual spikes in transaction volume, high-risk instrument trading, or rapid asset liquidation that deviates significantly from their historical patterns."
+        },
+        {
+          "ts": 1770470746.399,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "Using custom SQL prompt for domain: security"
+        },
+        {
+          "ts": 1770470746.428,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770470748.26,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: WITH UserLoginCounts AS (\n  SELECT\n    user_id,\n  ..."
+        },
+        {
+          "ts": 1770470748.362,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "SQL Generated and cleaned: WITH UserLoginCounts AS (\n  SELECT\n    user_id,\n  ..."
+        },
+        {
+          "ts": 1770470748.452,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "SQL Generated: WITH UserLoginCounts AS (\n  SELECT\n    user_id,\n  ..."
+        },
+        {
+          "ts": 1770470760.492,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [validate_sql]"
+        },
+        {
+          "ts": 1770470761.079,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [execute_query]"
+        },
+        {
+          "ts": 1770470761.085,
+          "level": "INFO",
+          "node": "DB_EXEC",
+          "msg": "Executing SQL: WITH UserLoginCounts AS (\n  SELECT\n    user_id,\n    COUNT(event_id) AS successful_logins,\n    COUNT(DISTINCT country) AS distinct_countries\n  FROM login_events\n  WHERE\n    UPPER(status) LIKE '%SUCCESS%'\n    AND created_at BETWEEN DATETIME('2026-02-07 18:55:46', '-1 hour') AND DATETIME('2026-02-07 18:55:46')\n  GROUP BY\n    user_id\n  HAVING\n    COUNT(event_id) > 5 AND COUNT(DISTINCT country) >= 3\n)\nSELECT\n  DISTINCT u.username\nFROM users AS u\nJOIN UserLoginCounts AS ulc\n  ON u.user_id = ulc.user_id\nJOIN transactions AS t\n  ON u.user_id = t.user_id\nWHERE\n  t.created_at BETWEEN DATETIME('2026-02-07 18:55:46', '+1 minute') AND DATETIME('2026-02-07 18:55:46', '+24 hours');"
+        },
+        {
+          "ts": 1770470761.272,
+          "level": "INFO",
+          "node": "DB_EXEC",
+          "msg": "Execution complete. Returned 0 rows."
+        },
+        {
+          "ts": 1770470761.298,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Query execution successful. Rows: 0"
+        },
+        {
+          "ts": 1770470761.528,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [insight_recommendation]"
+        },
+        {
+          "ts": 1770470761.553,
+          "level": "INFO",
+          "node": "INSIGHT",
+          "msg": "Generating insights for 0 rows in domain: security"
+        },
+        {
+          "ts": 1770470761.579,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Insights generated successfully."
+        },
+        {
+          "ts": 1770470761.598,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [recommend_visualization]"
+        },
+        {
+          "ts": 1770470761.622,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "No results for visualization recommendation."
+        }
+      ]
+    },
+    {
+      "mission_id": "ops_001",
+      "mission_name": "Payment Failures & Underlying System Issues",
+      "domain": "operations",
+      "severity": "LOW",
+      "risk_score": 0,
+      "risk_factors": {},
+      "sql": "SELECT u.username, COUNT(DISTINCT t.payment_method) AS distinct_payment_methods_failed\nFROM users u\nJOIN transactions t ON u.user_id = t.user_id\nWHERE UPPER(t.status) LIKE '%FAILED%'\n  AND t.created_at >= date('now', '-30 days')\nGROUP BY u.username\nHAVING COUNT(DISTINCT t.payment_method) >= 3;",
+      "data_count": 0,
+      "results": [],
+      "visualization_config": null,
+      "insight": "No data found to analyze.",
+      "recommendation": "Try broadening your search criteria or checking if the data for this period is available.",
+      "original_query": "Identify users who have experienced payment failures ('status' = 'FAILED') across at least three different 'payment_method' types within the last 30 days. For these users, analyze if these failures are correlated with specific 'instrument' types that have a high transaction volume or if there's a pattern in the 'flag_reason' that suggests underlying system issues rather than user error.",
+      "depth": 0,
+      "parent_mission_id": null,
+      "rationale": "",
+      "timestamp": "LIVE AUDIT",
+      "logs": [
+        {
+          "ts": 1770470715.033,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [classify_intent]"
+        },
+        {
+          "ts": 1770470715.06,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Starting Intent Classification and Preprocessing in parallel for domain: operations"
+        },
+        {
+          "ts": 1770470719.128,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classifying intent for domain: operations | Query: Identify users who have experienced payment failures ('status' = 'FAILED') across at least three different 'payment_method' types within the last 30 days. For these users, analyze if these failures are correlated with specific 'instrument' types that have a high transaction volume or if there's a pattern in the 'flag_reason' that suggests underlying system issues rather than user error."
+        },
+        {
+          "ts": 1770470719.189,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770470720.094,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"intent\": \"SELECT\",\n  \"confidence\": 0...."
+        },
+        {
+          "ts": 1770470720.133,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classification Result: SELECT (conf: 0.9) | Needs Clarification: False"
+        },
+        {
+          "ts": 1770470734.086,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770470734.812,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: [\"users\", \"transactions\"]..."
+        },
+        {
+          "ts": 1770470734.904,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770470736.716,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"resolved_entities\": {\n    \"transactio..."
+        },
+        {
+          "ts": 1770470736.725,
+          "level": "INFO",
+          "node": "entity_extractor.py",
+          "msg": "Final Extracted/Resolved Entities: {'transactions.status': 'FAILED', 'transactions.payment_method': ['Wire Transfer', 'Bank Transfer', 'E-Wallet', 'Debit Card', 'SEPA', 'ACH', 'Crypto Wallet', 'Credit Card'], 'transactions.instrument': ['XRP/USD', 'AMZN', 'AAPL', 'DAX', 'FTSE100', 'GOOGL', 'AUD/USD', 'Natural Gas', 'Nikkei', 'Oil', 'NVDA', 'EUR/USD', 'BTC/USD', 'ETH/USD', 'NASDAQ', 'GBP/USD', 'USD/JPY', 'MSFT', 'TSLA'], 'transactions.flag_reason': ['AML alert', 'Geo mismatch', 'Unusual pattern', 'Velocity check', 'PEP transaction', 'Sanctions match', 'High amount']}"
+        },
+        {
+          "ts": 1770470744.815,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Intent classified: SELECT (conf: 0.9) | Needs Clarification: False"
+        },
+        {
+          "ts": 1770470755.17,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [generate_sql]"
+        },
+        {
+          "ts": 1770470755.179,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "Generating SQL for domain: operations | Query: Identify users who have experienced payment failures ('status' = 'FAILED') across at least three different 'payment_method' types within the last 30 days. For these users, analyze if these failures are correlated with specific 'instrument' types that have a high transaction volume or if there's a pattern in the 'flag_reason' that suggests underlying system issues rather than user error."
+        },
+        {
+          "ts": 1770470755.187,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "Using custom SQL prompt for domain: operations"
+        },
+        {
+          "ts": 1770470755.192,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770470756.176,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: SELECT u.username, COUNT(DISTINCT t.payment_method..."
+        },
+        {
+          "ts": 1770470756.191,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "SQL Generated and cleaned: SELECT u.username, COUNT(DISTINCT t.payment_method..."
+        },
+        {
+          "ts": 1770470756.202,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "SQL Generated: SELECT u.username, COUNT(DISTINCT t.payment_method..."
+        },
+        {
+          "ts": 1770470760.824,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [validate_sql]"
+        },
+        {
+          "ts": 1770470761.362,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [execute_query]"
+        },
+        {
+          "ts": 1770470761.405,
+          "level": "INFO",
+          "node": "DB_EXEC",
+          "msg": "Executing SQL: SELECT u.username, COUNT(DISTINCT t.payment_method) AS distinct_payment_methods_failed\nFROM users u\nJOIN transactions t ON u.user_id = t.user_id\nWHERE UPPER(t.status) LIKE '%FAILED%'\n  AND t.created_at >= date('now', '-30 days')\nGROUP BY u.username\nHAVING COUNT(DISTINCT t.payment_method) >= 3;"
+        },
+        {
+          "ts": 1770470761.489,
+          "level": "INFO",
+          "node": "DB_EXEC",
+          "msg": "Execution complete. Returned 0 rows."
+        },
+        {
+          "ts": 1770470761.507,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Query execution successful. Rows: 0"
+        },
+        {
+          "ts": 1770470761.828,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [insight_recommendation]"
+        },
+        {
+          "ts": 1770470761.843,
+          "level": "INFO",
+          "node": "INSIGHT",
+          "msg": "Generating insights for 0 rows in domain: operations"
+        },
+        {
+          "ts": 1770470761.854,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Insights generated successfully."
+        },
+        {
+          "ts": 1770470761.867,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [recommend_visualization]"
+        },
+        {
+          "ts": 1770470761.881,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "No results for visualization recommendation."
+        }
+      ]
+    },
+    {
+      "mission_id": "risk_001",
+      "mission_name": "High-Risk User Concentration in Emerging Economies",
+      "domain": "risk",
+      "severity": "MEDIUM",
+      "risk_score": 42,
+      "risk_factors": {
+        "affected_entities": {
+          "value": 184,
+          "score": 100,
+          "detail": "184 unique entities"
+        },
+        "dollar_exposure": {
+          "value": 0,
+          "score": 0,
+          "detail": "$0 exposure"
+        },
+        "velocity": {
+          "value": 184,
+          "score": 100,
+          "detail": "184 events"
+        },
+        "pep_involvement": {
+          "value": 0,
+          "score": 0,
+          "detail": "0 PEP accounts"
+        },
+        "kyc_gaps": {
+          "value": 0,
+          "score": 0,
+          "detail": "0 KYC gaps"
+        },
+        "severity_escalation": {
+          "value": "HIGH",
+          "score": 50,
+          "detail": "Base: HIGH"
+        }
+      },
+      "sql": "WITH HighRiskUsers AS (\n  SELECT\n    user_id\n  FROM users\n  WHERE\n    risk_score > (\n      SELECT\n        risk_score\n      FROM users\n      ORDER BY\n        risk_score\n      LIMIT 1 OFFSET (\n        SELECT\n          COUNT(*)\n        FROM users\n      ) * 80 / 100\n    )\n), HighRiskUserLogins AS (\n  SELECT\n    u.username,\n    u.risk_score,\n    le.country,\n    t.instrument,\n    t.txn_type\n  FROM users AS u\n  JOIN HighRiskUsers AS hru\n    ON u.user_id = hru.user_id\n  LEFT JOIN login_events AS le\n    ON u.user_id = le.user_id\n  LEFT JOIN transactions AS t\n    ON u.user_id = t.user_id\n)\nSELECT\n  country,\n  instrument,\n  txn_type,\n  COUNT(username) AS user_count\nFROM HighRiskUserLogins\nGROUP BY\n  country,\n  instrument,\n  txn_type\nORDER BY\n  user_count DESC;",
+      "data_count": 184,
+      "results": [
+        {
+          "country": "Kuwait",
+          "instrument": "MSFT",
+          "txn_type": "TRADE",
+          "user_count": 3
+        },
+        {
+          "country": null,
+          "instrument": "GBP/USD",
+          "txn_type": "DEPOSIT",
+          "user_count": 2
+        },
+        {
+          "country": null,
+          "instrument": "Nikkei",
+          "txn_type": "WITHDRAWAL",
+          "user_count": 2
+        },
+        {
+          "country": null,
+          "instrument": "S&P500",
+          "txn_type": "TRADE",
+          "user_count": 2
+        },
+        {
+          "country": "Australia",
+          "instrument": "AMZN",
+          "txn_type": "DEPOSIT",
+          "user_count": 2
+        },
+        {
+          "country": "Australia",
+          "instrument": "DAX",
+          "txn_type": "TRADE",
+          "user_count": 2
+        },
+        {
+          "country": "Australia",
+          "instrument": "ETH/USD",
+          "txn_type": "REFUND",
+          "user_count": 2
+        },
+        {
+          "country": "Australia",
+          "instrument": "GOOGL",
+          "txn_type": "DEPOSIT",
+          "user_count": 2
+        },
+        {
+          "country": "Australia",
+          "instrument": "Nikkei",
+          "txn_type": "TRANSFER",
+          "user_count": 2
+        },
+        {
+          "country": "Australia",
+          "instrument": "Oil",
+          "txn_type": "DEPOSIT",
+          "user_count": 2
+        },
+        {
+          "country": "Bahrain",
+          "instrument": "AAPL",
+          "txn_type": "FEE",
+          "user_count": 2
+        },
+        {
+          "country": "Brazil",
+          "instrument": "USD/JPY",
+          "txn_type": "REFUND",
+          "user_count": 2
+        },
+        {
+          "country": "Germany",
+          "instrument": "Gold",
+          "txn_type": "FEE",
+          "user_count": 2
+        },
+        {
+          "country": "India",
+          "instrument": "Gold",
+          "txn_type": "FEE",
+          "user_count": 2
+        },
+        {
+          "country": "Japan",
+          "instrument": "MSFT",
+          "txn_type": "TRADE",
+          "user_count": 2
+        },
+        {
+          "country": "Japan",
+          "instrument": "Natural Gas",
+          "txn_type": "WITHDRAWAL",
+          "user_count": 2
+        },
+        {
+          "country": "Kuwait",
+          "instrument": "",
+          "txn_type": "FEE",
+          "user_count": 2
+        },
+        {
+          "country": "Kuwait",
+          "instrument": "ETH/USD",
+          "txn_type": "TRADE",
+          "user_count": 2
+        },
+        {
+          "country": "Kuwait",
+          "instrument": "Natural Gas",
+          "txn_type": "DEPOSIT",
+          "user_count": 2
+        },
+        {
+          "country": "Kuwait",
+          "instrument": "Nikkei",
+          "txn_type": "FEE",
+          "user_count": 2
+        },
+        {
+          "country": "UAE",
+          "instrument": "AMZN",
+          "txn_type": "DEPOSIT",
+          "user_count": 2
+        },
+        {
+          "country": "United Kingdom",
+          "instrument": "AAPL",
+          "txn_type": "WITHDRAWAL",
+          "user_count": 2
+        },
+        {
+          "country": "United Kingdom",
+          "instrument": "Gold",
+          "txn_type": "FEE",
+          "user_count": 2
+        },
+        {
+          "country": "United Kingdom",
+          "instrument": "META",
+          "txn_type": "DEPOSIT",
+          "user_count": 2
+        },
+        {
+          "country": null,
+          "instrument": "AMZN",
+          "txn_type": "TRANSFER",
+          "user_count": 1
+        },
+        {
+          "country": null,
+          "instrument": "AUD/USD",
+          "txn_type": "TRADE",
+          "user_count": 1
+        },
+        {
+          "country": null,
+          "instrument": "DAX",
+          "txn_type": "TRADE",
+          "user_count": 1
+        },
+        {
+          "country": null,
+          "instrument": "ETH/USD",
+          "txn_type": "FEE",
+          "user_count": 1
+        },
+        {
+          "country": null,
+          "instrument": "ETH/USD",
+          "txn_type": "REFUND",
+          "user_count": 1
+        },
+        {
+          "country": null,
+          "instrument": "EUR/USD",
+          "txn_type": "WITHDRAWAL",
+          "user_count": 1
+        },
+        {
+          "country": null,
+          "instrument": "FTSE100",
+          "txn_type": "DEPOSIT",
+          "user_count": 1
+        },
+        {
+          "country": null,
+          "instrument": "FTSE100",
+          "txn_type": "TRADE",
+          "user_count": 1
+        },
+        {
+          "country": null,
+          "instrument": "Gold",
+          "txn_type": "TRADE",
+          "user_count": 1
+        },
+        {
+          "country": null,
+          "instrument": "NVDA",
+          "txn_type": "WITHDRAWAL",
+          "user_count": 1
+        },
+        {
+          "country": null,
+          "instrument": "Natural Gas",
+          "txn_type": "FEE",
+          "user_count": 1
+        },
+        {
+          "country": null,
+          "instrument": "Natural Gas",
+          "txn_type": "TRANSFER",
+          "user_count": 1
+        },
+        {
+          "country": null,
+          "instrument": "Oil",
+          "txn_type": "TRANSFER",
+          "user_count": 1
+        },
+        {
+          "country": null,
+          "instrument": "Oil",
+          "txn_type": "WITHDRAWAL",
+          "user_count": 1
+        },
+        {
+          "country": null,
+          "instrument": "S&P500",
+          "txn_type": "FEE",
+          "user_count": 1
+        },
+        {
+          "country": null,
+          "instrument": "TSLA",
+          "txn_type": "REFUND",
+          "user_count": 1
+        },
+        {
+          "country": null,
+          "instrument": "USD/JPY",
+          "txn_type": "TRANSFER",
+          "user_count": 1
+        },
+        {
+          "country": null,
+          "instrument": "XRP/USD",
+          "txn_type": "REFUND",
+          "user_count": 1
+        },
+        {
+          "country": "Bahrain",
+          "instrument": "",
+          "txn_type": "FEE",
+          "user_count": 1
+        },
+        {
+          "country": "Bahrain",
+          "instrument": "",
+          "txn_type": "TRADE",
+          "user_count": 1
+        },
+        {
+          "country": "Bahrain",
+          "instrument": "",
+          "txn_type": "TRANSFER",
+          "user_count": 1
+        },
+        {
+          "country": "Bahrain",
+          "instrument": "AAPL",
+          "txn_type": "WITHDRAWAL",
+          "user_count": 1
+        },
+        {
+          "country": "Bahrain",
+          "instrument": "AUD/USD",
+          "txn_type": "WITHDRAWAL",
+          "user_count": 1
+        },
+        {
+          "country": "Bahrain",
+          "instrument": "DAX",
+          "txn_type": "WITHDRAWAL",
+          "user_count": 1
+        },
+        {
+          "country": "Bahrain",
+          "instrument": "FTSE100",
+          "txn_type": "DEPOSIT",
+          "user_count": 1
+        },
+        {
+          "country": "Bahrain",
+          "instrument": "GOOGL",
+          "txn_type": "TRADE",
+          "user_count": 1
+        },
+        {
+          "country": "Bahrain",
+          "instrument": "NVDA",
+          "txn_type": "TRANSFER",
+          "user_count": 1
+        },
+        {
+          "country": "Bahrain",
+          "instrument": "Natural Gas",
+          "txn_type": "TRANSFER",
+          "user_count": 1
+        },
+        {
+          "country": "Bahrain",
+          "instrument": "S&P500",
+          "txn_type": "REFUND",
+          "user_count": 1
+        },
+        {
+          "country": "Bahrain",
+          "instrument": "TSLA",
+          "txn_type": "REFUND",
+          "user_count": 1
+        },
+        {
+          "country": "Brazil",
+          "instrument": "AAPL",
+          "txn_type": "WITHDRAWAL",
+          "user_count": 1
+        },
+        {
+          "country": "Brazil",
+          "instrument": "BTC/USD",
+          "txn_type": "FEE",
+          "user_count": 1
+        },
+        {
+          "country": "Brazil",
+          "instrument": "BTC/USD",
+          "txn_type": "TRANSFER",
+          "user_count": 1
+        },
+        {
+          "country": "Brazil",
+          "instrument": "META",
+          "txn_type": "WITHDRAWAL",
+          "user_count": 1
+        },
+        {
+          "country": "Brazil",
+          "instrument": "NVDA",
+          "txn_type": "DEPOSIT",
+          "user_count": 1
+        },
+        {
+          "country": "Brazil",
+          "instrument": "Natural Gas",
+          "txn_type": "TRADE",
+          "user_count": 1
+        },
+        {
+          "country": "Brazil",
+          "instrument": "S&P500",
+          "txn_type": "TRANSFER",
+          "user_count": 1
+        },
+        {
+          "country": "Brazil",
+          "instrument": "Silver",
+          "txn_type": "REFUND",
+          "user_count": 1
+        },
+        {
+          "country": "Brazil",
+          "instrument": "USD/JPY",
+          "txn_type": "TRADE",
+          "user_count": 1
+        },
+        {
+          "country": "Brazil",
+          "instrument": "XRP/USD",
+          "txn_type": "TRANSFER",
+          "user_count": 1
+        },
+        {
+          "country": "Canada",
+          "instrument": "AMZN",
+          "txn_type": "DEPOSIT",
+          "user_count": 1
+        },
+        {
+          "country": "Canada",
+          "instrument": "DAX",
+          "txn_type": "REFUND",
+          "user_count": 1
+        },
+        {
+          "country": "Canada",
+          "instrument": "EUR/USD",
+          "txn_type": "TRADE",
+          "user_count": 1
+        },
+        {
+          "country": "France",
+          "instrument": "",
+          "txn_type": "FEE",
+          "user_count": 1
+        },
+        {
+          "country": "France",
+          "instrument": "",
+          "txn_type": "TRADE",
+          "user_count": 1
+        },
+        {
+          "country": "France",
+          "instrument": "",
+          "txn_type": "TRANSFER",
+          "user_count": 1
+        },
+        {
+          "country": "France",
+          "instrument": "AAPL",
+          "txn_type": "FEE",
+          "user_count": 1
+        },
+        {
+          "country": "France",
+          "instrument": "AUD/USD",
+          "txn_type": "WITHDRAWAL",
+          "user_count": 1
+        },
+        {
+          "country": "France",
+          "instrument": "DAX",
+          "txn_type": "WITHDRAWAL",
+          "user_count": 1
+        },
+        {
+          "country": "France",
+          "instrument": "TSLA",
+          "txn_type": "REFUND",
+          "user_count": 1
+        },
+        {
+          "country": "Germany",
+          "instrument": "",
+          "txn_type": "DEPOSIT",
+          "user_count": 1
+        },
+        {
+          "country": "Germany",
+          "instrument": "AAPL",
+          "txn_type": "FEE",
+          "user_count": 1
+        },
+        {
+          "country": "Germany",
+          "instrument": "BTC/USD",
+          "txn_type": "REFUND",
+          "user_count": 1
+        },
+        {
+          "country": "Germany",
+          "instrument": "FTSE100",
+          "txn_type": "DEPOSIT",
+          "user_count": 1
+        },
+        {
+          "country": "Germany",
+          "instrument": "FTSE100",
+          "txn_type": "TRADE",
+          "user_count": 1
+        },
+        {
+          "country": "Germany",
+          "instrument": "GOOGL",
+          "txn_type": "TRADE",
+          "user_count": 1
+        },
+        {
+          "country": "Germany",
+          "instrument": "Gold",
+          "txn_type": "WITHDRAWAL",
+          "user_count": 1
+        },
+        {
+          "country": "Germany",
+          "instrument": "META",
+          "txn_type": "DEPOSIT",
+          "user_count": 1
+        },
+        {
+          "country": "Germany",
+          "instrument": "Natural Gas",
+          "txn_type": "TRANSFER",
+          "user_count": 1
+        },
+        {
+          "country": "Germany",
+          "instrument": "S&P500",
+          "txn_type": "WITHDRAWAL",
+          "user_count": 1
+        },
+        {
+          "country": "India",
+          "instrument": "",
+          "txn_type": "DEPOSIT",
+          "user_count": 1
+        },
+        {
+          "country": "India",
+          "instrument": "BTC/USD",
+          "txn_type": "DEPOSIT",
+          "user_count": 1
+        },
+        {
+          "country": "India",
+          "instrument": "BTC/USD",
+          "txn_type": "REFUND",
+          "user_count": 1
+        },
+        {
+          "country": "India",
+          "instrument": "EUR/USD",
+          "txn_type": "DEPOSIT",
+          "user_count": 1
+        },
+        {
+          "country": "India",
+          "instrument": "FTSE100",
+          "txn_type": "FEE",
+          "user_count": 1
+        },
+        {
+          "country": "India",
+          "instrument": "FTSE100",
+          "txn_type": "REFUND",
+          "user_count": 1
+        },
+        {
+          "country": "India",
+          "instrument": "FTSE100",
+          "txn_type": "TRADE",
+          "user_count": 1
+        },
+        {
+          "country": "India",
+          "instrument": "Gold",
+          "txn_type": "WITHDRAWAL",
+          "user_count": 1
+        },
+        {
+          "country": "India",
+          "instrument": "META",
+          "txn_type": "DEPOSIT",
+          "user_count": 1
+        },
+        {
+          "country": "India",
+          "instrument": "NASDAQ",
+          "txn_type": "REFUND",
+          "user_count": 1
+        },
+        {
+          "country": "India",
+          "instrument": "Nikkei",
+          "txn_type": "WITHDRAWAL",
+          "user_count": 1
+        },
+        {
+          "country": "India",
+          "instrument": "S&P500",
+          "txn_type": "WITHDRAWAL",
+          "user_count": 1
+        },
+        {
+          "country": "Japan",
+          "instrument": "AAPL",
+          "txn_type": "WITHDRAWAL",
+          "user_count": 1
+        },
+        {
+          "country": "Japan",
+          "instrument": "AMZN",
+          "txn_type": "DEPOSIT",
+          "user_count": 1
+        },
+        {
+          "country": "Japan",
+          "instrument": "BTC/USD",
+          "txn_type": "WITHDRAWAL",
+          "user_count": 1
+        },
+        {
+          "country": "Japan",
+          "instrument": "DAX",
+          "txn_type": "REFUND",
+          "user_count": 1
+        },
+        {
+          "country": "Japan",
+          "instrument": "ETH/USD",
+          "txn_type": "DEPOSIT",
+          "user_count": 1
+        },
+        {
+          "country": "Japan",
+          "instrument": "EUR/USD",
+          "txn_type": "TRADE",
+          "user_count": 1
+        },
+        {
+          "country": "Japan",
+          "instrument": "GOOGL",
+          "txn_type": "DEPOSIT",
+          "user_count": 1
+        },
+        {
+          "country": "Japan",
+          "instrument": "META",
+          "txn_type": "DEPOSIT",
+          "user_count": 1
+        },
+        {
+          "country": "Japan",
+          "instrument": "MSFT",
+          "txn_type": "REFUND",
+          "user_count": 1
+        },
+        {
+          "country": "Japan",
+          "instrument": "NASDAQ",
+          "txn_type": "TRANSFER",
+          "user_count": 1
+        },
+        {
+          "country": "Japan",
+          "instrument": "Natural Gas",
+          "txn_type": "REFUND",
+          "user_count": 1
+        },
+        {
+          "country": "Japan",
+          "instrument": "Natural Gas",
+          "txn_type": "TRADE",
+          "user_count": 1
+        },
+        {
+          "country": "Japan",
+          "instrument": "Silver",
+          "txn_type": "FEE",
+          "user_count": 1
+        },
+        {
+          "country": "Japan",
+          "instrument": "TSLA",
+          "txn_type": "FEE",
+          "user_count": 1
+        },
+        {
+          "country": "Japan",
+          "instrument": "XRP/USD",
+          "txn_type": "TRADE",
+          "user_count": 1
+        },
+        {
+          "country": "Kuwait",
+          "instrument": "AAPL",
+          "txn_type": "WITHDRAWAL",
+          "user_count": 1
+        },
+        {
+          "country": "Kuwait",
+          "instrument": "MSFT",
+          "txn_type": "REFUND",
+          "user_count": 1
+        },
+        {
+          "country": "Kuwait",
+          "instrument": "TSLA",
+          "txn_type": "FEE",
+          "user_count": 1
+        },
+        {
+          "country": "Qatar",
+          "instrument": "",
+          "txn_type": "FEE",
+          "user_count": 1
+        },
+        {
+          "country": "Qatar",
+          "instrument": "",
+          "txn_type": "TRADE",
+          "user_count": 1
+        },
+        {
+          "country": "Qatar",
+          "instrument": "",
+          "txn_type": "TRANSFER",
+          "user_count": 1
+        },
+        {
+          "country": "Qatar",
+          "instrument": "AAPL",
+          "txn_type": "FEE",
+          "user_count": 1
+        },
+        {
+          "country": "Qatar",
+          "instrument": "AAPL",
+          "txn_type": "WITHDRAWAL",
+          "user_count": 1
+        },
+        {
+          "country": "Qatar",
+          "instrument": "AUD/USD",
+          "txn_type": "WITHDRAWAL",
+          "user_count": 1
+        },
+        {
+          "country": "Qatar",
+          "instrument": "BTC/USD",
+          "txn_type": "FEE",
+          "user_count": 1
+        },
+        {
+          "country": "Qatar",
+          "instrument": "DAX",
+          "txn_type": "WITHDRAWAL",
+          "user_count": 1
+        },
+        {
+          "country": "Qatar",
+          "instrument": "NVDA",
+          "txn_type": "DEPOSIT",
+          "user_count": 1
+        },
+        {
+          "country": "Qatar",
+          "instrument": "Natural Gas",
+          "txn_type": "TRADE",
+          "user_count": 1
+        },
+        {
+          "country": "Qatar",
+          "instrument": "S&P500",
+          "txn_type": "TRANSFER",
+          "user_count": 1
+        },
+        {
+          "country": "Qatar",
+          "instrument": "TSLA",
+          "txn_type": "REFUND",
+          "user_count": 1
+        },
+        {
+          "country": "Qatar",
+          "instrument": "USD/JPY",
+          "txn_type": "REFUND",
+          "user_count": 1
+        },
+        {
+          "country": "Qatar",
+          "instrument": "XRP/USD",
+          "txn_type": "TRANSFER",
+          "user_count": 1
+        },
+        {
+          "country": "Saudi Arabia",
+          "instrument": "AMZN",
+          "txn_type": "DEPOSIT",
+          "user_count": 1
+        },
+        {
+          "country": "Saudi Arabia",
+          "instrument": "DAX",
+          "txn_type": "REFUND",
+          "user_count": 1
+        },
+        {
+          "country": "Saudi Arabia",
+          "instrument": "EUR/USD",
+          "txn_type": "TRADE",
+          "user_count": 1
+        },
+        {
+          "country": "Singapore",
+          "instrument": "",
+          "txn_type": "FEE",
+          "user_count": 1
+        },
+        {
+          "country": "Singapore",
+          "instrument": "AAPL",
+          "txn_type": "FEE",
+          "user_count": 1
+        },
+        {
+          "country": "Singapore",
+          "instrument": "BTC/USD",
+          "txn_type": "TRANSFER",
+          "user_count": 1
+        },
+        {
+          "country": "Singapore",
+          "instrument": "ETH/USD",
+          "txn_type": "DEPOSIT",
+          "user_count": 1
+        },
+        {
+          "country": "Singapore",
+          "instrument": "ETH/USD",
+          "txn_type": "TRADE",
+          "user_count": 1
+        },
+        {
+          "country": "Singapore",
+          "instrument": "FTSE100",
+          "txn_type": "DEPOSIT",
+          "user_count": 1
+        },
+        {
+          "country": "Singapore",
+          "instrument": "GOOGL",
+          "txn_type": "TRADE",
+          "user_count": 1
+        },
+        {
+          "country": "Singapore",
+          "instrument": "META",
+          "txn_type": "WITHDRAWAL",
+          "user_count": 1
+        },
+        {
+          "country": "Singapore",
+          "instrument": "MSFT",
+          "txn_type": "TRADE",
+          "user_count": 1
+        },
+        {
+          "country": "Singapore",
+          "instrument": "Natural Gas",
+          "txn_type": "DEPOSIT",
+          "user_count": 1
+        },
+        {
+          "country": "Singapore",
+          "instrument": "Natural Gas",
+          "txn_type": "REFUND",
+          "user_count": 1
+        },
+        {
+          "country": "Singapore",
+          "instrument": "Natural Gas",
+          "txn_type": "TRADE",
+          "user_count": 1
+        },
+        {
+          "country": "Singapore",
+          "instrument": "Natural Gas",
+          "txn_type": "TRANSFER",
+          "user_count": 1
+        },
+        {
+          "country": "Singapore",
+          "instrument": "Natural Gas",
+          "txn_type": "WITHDRAWAL",
+          "user_count": 1
+        },
+        {
+          "country": "Singapore",
+          "instrument": "Nikkei",
+          "txn_type": "FEE",
+          "user_count": 1
+        },
+        {
+          "country": "Singapore",
+          "instrument": "Silver",
+          "txn_type": "FEE",
+          "user_count": 1
+        },
+        {
+          "country": "Singapore",
+          "instrument": "Silver",
+          "txn_type": "REFUND",
+          "user_count": 1
+        },
+        {
+          "country": "Singapore",
+          "instrument": "USD/JPY",
+          "txn_type": "REFUND",
+          "user_count": 1
+        },
+        {
+          "country": "Singapore",
+          "instrument": "USD/JPY",
+          "txn_type": "TRADE",
+          "user_count": 1
+        },
+        {
+          "country": "UAE",
+          "instrument": "DAX",
+          "txn_type": "REFUND",
+          "user_count": 1
+        },
+        {
+          "country": "UAE",
+          "instrument": "DAX",
+          "txn_type": "TRADE",
+          "user_count": 1
+        },
+        {
+          "country": "UAE",
+          "instrument": "ETH/USD",
+          "txn_type": "REFUND",
+          "user_count": 1
+        },
+        {
+          "country": "UAE",
+          "instrument": "EUR/USD",
+          "txn_type": "TRADE",
+          "user_count": 1
+        },
+        {
+          "country": "UAE",
+          "instrument": "GOOGL",
+          "txn_type": "DEPOSIT",
+          "user_count": 1
+        },
+        {
+          "country": "UAE",
+          "instrument": "MSFT",
+          "txn_type": "TRADE",
+          "user_count": 1
+        },
+        {
+          "country": "UAE",
+          "instrument": "NASDAQ",
+          "txn_type": "TRANSFER",
+          "user_count": 1
+        },
+        {
+          "country": "UAE",
+          "instrument": "Nikkei",
+          "txn_type": "TRANSFER",
+          "user_count": 1
+        },
+        {
+          "country": "UAE",
+          "instrument": "Oil",
+          "txn_type": "DEPOSIT",
+          "user_count": 1
+        },
+        {
+          "country": "United Kingdom",
+          "instrument": "",
+          "txn_type": "DEPOSIT",
+          "user_count": 1
+        },
+        {
+          "country": "United Kingdom",
+          "instrument": "BTC/USD",
+          "txn_type": "FEE",
+          "user_count": 1
+        },
+        {
+          "country": "United Kingdom",
+          "instrument": "BTC/USD",
+          "txn_type": "REFUND",
+          "user_count": 1
+        },
+        {
+          "country": "United Kingdom",
+          "instrument": "BTC/USD",
+          "txn_type": "WITHDRAWAL",
+          "user_count": 1
+        },
+        {
+          "country": "United Kingdom",
+          "instrument": "FTSE100",
+          "txn_type": "TRADE",
+          "user_count": 1
+        },
+        {
+          "country": "United Kingdom",
+          "instrument": "GOOGL",
+          "txn_type": "DEPOSIT",
+          "user_count": 1
+        },
+        {
+          "country": "United Kingdom",
+          "instrument": "Gold",
+          "txn_type": "WITHDRAWAL",
+          "user_count": 1
+        },
+        {
+          "country": "United Kingdom",
+          "instrument": "MSFT",
+          "txn_type": "REFUND",
+          "user_count": 1
+        },
+        {
+          "country": "United Kingdom",
+          "instrument": "MSFT",
+          "txn_type": "TRADE",
+          "user_count": 1
+        },
+        {
+          "country": "United Kingdom",
+          "instrument": "NVDA",
+          "txn_type": "DEPOSIT",
+          "user_count": 1
+        },
+        {
+          "country": "United Kingdom",
+          "instrument": "Natural Gas",
+          "txn_type": "TRADE",
+          "user_count": 1
+        },
+        {
+          "country": "United Kingdom",
+          "instrument": "Natural Gas",
+          "txn_type": "WITHDRAWAL",
+          "user_count": 1
+        },
+        {
+          "country": "United Kingdom",
+          "instrument": "S&P500",
+          "txn_type": "TRANSFER",
+          "user_count": 1
+        },
+        {
+          "country": "United Kingdom",
+          "instrument": "S&P500",
+          "txn_type": "WITHDRAWAL",
+          "user_count": 1
+        },
+        {
+          "country": "United Kingdom",
+          "instrument": "TSLA",
+          "txn_type": "FEE",
+          "user_count": 1
+        },
+        {
+          "country": "United Kingdom",
+          "instrument": "USD/JPY",
+          "txn_type": "REFUND",
+          "user_count": 1
+        },
+        {
+          "country": "United Kingdom",
+          "instrument": "XRP/USD",
+          "txn_type": "TRADE",
+          "user_count": 1
+        },
+        {
+          "country": "United Kingdom",
+          "instrument": "XRP/USD",
+          "txn_type": "TRANSFER",
+          "user_count": 1
+        },
+        {
+          "country": "United States",
+          "instrument": "",
+          "txn_type": "WITHDRAWAL",
+          "user_count": 1
+        },
+        {
+          "country": "United States",
+          "instrument": "AMZN",
+          "txn_type": "DEPOSIT",
+          "user_count": 1
+        },
+        {
+          "country": "United States",
+          "instrument": "DAX",
+          "txn_type": "REFUND",
+          "user_count": 1
+        },
+        {
+          "country": "United States",
+          "instrument": "EUR/USD",
+          "txn_type": "TRADE",
+          "user_count": 1
+        },
+        {
+          "country": "United States",
+          "instrument": "META",
+          "txn_type": "WITHDRAWAL",
+          "user_count": 1
+        },
+        {
+          "country": "United States",
+          "instrument": "MSFT",
+          "txn_type": "DEPOSIT",
+          "user_count": 1
+        },
+        {
+          "country": "United States",
+          "instrument": "XRP/USD",
+          "txn_type": "WITHDRAWAL",
+          "user_count": 1
+        }
+      ],
+      "visualization_config": {
+        "chart_type": "bar",
+        "title": "High-Risk User Distribution by Country and Activity",
+        "x_axis_key": "country",
+        "y_axis_key": "user_count",
+        "label": "High-Risk User Count",
+        "description": "A bar chart is the most effective way to compare the concentration of high-risk users across different countries. It allows for easy identification of disproportionate concentrations in specific geographic regions as requested in the user's query."
+      },
+      "insight": "Our analysis of users with risk scores in the 80th percentile reveals a notable concentration of high-risk activity originating from Kuwait, representing 12% of the sampled high-risk user base. While the total number of users in this sample is small (184 total records indicating diverse origins, with 20% having no country specified), the presence of multiple transaction types (TRADE, DEPOSIT, FEE) involving various instruments (MSFT, ETH/USD, Natural Gas, Nikkei) from Kuwait warrants further scrutiny. This pattern suggests a potential emerging operational risk or a targeted exploitation vector originating from this region. The null 'country' values also represent a blind spot that needs to be addressed to get a complete risk picture.",
+      "recommendation": [
+        "Initiate a focused risk assessment for users logging in from Kuwait, analyzing their transaction history, patterns, and the specific instruments they interact with. This should include investigating the reasons for the higher concentration of high-risk scores from this region.",
+        "Implement enhanced data enrichment strategies to reduce 'null' country data points. This will provide a more comprehensive and accurate geographic distribution of high-risk user activity, enabling more precise risk mitigation."
+      ],
+      "original_query": "Analyze users with a 'risk_score' above the 80th percentile. Segment these users by the 'country' of their login events and identify if there's a disproportionate concentration of these high-risk users originating from emerging or developing economies. Further investigate the 'instrument' types and 'txn_type' they engage with to understand the nature of their high-risk exposure.",
+      "depth": 0,
+      "parent_mission_id": null,
+      "rationale": "",
+      "timestamp": "LIVE AUDIT",
+      "logs": [
+        {
+          "ts": 1770470715.164,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [classify_intent]"
+        },
+        {
+          "ts": 1770470715.196,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Starting Intent Classification and Preprocessing in parallel for domain: risk"
+        },
+        {
+          "ts": 1770470721.058,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classifying intent for domain: risk | Query: Analyze users with a 'risk_score' above the 80th percentile. Segment these users by the 'country' of their login events and identify if there's a disproportionate concentration of these high-risk users originating from emerging or developing economies. Further investigate the 'instrument' types and 'txn_type' they engage with to understand the nature of their high-risk exposure."
+        },
+        {
+          "ts": 1770470721.081,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770470723.635,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"intent\": \"SELECT\",\n  \"confidence\": 1...."
+        },
+        {
+          "ts": 1770470723.648,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classification Result: SELECT (conf: 1.0) | Needs Clarification: False"
+        },
+        {
+          "ts": 1770470738.464,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770470738.995,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: [\"users\", \"login_events\", \"transactions\"]..."
+        },
+        {
+          "ts": 1770470739.029,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770470740.501,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"resolved_entities\": {\n    \"users.risk..."
+        },
+        {
+          "ts": 1770470740.51,
+          "level": "INFO",
+          "node": "entity_extractor.py",
+          "msg": "Final Extracted/Resolved Entities: {'users.risk_score': '> 80', 'login_events.country': ['Saudi Arabia', 'India', 'Brazil', 'UAE', 'Kuwait', 'Qatar'], 'transactions.instrument': ['XRP/USD', 'AMZN', 'AAPL', 'DAX', 'FTSE100', 'GOOGL', 'AUD/USD', 'Natural Gas', 'Nikkei', 'Oil', 'NVDA', 'EUR/USD', 'BTC/USD', 'ETH/USD', 'NASDAQ', 'GBP/USD', 'USD/JPY', 'MSFT', 'TSLA'], 'transactions.txn_type': ['REFUND', 'DEPOSIT', 'WITHDRAWAL', 'TRANSFER', 'TRADE', 'FEE']}"
+        },
+        {
+          "ts": 1770470745.049,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Intent classified: SELECT (conf: 1.0) | Needs Clarification: False"
+        },
+        {
+          "ts": 1770470757.724,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [generate_sql]"
+        },
+        {
+          "ts": 1770470757.735,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "Generating SQL for domain: risk | Query: Analyze users with a 'risk_score' above the 80th percentile. Segment these users by the 'country' of their login events and identify if there's a disproportionate concentration of these high-risk users originating from emerging or developing economies. Further investigate the 'instrument' types and 'txn_type' they engage with to understand the nature of their high-risk exposure."
+        },
+        {
+          "ts": 1770470757.752,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "Using custom SQL prompt for domain: risk"
+        },
+        {
+          "ts": 1770470757.755,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770470759.202,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: WITH HighRiskUsers AS (\n  SELECT\n    user_id\n  FRO..."
+        },
+        {
+          "ts": 1770470759.206,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "SQL Generated and cleaned: WITH HighRiskUsers AS (\n  SELECT\n    user_id\n  FRO..."
+        },
+        {
+          "ts": 1770470759.214,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "SQL Generated: WITH HighRiskUsers AS (\n  SELECT\n    user_id\n  FRO..."
+        },
+        {
+          "ts": 1770470760.859,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [validate_sql]"
+        },
+        {
+          "ts": 1770470761.639,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [execute_query]"
+        },
+        {
+          "ts": 1770470761.665,
+          "level": "INFO",
+          "node": "DB_EXEC",
+          "msg": "Executing SQL: WITH HighRiskUsers AS (\n  SELECT\n    user_id\n  FROM users\n  WHERE\n    risk_score > (\n      SELECT\n        risk_score\n      FROM users\n      ORDER BY\n        risk_score\n      LIMIT 1 OFFSET (\n        SELECT\n          COUNT(*)\n        FROM users\n      ) * 80 / 100\n    )\n), HighRiskUserLogins AS (\n  SELECT\n    u.username,\n    u.risk_score,\n    le.country,\n    t.instrument,\n    t.txn_type\n  FROM users AS u\n  JOIN HighRiskUsers AS hru\n    ON u.user_id = hru.user_id\n  LEFT JOIN login_events AS le\n    ON u.user_id = le.user_id\n  LEFT JOIN transactions AS t\n    ON u.user_id = t.user_id\n)\nSELECT\n  country,\n  instrument,\n  txn_type,\n  COUNT(username) AS user_count\nFROM HighRiskUserLogins\nGROUP BY\n  country,\n  instrument,\n  txn_type\nORDER BY\n  user_count DESC;"
+        },
+        {
+          "ts": 1770470761.769,
+          "level": "INFO",
+          "node": "DB_EXEC",
+          "msg": "Execution complete. Returned 184 rows."
+        },
+        {
+          "ts": 1770470761.784,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Query execution successful. Rows: 184"
+        },
+        {
+          "ts": 1770470761.9,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [insight_recommendation]"
+        },
+        {
+          "ts": 1770470761.913,
+          "level": "INFO",
+          "node": "INSIGHT",
+          "msg": "Generating insights for 184 rows in domain: risk"
+        },
+        {
+          "ts": 1770470761.927,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770470763.989,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"insight\": \"Our analysis of users with..."
+        },
+        {
+          "ts": 1770470763.994,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Insights generated successfully."
+        },
+        {
+          "ts": 1770470764.001,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [recommend_visualization]"
+        },
+        {
+          "ts": 1770470764.017,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-3-flash-preview] generating response..."
+        },
+        {
+          "ts": 1770470769.997,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-3-flash-preview]. Snippet: ```json\n{\n  \"chart_type\": \"bar\",\n  \"title\": \"High-..."
+        },
+        {
+          "ts": 1770470770.0,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Visualization recommended: bar"
+        }
+      ]
+    },
+    {
+      "mission_id": "dd-risk_001-1-1",
+      "mission_name": "High-Risk User Login Patterns from Kuwait",
+      "domain": "risk",
+      "severity": "LOW",
+      "risk_score": 0,
+      "risk_factors": {},
+      "sql": null,
+      "data_count": 0,
+      "results": [],
+      "visualization_config": null,
+      "insight": null,
+      "recommendation": null,
+      "original_query": "Investigate the login event history for users identified as high-risk (risk score above 80th percentile) who have logged in from Kuwait. Detail their login attempts, IP addresses, device types, and any associated failures for the period when the security scan was active.",
+      "depth": 1,
+      "parent_mission_id": "risk_001",
+      "rationale": "This query focuses on the login behavior of high-risk users from Kuwait. Understanding their login patterns, including IP addresses and device types, can help identify potential account compromises, brute-force attacks, or the use of anonymizing services, which are common indicators of high-risk activity.",
+      "timestamp": "LIVE AUDIT",
+      "logs": [
+        {
+          "ts": 1770470772.169,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [classify_intent]"
+        },
+        {
+          "ts": 1770470772.184,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Starting Intent Classification and Preprocessing in parallel for domain: risk"
+        },
+        {
+          "ts": 1770470773.088,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classifying intent for domain: risk | Query: Investigate the login event history for users identified as high-risk (risk score above 80th percentile) who have logged in from Kuwait. Detail their login attempts, IP addresses, device types, and any associated failures for the period when the security scan was active."
+        },
+        {
+          "ts": 1770470773.124,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770470774.123,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"intent\": \"SELECT\",\n  \"confidence\": 0...."
+        },
+        {
+          "ts": 1770470774.149,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classification Result: SELECT (conf: 0.9) | Needs Clarification: True"
+        },
+        {
+          "ts": 1770470776.227,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770470776.951,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: [\"users\", \"login_events\"]..."
+        },
+        {
+          "ts": 1770470776.966,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770470777.876,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"resolved_entities\": {\n    \"users.risk..."
+        },
+        {
+          "ts": 1770470777.879,
+          "level": "INFO",
+          "node": "entity_extractor.py",
+          "msg": "Final Extracted/Resolved Entities: {'users.risk_score': '71', 'login_events.country': 'Kuwait', 'login_events.status': 'FAILED'}"
+        },
+        {
+          "ts": 1770470777.908,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Intent classified: SELECT (conf: 0.9) | Needs Clarification: True"
+        },
+        {
+          "ts": 1770470779.117,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770470780.465,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: I understand you're looking into login event histo..."
+        }
+      ]
+    },
+    {
+      "mission_id": "dd-risk_001-1-0",
+      "mission_name": "High-Risk User Activity in Kuwait - Transaction Details",
+      "domain": "risk",
+      "severity": "LOW",
+      "risk_score": 0,
+      "risk_factors": {},
+      "sql": "SELECT t.*\nFROM transactions t\nJOIN users u ON t.user_id = u.user_id\nJOIN login_events le ON u.user_id = le.user_id\nWHERE\n  UPPER(le.country) LIKE '%KUWAIT%' AND\n  u.risk_score > (SELECT AVG(risk_score) + (STDDEV(risk_score) * 0.84) FROM users) AND\n  (\n    UPPER(t.instrument) LIKE '%MSFT%' OR\n    UPPER(t.instrument) LIKE '%ETH/USD%' OR\n    UPPER(t.instrument) LIKE '%NATURAL GAS%' OR\n    UPPER(t.instrument) LIKE '%NIKKEI%'\n  ) AND\n  (\n    UPPER(t.txn_type) LIKE '%TRADE%' OR\n    UPPER(t.txn_type) LIKE '%DEPOSIT%' OR\n    UPPER(t.txn_type) LIKE '%FEE%'\n  );",
+      "data_count": 0,
+      "results": [],
+      "visualization_config": null,
+      "insight": "No data found to analyze.",
+      "recommendation": "Try broadening your search criteria or checking if the data for this period is available.",
+      "original_query": "Show me all transaction details for users who logged in from Kuwait and have a risk score above the 80th percentile, focusing on the instruments MSFT, ETH/USD, Natural Gas, and Nikkei, and transaction types TRADE, DEPOSIT, and FEE.",
+      "depth": 1,
+      "parent_mission_id": "risk_001",
+      "rationale": "This query aims to understand the specific transactions associated with high-risk users from Kuwait. By filtering on the identified instruments and transaction types, we can gain insight into the nature of their high-risk exposure and potentially identify patterns of fraudulent or risky behavior.",
+      "timestamp": "LIVE AUDIT",
+      "logs": [
+        {
+          "ts": 1770470772.12,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [classify_intent]"
+        },
+        {
+          "ts": 1770470772.15,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Starting Intent Classification and Preprocessing in parallel for domain: risk"
+        },
+        {
+          "ts": 1770470772.2,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classifying intent for domain: risk | Query: Show me all transaction details for users who logged in from Kuwait and have a risk score above the 80th percentile, focusing on the instruments MSFT, ETH/USD, Natural Gas, and Nikkei, and transaction types TRADE, DEPOSIT, and FEE."
+        },
+        {
+          "ts": 1770470772.237,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770470773.051,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"intent\": \"SELECT\",\n  \"confidence\": 1...."
+        },
+        {
+          "ts": 1770470773.066,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classification Result: SELECT (conf: 1.0) | Needs Clarification: False"
+        },
+        {
+          "ts": 1770470774.18,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770470775.072,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: [\"users\", \"transactions\", \"login_events\"]..."
+        },
+        {
+          "ts": 1770470775.114,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770470776.201,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"resolved_entities\": {\n    \"login_even..."
+        },
+        {
+          "ts": 1770470776.204,
+          "level": "INFO",
+          "node": "entity_extractor.py",
+          "msg": "Final Extracted/Resolved Entities: {'login_events.country': 'Kuwait', 'users.risk_score': [89, 75, 71, 72], 'transactions.instrument': ['MSFT', 'ETH/USD', 'Natural Gas', 'Nikkei'], 'transactions.txn_type': ['TRADE', 'DEPOSIT', 'FEE']}"
+        },
+        {
+          "ts": 1770470777.902,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Intent classified: SELECT (conf: 1.0) | Needs Clarification: False"
+        },
+        {
+          "ts": 1770470777.927,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [generate_sql]"
+        },
+        {
+          "ts": 1770470777.93,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "Generating SQL for domain: risk | Query: Show me all transaction details for users who logged in from Kuwait and have a risk score above the 80th percentile, focusing on the instruments MSFT, ETH/USD, Natural Gas, and Nikkei, and transaction types TRADE, DEPOSIT, and FEE."
+        },
+        {
+          "ts": 1770470777.949,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "Using custom SQL prompt for domain: risk"
+        },
+        {
+          "ts": 1770470777.958,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770470779.105,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: SELECT t.*\nFROM transactions t\nJOIN users u ON t.u..."
+        },
+        {
+          "ts": 1770470779.109,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "SQL Generated and cleaned: SELECT t.*\nFROM transactions t\nJOIN users u ON t.u..."
+        },
+        {
+          "ts": 1770470779.112,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "SQL Generated: SELECT t.*\nFROM transactions t\nJOIN users u ON t.u..."
+        },
+        {
+          "ts": 1770470780.476,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [validate_sql]"
+        },
+        {
+          "ts": 1770470780.515,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [execute_query]"
+        },
+        {
+          "ts": 1770470780.519,
+          "level": "INFO",
+          "node": "DB_EXEC",
+          "msg": "Executing SQL: SELECT t.*\nFROM transactions t\nJOIN users u ON t.user_id = u.user_id\nJOIN login_events le ON u.user_id = le.user_id\nWHERE\n  UPPER(le.country) LIKE '%KUWAIT%' AND\n  u.risk_score > (SELECT AVG(risk_score) + (STDDEV(risk_score) * 0.84) FROM users) AND\n  (\n    UPPER(t.instrument) LIKE '%MSFT%' OR\n    UPPER(t.instrument) LIKE '%ETH/USD%' OR\n    UPPER(t.instrument) LIKE '%NATURAL GAS%' OR\n    UPPER(t.instrument) LIKE '%NIKKEI%'\n  ) AND\n  (\n    UPPER(t.txn_type) LIKE '%TRADE%' OR\n    UPPER(t.txn_type) LIKE '%DEPOSIT%' OR\n    UPPER(t.txn_type) LIKE '%FEE%'\n  );"
+        },
+        {
+          "ts": 1770470780.53,
+          "level": "ERROR",
+          "node": "DB_EXEC",
+          "msg": "DATABASE EXECUTION ERROR: (sqlite3.OperationalError) no such function: STDDEV\n[SQL: SELECT t.*\nFROM transactions t\nJOIN users u ON t.user_id = u.user_id\nJOIN login_events le ON u.user_id = le.user_id\nWHERE\n  UPPER(le.country) LIKE '%KUWAIT%' AND\n  u.risk_score > (SELECT AVG(risk_score) + (STDDEV(risk_score) * 0.84) FROM users) AND\n  (\n    UPPER(t.instrument) LIKE '%MSFT%' OR\n    UPPER(t.instrument) LIKE '%ETH/USD%' OR\n    UPPER(t.instrument) LIKE '%NATURAL GAS%' OR\n    UPPER(t.instrument) LIKE '%NIKKEI%'\n  ) AND\n  (\n    UPPER(t.txn_type) LIKE '%TRADE%' OR\n    UPPER(t.txn_type) LIKE '%DEPOSIT%' OR\n    UPPER(t.txn_type) LIKE '%FEE%'\n  );]\n(Background on this error at: https://sqlalche.me/e/20/e3q8) | Query: SELECT t.*\nFROM transactions t\nJOIN users u ON t.user_id = u.user_id\nJOIN login_events le ON u.user_id = le.user_id\nWHERE\n  UPPER(le.country) LIKE '%KUWAIT%' AND\n  u.risk_score > (SELECT AVG(risk_score) + (STDDEV(risk_score) * 0.84) FROM users) AND\n  (\n    UPPER(t.instrument) LIKE '%MSFT%' OR\n    UPPER(t.instrument) LIKE '%ETH/USD%' OR\n    UPPER(t.instrument) LIKE '%NATURAL GAS%' OR\n    UPPER(t.instrument) LIKE '%NIKKEI%'\n  ) AND\n  (\n    UPPER(t.txn_type) LIKE '%TRADE%' OR\n    UPPER(t.txn_type) LIKE '%DEPOSIT%' OR\n    UPPER(t.txn_type) LIKE '%FEE%'\n  );"
+        },
+        {
+          "ts": 1770470780.533,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Query execution successful. Rows: 0"
+        },
+        {
+          "ts": 1770470780.54,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [insight_recommendation]"
+        },
+        {
+          "ts": 1770470780.545,
+          "level": "INFO",
+          "node": "INSIGHT",
+          "msg": "Generating insights for 0 rows in domain: risk"
+        },
+        {
+          "ts": 1770470780.557,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Insights generated successfully."
+        },
+        {
+          "ts": 1770470780.572,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [recommend_visualization]"
+        },
+        {
+          "ts": 1770470780.574,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "No results for visualization recommendation."
+        }
+      ]
+    }
+  ],
+  "clusters": [],
+  "narrative": {
+    "executive_summary": "Our real-time scan has executed 10 missions across security, compliance, risk, and operations domains. While most detections are currently low severity, a significant concentration of high-risk user activity has been identified originating from Kuwait. This concentration, representing 12% of our sampled high-risk user base, warrants immediate attention to mitigate potential compliance and financial risks.",
+    "threat_vectors": [
+      {
+        "name": "High-Risk User Concentration in Emerging Economies (Kuwait)",
+        "severity": "MEDIUM",
+        "description": "A notable concentration of high-risk user activity, comprising 12% of the sampled high-risk user base, has been identified originating from Kuwait. This presents a potential risk to compliance and financial operations."
+      }
+    ],
+    "immediate_actions": [
+      "Prioritize a focused review of the 184 high-risk user records identified, with specific attention to those originating from Kuwait.",
+      "Initiate a targeted compliance review for the identified Kuwait-based high-risk users to ensure adherence to KYC and PEP regulations.",
+      "Alert the financial crime compliance team to the concentration of high-risk activity from Kuwait for potential enhanced monitoring.",
+      "Investigate the root cause of the high-risk user concentration from Kuwait, including potential geographic-specific vulnerabilities or targeted fraudulent activity."
+    ],
+    "monitoring_recommendations": [
+      "Continue to monitor the risk score and activity patterns of users originating from Kuwait for any escalation or new anomalies.",
+      "Implement enhanced real-time monitoring for login velocity and transaction patterns specifically for users identified as high-risk and from emerging economies."
+    ],
+    "overall_risk": 42,
+    "overall_severity": "MEDIUM",
+    "title": "Intelligence Brief - LIVE"
+  }
+}

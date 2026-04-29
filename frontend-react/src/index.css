@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+:root {
+    font-family: 'Ubuntu', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+
+    /* Deriv Brand Colors */
+    --color-primary-red: #ff444f;
+    --color-primary-green: #00b67b;
+    --color-dark-navy: #181c25;
+    --color-darker-navy: #20242f;
+    --color-light-gray: #f6f7f8;
+    --color-white: #ffffff;
+    --color-black: #000000;
+
+    color-scheme: dark;
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+}
+
+#root {
+    width: 100%;
+    height: 100vh;
+}

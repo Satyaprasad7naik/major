@@ -1,0 +1,4215 @@
+{
+  "scan_id": "scan-20260207T113157",
+  "timestamp": "2026-02-07T11:31:57.933286",
+  "stats": {
+    "total_missions": 15,
+    "critical_count": 0,
+    "high_count": 1,
+    "overall_risk": 44,
+    "overall_severity": "HIGH"
+  },
+  "detections": [
+    {
+      "mission_id": "COM002",
+      "mission_name": "PEP Transactional Anomaly Detection Beyond Standard Deviations",
+      "domain": "compliance",
+      "severity": "LOW",
+      "risk_score": 0,
+      "risk_factors": {},
+      "sql": null,
+      "data_count": 0,
+      "results": [],
+      "visualization_config": null,
+      "insight": null,
+      "recommendation": null,
+      "original_query": "For Politically Exposed Persons (PEPs), identify significant deviations in transaction volume, frequency, and instrument usage that exceed a predefined multi-standard deviation threshold compared to their own historical patterns and the behavior of non-PEP users in similar risk tiers, specifically looking for patterns that might suggest sanctions evasion or illicit financial flows.",
+      "depth": 0,
+      "parent_mission_id": null,
+      "rationale": "",
+      "timestamp": "LIVE AUDIT",
+      "logs": [
+        {
+          "ts": 1770463700.371,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [classify_intent]"
+        },
+        {
+          "ts": 1770463700.373,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Starting Intent Classification and Preprocessing in parallel for domain: compliance"
+        },
+        {
+          "ts": 1770463703.556,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classifying intent for domain: compliance | Query: For Politically Exposed Persons (PEPs), identify significant deviations in transaction volume, frequency, and instrument usage that exceed a predefined multi-standard deviation threshold compared to their own historical patterns and the behavior of non-PEP users in similar risk tiers, specifically looking for patterns that might suggest sanctions evasion or illicit financial flows."
+        },
+        {
+          "ts": 1770463703.558,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463704.171,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"intent\": \"SELECT\",\n  \"confidence\": 0...."
+        },
+        {
+          "ts": 1770463704.184,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classification Result: SELECT (conf: 0.9) | Needs Clarification: True"
+        },
+        {
+          "ts": 1770463714.032,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463714.498,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: [\"users\", \"transactions\"]..."
+        },
+        {
+          "ts": 1770463714.503,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463715.714,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"resolved_entities\": {\n    \"users.is_p..."
+        },
+        {
+          "ts": 1770463715.716,
+          "level": "INFO",
+          "node": "entity_extractor.py",
+          "msg": "Final Extracted/Resolved Entities: {'users.is_pep': '1'}"
+        },
+        {
+          "ts": 1770463724.113,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Intent classified: SELECT (conf: 0.9) | Needs Clarification: True"
+        },
+        {
+          "ts": 1770463727.393,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463729.176,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: I understand you're interested in identifying susp..."
+        }
+      ]
+    },
+    {
+      "mission_id": "OPS002",
+      "mission_name": "Systemic Impact of Payment Method Vulnerabilities",
+      "domain": "operations",
+      "severity": "LOW",
+      "risk_score": 0,
+      "risk_factors": {},
+      "sql": null,
+      "data_count": 0,
+      "results": [],
+      "visualization_config": null,
+      "insight": null,
+      "recommendation": null,
+      "original_query": "Identify if a significant proportion of transaction failures are attributable to a single or a limited set of payment methods, and analyze the correlation between these failures and specific user segments (e.g., high-risk users, new users) to understand potential systemic vulnerabilities in payment processing infrastructure.",
+      "depth": 0,
+      "parent_mission_id": null,
+      "rationale": "",
+      "timestamp": "LIVE AUDIT",
+      "logs": [
+        {
+          "ts": 1770463700.378,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [classify_intent]"
+        },
+        {
+          "ts": 1770463700.379,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Starting Intent Classification and Preprocessing in parallel for domain: operations"
+        },
+        {
+          "ts": 1770463705.044,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classifying intent for domain: operations | Query: Identify if a significant proportion of transaction failures are attributable to a single or a limited set of payment methods, and analyze the correlation between these failures and specific user segments (e.g., high-risk users, new users) to understand potential systemic vulnerabilities in payment processing infrastructure."
+        },
+        {
+          "ts": 1770463705.05,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463705.621,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"intent\": \"SELECT\",\n  \"confidence\": 1...."
+        },
+        {
+          "ts": 1770463705.621,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classification Result: SELECT (conf: 1.0) | Needs Clarification: True"
+        },
+        {
+          "ts": 1770463717.287,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463717.923,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: [\"users\", \"transactions\"]..."
+        },
+        {
+          "ts": 1770463717.926,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463718.763,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"resolved_entities\": {},\n  \"metadata\":..."
+        },
+        {
+          "ts": 1770463718.763,
+          "level": "INFO",
+          "node": "entity_extractor.py",
+          "msg": "Final Extracted/Resolved Entities: {}"
+        },
+        {
+          "ts": 1770463724.115,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Intent classified: SELECT (conf: 1.0) | Needs Clarification: True"
+        },
+        {
+          "ts": 1770463730.112,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463731.548,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: I understand you're interested in understanding th..."
+        }
+      ]
+    },
+    {
+      "mission_id": "RIS001",
+      "mission_name": "Synergistic Risk Indicator Aggregation for Overlooked Threats",
+      "domain": "risk",
+      "severity": "LOW",
+      "risk_score": 0,
+      "risk_factors": {},
+      "sql": null,
+      "data_count": 0,
+      "results": [],
+      "visualization_config": null,
+      "insight": null,
+      "recommendation": null,
+      "original_query": "Develop a model to identify users exhibiting a synergistic combination of multiple moderate risk indicators (e.g., unusual login country + moderate risk_score + recent KYC change + specific transaction pattern in a high-risk instrument) that, individually, might be overlooked, but collectively represent a significantly elevated risk profile.",
+      "depth": 0,
+      "parent_mission_id": null,
+      "rationale": "",
+      "timestamp": "LIVE AUDIT",
+      "logs": [
+        {
+          "ts": 1770463700.38,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [classify_intent]"
+        },
+        {
+          "ts": 1770463700.383,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Starting Intent Classification and Preprocessing in parallel for domain: risk"
+        },
+        {
+          "ts": 1770463705.621,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classifying intent for domain: risk | Query: Develop a model to identify users exhibiting a synergistic combination of multiple moderate risk indicators (e.g., unusual login country + moderate risk_score + recent KYC change + specific transaction pattern in a high-risk instrument) that, individually, might be overlooked, but collectively represent a significantly elevated risk profile."
+        },
+        {
+          "ts": 1770463705.631,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463706.195,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"intent\": \"SELECT\",\n  \"confidence\": 0...."
+        },
+        {
+          "ts": 1770463706.195,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classification Result: SELECT (conf: 0.9) | Needs Clarification: True"
+        },
+        {
+          "ts": 1770463718.768,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463719.328,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: [\"users\", \"transactions\", \"login_events\"]..."
+        },
+        {
+          "ts": 1770463719.335,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463720.317,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"resolved_entities\": {\n    \"transactio..."
+        },
+        {
+          "ts": 1770463720.318,
+          "level": "INFO",
+          "node": "entity_extractor.py",
+          "msg": "Final Extracted/Resolved Entities: {'transactions.instrument': 'AMZN', 'transactions.flag_reason': 'Unusual pattern', 'login_events.country': 'Germany', 'users.risk_level': 'MEDIUM', 'users.kyc_status': 'PENDING'}"
+        },
+        {
+          "ts": 1770463724.116,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Intent classified: SELECT (conf: 0.9) | Needs Clarification: True"
+        },
+        {
+          "ts": 1770463731.55,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463734.751,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: I understand you're looking to build a model that ..."
+        }
+      ]
+    },
+    {
+      "mission_id": "RIS002",
+      "mission_name": "Velocity-Based Risk Undervaluation in High-Risk Users",
+      "domain": "risk",
+      "severity": "LOW",
+      "risk_score": 0,
+      "risk_factors": {},
+      "sql": null,
+      "data_count": 0,
+      "results": [],
+      "visualization_config": null,
+      "insight": null,
+      "recommendation": null,
+      "original_query": "For users with a risk_score above a defined high threshold, analyze their transaction velocity (amount and frequency) across different instruments and currencies. Identify if there are specific velocity patterns that are not adequately captured by the current risk scoring model, suggesting potential underestimation of risk and opportunities for rapid capital flight or illicit accumulation.",
+      "depth": 0,
+      "parent_mission_id": null,
+      "rationale": "",
+      "timestamp": "LIVE AUDIT",
+      "logs": [
+        {
+          "ts": 1770463700.385,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [classify_intent]"
+        },
+        {
+          "ts": 1770463700.387,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Starting Intent Classification and Preprocessing in parallel for domain: risk"
+        },
+        {
+          "ts": 1770463706.195,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classifying intent for domain: risk | Query: For users with a risk_score above a defined high threshold, analyze their transaction velocity (amount and frequency) across different instruments and currencies. Identify if there are specific velocity patterns that are not adequately captured by the current risk scoring model, suggesting potential underestimation of risk and opportunities for rapid capital flight or illicit accumulation."
+        },
+        {
+          "ts": 1770463706.198,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463706.85,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"intent\": \"SELECT\",\n  \"confidence\": 1...."
+        },
+        {
+          "ts": 1770463706.851,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classification Result: SELECT (conf: 1.0) | Needs Clarification: True"
+        },
+        {
+          "ts": 1770463720.319,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463720.83,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: [\"users\", \"transactions\"]..."
+        },
+        {
+          "ts": 1770463720.832,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463722.207,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"resolved_entities\": {\n    \"users.risk..."
+        },
+        {
+          "ts": 1770463722.208,
+          "level": "INFO",
+          "node": "entity_extractor.py",
+          "msg": "Final Extracted/Resolved Entities: {'users.risk_score': [45, 72, 89, 75, 71]}"
+        },
+        {
+          "ts": 1770463724.117,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Intent classified: SELECT (conf: 1.0) | Needs Clarification: True"
+        },
+        {
+          "ts": 1770463734.755,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463735.993,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: I understand you're looking to analyze transaction..."
+        }
+      ]
+    },
+    {
+      "mission_id": "SEC001",
+      "mission_name": "Coordinated Account Takeover via Geographically Dispersed Anomalous Logins",
+      "domain": "security",
+      "severity": "LOW",
+      "risk_score": 0,
+      "risk_factors": {},
+      "sql": "SELECT\n  u.username,\n  le1.country AS country1,\n  le1.city AS city1,\n  le2.country AS country2,\n  le2.city AS city2,\n  le1.device_type\nFROM users AS u\nJOIN login_events AS le1\n  ON u.user_id = le1.user_id\nJOIN login_events AS le2\n  ON u.user_id = le2.user_id\nWHERE\n  le1.status LIKE '%SUCCESS%' AND le2.status LIKE '%SUCCESS%' AND le1.created_at <> le2.created_at AND le1.country <> le2.country AND le1.city <> le2.city AND UPPER(le1.device_type) = UPPER(le2.device_type) AND ABS(STRFTIME('%s', le1.created_at) - STRFTIME('%s', le2.created_at)) <= 300;",
+      "data_count": 0,
+      "results": [],
+      "visualization_config": null,
+      "insight": "No data found to analyze.",
+      "recommendation": "Try broadening your search criteria or checking if the data for this period is available.",
+      "original_query": "Identify clusters of users who have experienced simultaneous or near-simultaneous successful login events from geographically distant and disparate countries and cities, using identical or highly similar device types, to detect sophisticated, coordinated account takeover attempts.",
+      "depth": 0,
+      "parent_mission_id": null,
+      "rationale": "",
+      "timestamp": "LIVE AUDIT",
+      "logs": [
+        {
+          "ts": 1770463700.363,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [classify_intent]"
+        },
+        {
+          "ts": 1770463700.365,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Starting Intent Classification and Preprocessing in parallel for domain: security"
+        },
+        {
+          "ts": 1770463700.425,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classifying intent for domain: security | Query: Identify clusters of users who have experienced simultaneous or near-simultaneous successful login events from geographically distant and disparate countries and cities, using identical or highly similar device types, to detect sophisticated, coordinated account takeover attempts."
+        },
+        {
+          "ts": 1770463700.434,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463701.348,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"intent\": \"SELECT\",\n  \"confidence\": 0...."
+        },
+        {
+          "ts": 1770463701.349,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classification Result: SELECT (conf: 0.9) | Needs Clarification: False"
+        },
+        {
+          "ts": 1770463707.506,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463708.074,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: [\"users\", \"login_events\"]..."
+        },
+        {
+          "ts": 1770463708.083,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463708.933,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"resolved_entities\": {\n    \"login_even..."
+        },
+        {
+          "ts": 1770463708.933,
+          "level": "INFO",
+          "node": "entity_extractor.py",
+          "msg": "Final Extracted/Resolved Entities: {'login_events.status': 'SUCCESS', 'login_events.device_type': ['Desktop', 'Mobile', 'Tablet'], 'login_events.failure_reason': None}"
+        },
+        {
+          "ts": 1770463724.11,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Intent classified: SELECT (conf: 0.9) | Needs Clarification: False"
+        },
+        {
+          "ts": 1770463724.135,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [generate_sql]"
+        },
+        {
+          "ts": 1770463724.136,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "Generating SQL for domain: security | Query: Identify clusters of users who have experienced simultaneous or near-simultaneous successful login events from geographically distant and disparate countries and cities, using identical or highly similar device types, to detect sophisticated, coordinated account takeover attempts."
+        },
+        {
+          "ts": 1770463724.14,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "Using custom SQL prompt for domain: security"
+        },
+        {
+          "ts": 1770463724.142,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463725.326,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: SELECT\n  u.username,\n  le1.country AS country1,\n  ..."
+        },
+        {
+          "ts": 1770463725.326,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "SQL Generated and cleaned: SELECT\n  u.username,\n  le1.country AS country1,\n  ..."
+        },
+        {
+          "ts": 1770463725.328,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "SQL Generated: SELECT\n  u.username,\n  le1.country AS country1,\n  ..."
+        },
+        {
+          "ts": 1770463736.904,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [validate_sql]"
+        },
+        {
+          "ts": 1770463737.067,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [execute_query]"
+        },
+        {
+          "ts": 1770463737.073,
+          "level": "INFO",
+          "node": "DB_EXEC",
+          "msg": "Executing SQL: SELECT\n  u.username,\n  le1.country AS country1,\n  le1.city AS city1,\n  le2.country AS country2,\n  le2.city AS city2,\n  le1.device_type\nFROM users AS u\nJOIN login_events AS le1\n  ON u.user_id = le1.user_id\nJOIN login_events AS le2\n  ON u.user_id = le2.user_id\nWHERE\n  le1.status LIKE '%SUCCESS%' AND le2.status LIKE '%SUCCESS%' AND le1.created_at <> le2.created_at AND le1.country <> le2.country AND le1.city <> le2.city AND UPPER(le1.device_type) = UPPER(le2.device_type) AND ABS(STRFTIME('%s', le1.created_at) - STRFTIME('%s', le2.created_at)) <= 300;"
+        },
+        {
+          "ts": 1770463737.105,
+          "level": "INFO",
+          "node": "DB_EXEC",
+          "msg": "Execution complete. Returned 0 rows."
+        },
+        {
+          "ts": 1770463737.107,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Query execution successful. Rows: 0"
+        },
+        {
+          "ts": 1770463737.181,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [insight_recommendation]"
+        },
+        {
+          "ts": 1770463737.183,
+          "level": "INFO",
+          "node": "INSIGHT",
+          "msg": "Generating insights for 0 rows in domain: security"
+        },
+        {
+          "ts": 1770463737.184,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Insights generated successfully."
+        },
+        {
+          "ts": 1770463737.185,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [recommend_visualization]"
+        },
+        {
+          "ts": 1770463737.187,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "No results for visualization recommendation."
+        }
+      ]
+    },
+    {
+      "mission_id": "SEC002",
+      "mission_name": "Device Fingerprint Spoofing for Account Takeover",
+      "domain": "security",
+      "severity": "LOW",
+      "risk_score": 0,
+      "risk_factors": {},
+      "sql": "SELECT u.username, le.country, le.city, le.device_type, le.created_at, COUNT(le.event_id) AS login_count\nFROM users u\nJOIN login_events le ON u.user_id = le.user_id\nGROUP BY u.username, le.country, le.city, le.device_type, le.created_at\nHAVING COUNT(le.event_id) > 5\nORDER BY u.username, le.created_at;",
+      "data_count": 0,
+      "results": [],
+      "visualization_config": null,
+      "insight": "No data found to analyze.",
+      "recommendation": "Try broadening your search criteria or checking if the data for this period is available.",
+      "original_query": "Analyze login events for users who exhibit rapid and frequent changes in device type and operating system within a short timeframe, especially when originating from the same IP address or a narrow range of IPs, to identify potential device fingerprint spoofing indicative of advanced account takeover techniques.",
+      "depth": 0,
+      "parent_mission_id": null,
+      "rationale": "",
+      "timestamp": "LIVE AUDIT",
+      "logs": [
+        {
+          "ts": 1770463700.366,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [classify_intent]"
+        },
+        {
+          "ts": 1770463700.368,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Starting Intent Classification and Preprocessing in parallel for domain: security"
+        },
+        {
+          "ts": 1770463701.351,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classifying intent for domain: security | Query: Analyze login events for users who exhibit rapid and frequent changes in device type and operating system within a short timeframe, especially when originating from the same IP address or a narrow range of IPs, to identify potential device fingerprint spoofing indicative of advanced account takeover techniques."
+        },
+        {
+          "ts": 1770463701.353,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463702.872,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"intent\": \"SELECT\",\n  \"confidence\": 1...."
+        },
+        {
+          "ts": 1770463702.872,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classification Result: SELECT (conf: 1.0) | Needs Clarification: False"
+        },
+        {
+          "ts": 1770463708.933,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463709.449,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: [\"login_events\"]..."
+        },
+        {
+          "ts": 1770463709.453,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463712.572,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"resolved_entities\": {\n    \"login_even..."
+        },
+        {
+          "ts": 1770463712.575,
+          "level": "INFO",
+          "node": "entity_extractor.py",
+          "msg": "Final Extracted/Resolved Entities: {'login_events.device_type': ['Desktop', 'Mobile', 'Tablet'], 'login_events.user_agent': ['Mozilla/5.0 (macOS 13; rv:121.0) Gecko/20100101 Firefox/121.0', 'Mozilla/5.0 (Linux) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'Mozilla/5.0 (iOS 17) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'Mozilla/5.0 (iOS 17) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 OPR/106.0.0.0', 'Mozilla/5.0 (Windows 11) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 OPR/106.0.0.0', 'Mozilla/5.0 (macOS 13) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Edg/120.0.0.0', 'Mozilla/5.0 (Windows 11) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Edg/120.0.0.0', 'Mozilla/5.0 (Android 14) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 OPR/106.0.0.0', 'Mozilla/5.0 (macOS 13) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 OPR/106.0.0.0', 'Mozilla/5.0 (iOS 17) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15', 'Mozilla/5.0 (iOS 17; rv:121.0) Gecko/20100101 Firefox/121.0', 'Mozilla/5.0 (Windows 10) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'Mozilla/5.0 (Windows 11) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15', 'Mozilla/5.0 (Windows 10; rv:121.0) Gecko/20100101 Firefox/121.0', 'Mozilla/5.0 (macOS 14) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 OPR/106.0.0.0', 'Mozilla/5.0 (iOS 17) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Edg/120.0.0.0', 'Mozilla/5.0 (Android 14) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15', 'Mozilla/5.0 (Android 14; rv:121.0) Gecko/20100101 Firefox/121.0', 'Mozilla/5.0 (Android 14) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36', 'Mozilla/5.0 (Linux) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 OPR/106.0.0.0'], 'login_events.status': 'FAILED'}"
+        },
+        {
+          "ts": 1770463724.111,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Intent classified: SELECT (conf: 1.0) | Needs Clarification: False"
+        },
+        {
+          "ts": 1770463725.329,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [generate_sql]"
+        },
+        {
+          "ts": 1770463725.33,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "Generating SQL for domain: security | Query: Analyze login events for users who exhibit rapid and frequent changes in device type and operating system within a short timeframe, especially when originating from the same IP address or a narrow range of IPs, to identify potential device fingerprint spoofing indicative of advanced account takeover techniques."
+        },
+        {
+          "ts": 1770463725.333,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "Using custom SQL prompt for domain: security"
+        },
+        {
+          "ts": 1770463725.336,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463726.175,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: SELECT u.username, le.country, le.city, le.device_..."
+        },
+        {
+          "ts": 1770463726.175,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "SQL Generated and cleaned: SELECT u.username, le.country, le.city, le.device_..."
+        },
+        {
+          "ts": 1770463726.177,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "SQL Generated: SELECT u.username, le.country, le.city, le.device_..."
+        },
+        {
+          "ts": 1770463736.938,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [validate_sql]"
+        },
+        {
+          "ts": 1770463737.111,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [execute_query]"
+        },
+        {
+          "ts": 1770463737.112,
+          "level": "INFO",
+          "node": "DB_EXEC",
+          "msg": "Executing SQL: SELECT u.username, le.country, le.city, le.device_type, le.created_at, COUNT(le.event_id) AS login_count\nFROM users u\nJOIN login_events le ON u.user_id = le.user_id\nGROUP BY u.username, le.country, le.city, le.device_type, le.created_at\nHAVING COUNT(le.event_id) > 5\nORDER BY u.username, le.created_at;"
+        },
+        {
+          "ts": 1770463737.117,
+          "level": "INFO",
+          "node": "DB_EXEC",
+          "msg": "Execution complete. Returned 0 rows."
+        },
+        {
+          "ts": 1770463737.121,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Query execution successful. Rows: 0"
+        },
+        {
+          "ts": 1770463737.189,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [insight_recommendation]"
+        },
+        {
+          "ts": 1770463737.195,
+          "level": "INFO",
+          "node": "INSIGHT",
+          "msg": "Generating insights for 0 rows in domain: security"
+        },
+        {
+          "ts": 1770463737.206,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Insights generated successfully."
+        },
+        {
+          "ts": 1770463737.214,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [recommend_visualization]"
+        },
+        {
+          "ts": 1770463737.222,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "No results for visualization recommendation."
+        }
+      ]
+    },
+    {
+      "mission_id": "COM001",
+      "mission_name": "High-Volume Transactions from Unverified/High-Risk Users",
+      "domain": "compliance",
+      "severity": "MEDIUM",
+      "risk_score": 47,
+      "risk_factors": {
+        "affected_entities": {
+          "value": 23,
+          "score": 100,
+          "detail": "23 unique entities"
+        },
+        "dollar_exposure": {
+          "value": 0,
+          "score": 0,
+          "detail": "$0 exposure"
+        },
+        "velocity": {
+          "value": 23,
+          "score": 100,
+          "detail": "23 events"
+        },
+        "pep_involvement": {
+          "value": 0,
+          "score": 0,
+          "detail": "0 PEP accounts"
+        },
+        "kyc_gaps": {
+          "value": 0,
+          "score": 0,
+          "detail": "0 KYC gaps"
+        },
+        "severity_escalation": {
+          "value": "CRITICAL",
+          "score": 80,
+          "detail": "Base: CRITICAL"
+        }
+      },
+      "sql": "SELECT SUM(t.amount_usd) AS total_transaction_volume, t.instrument FROM transactions t JOIN users u ON t.user_id = u.user_id WHERE (UPPER(u.kyc_status) LIKE '%PENDING%' OR UPPER(u.kyc_status) LIKE '%FAILED%') AND (UPPER(u.risk_level) LIKE '%HIGH%' OR UPPER(u.risk_level) LIKE '%CRITICAL%') GROUP BY t.instrument",
+      "data_count": 23,
+      "results": [
+        {
+          "total_transaction_volume": 783.04,
+          "instrument": ""
+        },
+        {
+          "total_transaction_volume": 1377.8,
+          "instrument": "AAPL"
+        },
+        {
+          "total_transaction_volume": 5327.5,
+          "instrument": "AMZN"
+        },
+        {
+          "total_transaction_volume": 42653.19,
+          "instrument": "BTC/USD"
+        },
+        {
+          "total_transaction_volume": 640.53,
+          "instrument": "DAX"
+        },
+        {
+          "total_transaction_volume": 58072.82,
+          "instrument": "ETH/USD"
+        },
+        {
+          "total_transaction_volume": 1601.23,
+          "instrument": "EUR/USD"
+        },
+        {
+          "total_transaction_volume": 1901.26,
+          "instrument": "FTSE100"
+        },
+        {
+          "total_transaction_volume": 39.73,
+          "instrument": "GBP/USD"
+        },
+        {
+          "total_transaction_volume": 11046.960000000001,
+          "instrument": "GOOGL"
+        },
+        {
+          "total_transaction_volume": 4251.6900000000005,
+          "instrument": "Gold"
+        },
+        {
+          "total_transaction_volume": 6466.639999999999,
+          "instrument": "META"
+        },
+        {
+          "total_transaction_volume": 6963.96,
+          "instrument": "MSFT"
+        },
+        {
+          "total_transaction_volume": 73.47,
+          "instrument": "NASDAQ"
+        },
+        {
+          "total_transaction_volume": 5440.62,
+          "instrument": "NVDA"
+        },
+        {
+          "total_transaction_volume": 26790.43,
+          "instrument": "Natural Gas"
+        },
+        {
+          "total_transaction_volume": 152.09,
+          "instrument": "Nikkei"
+        },
+        {
+          "total_transaction_volume": 1784.3,
+          "instrument": "Oil"
+        },
+        {
+          "total_transaction_volume": 39835.88,
+          "instrument": "S&P500"
+        },
+        {
+          "total_transaction_volume": 549.52,
+          "instrument": "Silver"
+        },
+        {
+          "total_transaction_volume": 362.87,
+          "instrument": "TSLA"
+        },
+        {
+          "total_transaction_volume": 5362.68,
+          "instrument": "USD/JPY"
+        },
+        {
+          "total_transaction_volume": 39511.63,
+          "instrument": "XRP/USD"
+        }
+      ],
+      "visualization_config": {
+        "chart_type": "bar",
+        "title": "Total Transaction Volume by Instrument for High-Risk and Unverified Users",
+        "x_axis_key": "instrument",
+        "y_axis_key": "total_transaction_volume",
+        "label": "Total Transaction Volume (USD)",
+        "description": "A bar chart is ideal for comparing the total transaction volume across different instruments. It allows for easy identification of which specific instruments are being used most heavily by users with pending/failed KYC or high/critical risk levels, helping to pinpoint areas of potential illicit activity."
+      },
+      "insight": "The query results reveal significant transaction volumes associated with instruments like BTC/USD, ETH/USD, Natural Gas, and S&P500 from users flagged with 'PENDING' or 'FAILED' KYC status and 'HIGH' or 'CRITICAL' risk levels. This suggests a potentially elevated exposure to illicit financial activities through these high-risk user segments and specific volatile instruments. The presence of empty 'instrument' fields further indicates a gap in our data enrichment and classification processes for these high-risk transactions, hindering granular analysis and risk mitigation.",
+      "recommendation": "1. **Immediate Review and Block:** Initiate an immediate manual review of all transactions where the 'instrument' field was empty for users with 'PENDING' or 'FAILED' KYC and 'HIGH' or 'CRITICAL' risk. Concurrently, place a temporary hold or block on further transactions involving 'BTC/USD', 'ETH/USD', 'Natural Gas', and 'S&P500' for all users matching this risk profile until further investigation. \n2. **Data Enrichment & Enhanced Monitoring:** Expedite the implementation of automated data enrichment for all transaction instruments and enhance real-time monitoring protocols for the identified high-risk instruments and user segments. This includes developing specific alerts for unusual transaction patterns or volumes within these categories to proactively detect and prevent illicit financial activities.",
+      "original_query": "Quantify the total transaction volume and identify the specific instruments utilized by users whose KYC status is 'PENDING' or 'FAILED', and whose risk_level is 'HIGH' or 'CRITICAL', to assess potential exposure to illicit financial activities.",
+      "depth": 0,
+      "parent_mission_id": null,
+      "rationale": "",
+      "timestamp": "LIVE AUDIT",
+      "logs": [
+        {
+          "ts": 1770463700.369,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [classify_intent]"
+        },
+        {
+          "ts": 1770463700.369,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Starting Intent Classification and Preprocessing in parallel for domain: compliance"
+        },
+        {
+          "ts": 1770463702.872,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classifying intent for domain: compliance | Query: Quantify the total transaction volume and identify the specific instruments utilized by users whose KYC status is 'PENDING' or 'FAILED', and whose risk_level is 'HIGH' or 'CRITICAL', to assess potential exposure to illicit financial activities."
+        },
+        {
+          "ts": 1770463702.885,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463703.548,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"intent\": \"SELECT\",\n  \"confidence\": 1...."
+        },
+        {
+          "ts": 1770463703.548,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classification Result: SELECT (conf: 1.0) | Needs Clarification: False"
+        },
+        {
+          "ts": 1770463712.575,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463713.098,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: [\"users\", \"transactions\"]..."
+        },
+        {
+          "ts": 1770463713.108,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463714.028,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"resolved_entities\": {\n    \"users.kyc_..."
+        },
+        {
+          "ts": 1770463714.03,
+          "level": "INFO",
+          "node": "entity_extractor.py",
+          "msg": "Final Extracted/Resolved Entities: {'users.kyc_status': ['PENDING', 'FAILED'], 'users.risk_level': ['HIGH', 'CRITICAL']}"
+        },
+        {
+          "ts": 1770463724.112,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Intent classified: SELECT (conf: 1.0) | Needs Clarification: False"
+        },
+        {
+          "ts": 1770463726.177,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [generate_sql]"
+        },
+        {
+          "ts": 1770463726.177,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "Generating SQL for domain: compliance | Query: Quantify the total transaction volume and identify the specific instruments utilized by users whose KYC status is 'PENDING' or 'FAILED', and whose risk_level is 'HIGH' or 'CRITICAL', to assess potential exposure to illicit financial activities."
+        },
+        {
+          "ts": 1770463726.183,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "Using custom SQL prompt for domain: compliance"
+        },
+        {
+          "ts": 1770463726.183,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463727.385,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: SELECT SUM(t.amount_usd) AS total_transaction_volu..."
+        },
+        {
+          "ts": 1770463727.39,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "SQL Generated and cleaned: SELECT SUM(t.amount_usd) AS total_transaction_volu..."
+        },
+        {
+          "ts": 1770463727.391,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "SQL Generated: SELECT SUM(t.amount_usd) AS total_transaction_volu..."
+        },
+        {
+          "ts": 1770463736.966,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [validate_sql]"
+        },
+        {
+          "ts": 1770463737.123,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [execute_query]"
+        },
+        {
+          "ts": 1770463737.126,
+          "level": "INFO",
+          "node": "DB_EXEC",
+          "msg": "Executing SQL: SELECT SUM(t.amount_usd) AS total_transaction_volume, t.instrument FROM transactions t JOIN users u ON t.user_id = u.user_id WHERE (UPPER(u.kyc_status) LIKE '%PENDING%' OR UPPER(u.kyc_status) LIKE '%FAILED%') AND (UPPER(u.risk_level) LIKE '%HIGH%' OR UPPER(u.risk_level) LIKE '%CRITICAL%') GROUP BY t.instrument"
+        },
+        {
+          "ts": 1770463737.13,
+          "level": "INFO",
+          "node": "DB_EXEC",
+          "msg": "Execution complete. Returned 23 rows."
+        },
+        {
+          "ts": 1770463737.133,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Query execution successful. Rows: 23"
+        },
+        {
+          "ts": 1770463737.227,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [insight_recommendation]"
+        },
+        {
+          "ts": 1770463737.231,
+          "level": "INFO",
+          "node": "INSIGHT",
+          "msg": "Generating insights for 23 rows in domain: compliance"
+        },
+        {
+          "ts": 1770463737.235,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463738.859,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"insight\": \"The query results reveal s..."
+        },
+        {
+          "ts": 1770463738.86,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Insights generated successfully."
+        },
+        {
+          "ts": 1770463738.862,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [recommend_visualization]"
+        },
+        {
+          "ts": 1770463738.863,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-3-flash-preview] generating response..."
+        },
+        {
+          "ts": 1770463749.836,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-3-flash-preview]. Snippet: {\n  \"chart_type\": \"bar\",\n  \"title\": \"Total Transac..."
+        },
+        {
+          "ts": 1770463749.842,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Visualization recommended: bar"
+        }
+      ]
+    },
+    {
+      "mission_id": "OPS001",
+      "mission_name": "Payment Failure Root Cause Analysis by Transaction Type and User Segment",
+      "domain": "operations",
+      "severity": "MEDIUM",
+      "risk_score": 48,
+      "risk_factors": {
+        "affected_entities": {
+          "value": 54,
+          "score": 100,
+          "detail": "54 unique entities"
+        },
+        "dollar_exposure": {
+          "value": 0,
+          "score": 0,
+          "detail": "$0 exposure"
+        },
+        "velocity": {
+          "value": 54,
+          "score": 100,
+          "detail": "54 events"
+        },
+        "pep_involvement": {
+          "value": 0,
+          "score": 0,
+          "detail": "0 PEP accounts"
+        },
+        "kyc_gaps": {
+          "value": 4,
+          "score": 60,
+          "detail": "4 KYC gaps"
+        },
+        "severity_escalation": {
+          "value": "HIGH",
+          "score": 50,
+          "detail": "Base: HIGH"
+        }
+      },
+      "sql": "SELECT\n  t.flag_reason,\n  t.txn_type,\n  u.age,\n  u.risk_level,\n  u.kyc_status,\n  COUNT(t.txn_id) AS failure_count\nFROM transactions AS t\nJOIN users AS u\n  ON t.user_id = u.user_id\nWHERE\n  UPPER(t.status) LIKE '%FAILED%' AND t.flag_reason IS NOT NULL\nGROUP BY\n  t.flag_reason,\n  t.txn_type,\n  u.age,\n  u.risk_level,\n  u.kyc_status\nORDER BY\n  failure_count DESC;",
+      "data_count": 54,
+      "results": [
+        {
+          "flag_reason": "",
+          "txn_type": "WITHDRAWAL",
+          "age": 27,
+          "risk_level": "LOW",
+          "kyc_status": "VERIFIED",
+          "failure_count": 3
+        },
+        {
+          "flag_reason": "",
+          "txn_type": "DEPOSIT",
+          "age": 25,
+          "risk_level": "LOW",
+          "kyc_status": "VERIFIED",
+          "failure_count": 2
+        },
+        {
+          "flag_reason": "",
+          "txn_type": "TRADE",
+          "age": 69,
+          "risk_level": "MEDIUM",
+          "kyc_status": "VERIFIED",
+          "failure_count": 2
+        },
+        {
+          "flag_reason": "",
+          "txn_type": "TRANSFER",
+          "age": 28,
+          "risk_level": "LOW",
+          "kyc_status": "VERIFIED",
+          "failure_count": 2
+        },
+        {
+          "flag_reason": "",
+          "txn_type": "TRANSFER",
+          "age": 34,
+          "risk_level": "LOW",
+          "kyc_status": "VERIFIED",
+          "failure_count": 2
+        },
+        {
+          "flag_reason": "",
+          "txn_type": "TRANSFER",
+          "age": 39,
+          "risk_level": "LOW",
+          "kyc_status": "VERIFIED",
+          "failure_count": 2
+        },
+        {
+          "flag_reason": "",
+          "txn_type": "DEPOSIT",
+          "age": 35,
+          "risk_level": "LOW",
+          "kyc_status": "VERIFIED",
+          "failure_count": 1
+        },
+        {
+          "flag_reason": "",
+          "txn_type": "DEPOSIT",
+          "age": 36,
+          "risk_level": "LOW",
+          "kyc_status": "VERIFIED",
+          "failure_count": 1
+        },
+        {
+          "flag_reason": "",
+          "txn_type": "DEPOSIT",
+          "age": 38,
+          "risk_level": "LOW",
+          "kyc_status": "VERIFIED",
+          "failure_count": 1
+        },
+        {
+          "flag_reason": "",
+          "txn_type": "DEPOSIT",
+          "age": 49,
+          "risk_level": "CRITICAL",
+          "kyc_status": "PENDING",
+          "failure_count": 1
+        },
+        {
+          "flag_reason": "",
+          "txn_type": "DEPOSIT",
+          "age": 58,
+          "risk_level": "HIGH",
+          "kyc_status": "VERIFIED",
+          "failure_count": 1
+        },
+        {
+          "flag_reason": "",
+          "txn_type": "DEPOSIT",
+          "age": 60,
+          "risk_level": "HIGH",
+          "kyc_status": "VERIFIED",
+          "failure_count": 1
+        },
+        {
+          "flag_reason": "",
+          "txn_type": "FEE",
+          "age": 23,
+          "risk_level": "LOW",
+          "kyc_status": "VERIFIED",
+          "failure_count": 1
+        },
+        {
+          "flag_reason": "",
+          "txn_type": "FEE",
+          "age": 26,
+          "risk_level": "LOW",
+          "kyc_status": "VERIFIED",
+          "failure_count": 1
+        },
+        {
+          "flag_reason": "",
+          "txn_type": "FEE",
+          "age": 30,
+          "risk_level": "LOW",
+          "kyc_status": "VERIFIED",
+          "failure_count": 1
+        },
+        {
+          "flag_reason": "",
+          "txn_type": "FEE",
+          "age": 44,
+          "risk_level": "MEDIUM",
+          "kyc_status": "VERIFIED",
+          "failure_count": 1
+        },
+        {
+          "flag_reason": "",
+          "txn_type": "FEE",
+          "age": 47,
+          "risk_level": "HIGH",
+          "kyc_status": "VERIFIED",
+          "failure_count": 1
+        },
+        {
+          "flag_reason": "",
+          "txn_type": "FEE",
+          "age": 55,
+          "risk_level": "MEDIUM",
+          "kyc_status": "VERIFIED",
+          "failure_count": 1
+        },
+        {
+          "flag_reason": "",
+          "txn_type": "FEE",
+          "age": 56,
+          "risk_level": "MEDIUM",
+          "kyc_status": "PENDING",
+          "failure_count": 1
+        },
+        {
+          "flag_reason": "",
+          "txn_type": "REFUND",
+          "age": 26,
+          "risk_level": "LOW",
+          "kyc_status": "VERIFIED",
+          "failure_count": 1
+        },
+        {
+          "flag_reason": "",
+          "txn_type": "REFUND",
+          "age": 27,
+          "risk_level": "LOW",
+          "kyc_status": "VERIFIED",
+          "failure_count": 1
+        },
+        {
+          "flag_reason": "",
+          "txn_type": "REFUND",
+          "age": 35,
+          "risk_level": "LOW",
+          "kyc_status": "VERIFIED",
+          "failure_count": 1
+        },
+        {
+          "flag_reason": "",
+          "txn_type": "REFUND",
+          "age": 40,
+          "risk_level": "MEDIUM",
+          "kyc_status": "VERIFIED",
+          "failure_count": 1
+        },
+        {
+          "flag_reason": "",
+          "txn_type": "REFUND",
+          "age": 44,
+          "risk_level": "MEDIUM",
+          "kyc_status": "VERIFIED",
+          "failure_count": 1
+        },
+        {
+          "flag_reason": "",
+          "txn_type": "REFUND",
+          "age": 46,
+          "risk_level": "MEDIUM",
+          "kyc_status": "VERIFIED",
+          "failure_count": 1
+        },
+        {
+          "flag_reason": "",
+          "txn_type": "REFUND",
+          "age": 58,
+          "risk_level": "HIGH",
+          "kyc_status": "VERIFIED",
+          "failure_count": 1
+        },
+        {
+          "flag_reason": "",
+          "txn_type": "REFUND",
+          "age": 61,
+          "risk_level": "MEDIUM",
+          "kyc_status": "VERIFIED",
+          "failure_count": 1
+        },
+        {
+          "flag_reason": "",
+          "txn_type": "REFUND",
+          "age": 70,
+          "risk_level": "HIGH",
+          "kyc_status": "VERIFIED",
+          "failure_count": 1
+        },
+        {
+          "flag_reason": "",
+          "txn_type": "TRADE",
+          "age": 26,
+          "risk_level": "LOW",
+          "kyc_status": "VERIFIED",
+          "failure_count": 1
+        },
+        {
+          "flag_reason": "",
+          "txn_type": "TRADE",
+          "age": 28,
+          "risk_level": "LOW",
+          "kyc_status": "VERIFIED",
+          "failure_count": 1
+        },
+        {
+          "flag_reason": "",
+          "txn_type": "TRADE",
+          "age": 29,
+          "risk_level": "LOW",
+          "kyc_status": "VERIFIED",
+          "failure_count": 1
+        },
+        {
+          "flag_reason": "",
+          "txn_type": "TRADE",
+          "age": 30,
+          "risk_level": "LOW",
+          "kyc_status": "VERIFIED",
+          "failure_count": 1
+        },
+        {
+          "flag_reason": "",
+          "txn_type": "TRADE",
+          "age": 35,
+          "risk_level": "LOW",
+          "kyc_status": "VERIFIED",
+          "failure_count": 1
+        },
+        {
+          "flag_reason": "",
+          "txn_type": "TRADE",
+          "age": 43,
+          "risk_level": "MEDIUM",
+          "kyc_status": "VERIFIED",
+          "failure_count": 1
+        },
+        {
+          "flag_reason": "",
+          "txn_type": "TRADE",
+          "age": 46,
+          "risk_level": "MEDIUM",
+          "kyc_status": "VERIFIED",
+          "failure_count": 1
+        },
+        {
+          "flag_reason": "",
+          "txn_type": "TRADE",
+          "age": 48,
+          "risk_level": "MEDIUM",
+          "kyc_status": "VERIFIED",
+          "failure_count": 1
+        },
+        {
+          "flag_reason": "",
+          "txn_type": "TRADE",
+          "age": 50,
+          "risk_level": "MEDIUM",
+          "kyc_status": "VERIFIED",
+          "failure_count": 1
+        },
+        {
+          "flag_reason": "",
+          "txn_type": "TRADE",
+          "age": 66,
+          "risk_level": "HIGH",
+          "kyc_status": "VERIFIED",
+          "failure_count": 1
+        },
+        {
+          "flag_reason": "",
+          "txn_type": "TRADE",
+          "age": 68,
+          "risk_level": "MEDIUM",
+          "kyc_status": "VERIFIED",
+          "failure_count": 1
+        },
+        {
+          "flag_reason": "",
+          "txn_type": "TRANSFER",
+          "age": 24,
+          "risk_level": "LOW",
+          "kyc_status": "VERIFIED",
+          "failure_count": 1
+        },
+        {
+          "flag_reason": "",
+          "txn_type": "TRANSFER",
+          "age": 30,
+          "risk_level": "LOW",
+          "kyc_status": "VERIFIED",
+          "failure_count": 1
+        },
+        {
+          "flag_reason": "",
+          "txn_type": "TRANSFER",
+          "age": 31,
+          "risk_level": "LOW",
+          "kyc_status": "PENDING",
+          "failure_count": 1
+        },
+        {
+          "flag_reason": "",
+          "txn_type": "TRANSFER",
+          "age": 35,
+          "risk_level": "LOW",
+          "kyc_status": "VERIFIED",
+          "failure_count": 1
+        },
+        {
+          "flag_reason": "",
+          "txn_type": "TRANSFER",
+          "age": 47,
+          "risk_level": "CRITICAL",
+          "kyc_status": "PENDING",
+          "failure_count": 1
+        },
+        {
+          "flag_reason": "",
+          "txn_type": "TRANSFER",
+          "age": 58,
+          "risk_level": "HIGH",
+          "kyc_status": "VERIFIED",
+          "failure_count": 1
+        },
+        {
+          "flag_reason": "",
+          "txn_type": "TRANSFER",
+          "age": 61,
+          "risk_level": "MEDIUM",
+          "kyc_status": "VERIFIED",
+          "failure_count": 1
+        },
+        {
+          "flag_reason": "",
+          "txn_type": "WITHDRAWAL",
+          "age": 38,
+          "risk_level": "HIGH",
+          "kyc_status": "VERIFIED",
+          "failure_count": 1
+        },
+        {
+          "flag_reason": "",
+          "txn_type": "WITHDRAWAL",
+          "age": 43,
+          "risk_level": "LOW",
+          "kyc_status": "VERIFIED",
+          "failure_count": 1
+        },
+        {
+          "flag_reason": "",
+          "txn_type": "WITHDRAWAL",
+          "age": 44,
+          "risk_level": "MEDIUM",
+          "kyc_status": "VERIFIED",
+          "failure_count": 1
+        },
+        {
+          "flag_reason": "",
+          "txn_type": "WITHDRAWAL",
+          "age": 47,
+          "risk_level": "HIGH",
+          "kyc_status": "VERIFIED",
+          "failure_count": 1
+        },
+        {
+          "flag_reason": "",
+          "txn_type": "WITHDRAWAL",
+          "age": 54,
+          "risk_level": "HIGH",
+          "kyc_status": "VERIFIED",
+          "failure_count": 1
+        },
+        {
+          "flag_reason": "",
+          "txn_type": "WITHDRAWAL",
+          "age": 55,
+          "risk_level": "MEDIUM",
+          "kyc_status": "VERIFIED",
+          "failure_count": 1
+        },
+        {
+          "flag_reason": "",
+          "txn_type": "WITHDRAWAL",
+          "age": 60,
+          "risk_level": "HIGH",
+          "kyc_status": "VERIFIED",
+          "failure_count": 1
+        },
+        {
+          "flag_reason": "",
+          "txn_type": "WITHDRAWAL",
+          "age": 63,
+          "risk_level": "HIGH",
+          "kyc_status": "VERIFIED",
+          "failure_count": 1
+        }
+      ],
+      "visualization_config": {
+        "chart_type": "table",
+        "title": "Payment Failure Analysis by Reason, Transaction Type, and User Demographics",
+        "x_axis_key": "flag_reason",
+        "y_axis_key": [
+          "txn_type",
+          "age",
+          "risk_level",
+          "kyc_status",
+          "failure_count"
+        ],
+        "label": "Failure Details",
+        "description": "The user query requires a multi-dimensional analysis of payment failures across five different variables (reason, transaction type, age, risk level, and KYC status). A table is the most appropriate format for this complexity, as it allows for the granular inspection and cross-referencing of demographic and transactional patterns that might indicate systemic weaknesses."
+      },
+      "insight": "The initial data sample indicates a significant volume of payment failures without specific 'flag_reason' categorization. This lack of granular detail hinders our ability to pinpoint the root causes of these failures.  However, the distribution across transaction types (WITHDRAWAL, DEPOSIT, TRADE) and demographics (age, risk_level, kyc_status) suggests potential systemic weaknesses or targeted vulnerabilities in our payment processing infrastructure.  The presence of failures even with 'VERIFIED' KYC status and across various risk levels warrants immediate attention to avoid operational disruptions and potential financial losses.  Specifically, the 'DEPOSIT' transaction type shows notable failure counts across a range of risk levels and KYC statuses, including a 'CRITICAL' risk user with 'PENDING' KYC, which is a red flag for potential compliance or onboarding issues contributing to failures.",
+      "recommendation": [
+        "Prioritize a deep-dive analysis into the payment failure logs to identify and categorize the 'flag_reason' for all 54 identified failure instances. This will enable us to move beyond generic observations to specific, actionable root cause analysis.",
+        "Initiate a cross-functional review involving our Payment Operations, Engineering, and Risk teams to investigate the disproportionate failure rates observed in 'DEPOSIT' transactions, paying particular attention to the identified 'CRITICAL' risk/ 'PENDING' KYC user cohort and its implications for our onboarding and risk management processes."
+      ],
+      "original_query": "Segment users experiencing payment failures by the 'flag_reason' and analyze if specific transaction types (e.g., deposits, withdrawals, specific instrument trades) and user demographics (age, risk_level, kyc_status) are disproportionately affected by particular failure reasons, suggesting targeted vulnerabilities or systemic weaknesses in payment processing.",
+      "depth": 0,
+      "parent_mission_id": null,
+      "rationale": "",
+      "timestamp": "LIVE AUDIT",
+      "logs": [
+        {
+          "ts": 1770463700.375,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [classify_intent]"
+        },
+        {
+          "ts": 1770463700.377,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Starting Intent Classification and Preprocessing in parallel for domain: operations"
+        },
+        {
+          "ts": 1770463704.187,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classifying intent for domain: operations | Query: Segment users experiencing payment failures by the 'flag_reason' and analyze if specific transaction types (e.g., deposits, withdrawals, specific instrument trades) and user demographics (age, risk_level, kyc_status) are disproportionately affected by particular failure reasons, suggesting targeted vulnerabilities or systemic weaknesses in payment processing."
+        },
+        {
+          "ts": 1770463704.203,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463705.038,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"intent\": \"SELECT\",\n  \"confidence\": 1...."
+        },
+        {
+          "ts": 1770463705.041,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classification Result: SELECT (conf: 1.0) | Needs Clarification: False"
+        },
+        {
+          "ts": 1770463715.717,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463716.2,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: [\"users\", \"transactions\"]..."
+        },
+        {
+          "ts": 1770463716.206,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463717.284,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"resolved_entities\": {\n    \"transactio..."
+        },
+        {
+          "ts": 1770463717.285,
+          "level": "INFO",
+          "node": "entity_extractor.py",
+          "msg": "Final Extracted/Resolved Entities: {'transactions.status': 'FAILED', 'transactions.flag_reason': ['AML alert', 'Geo mismatch', 'Unusual pattern', 'Velocity check', 'PEP transaction', 'Sanctions match', 'High amount'], 'transactions.txn_type': ['DEPOSIT', 'WITHDRAWAL', 'TRADE'], 'users.kyc_status': ['VERIFIED', 'PENDING']}"
+        },
+        {
+          "ts": 1770463724.114,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Intent classified: SELECT (conf: 1.0) | Needs Clarification: False"
+        },
+        {
+          "ts": 1770463729.176,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [generate_sql]"
+        },
+        {
+          "ts": 1770463729.178,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "Generating SQL for domain: operations | Query: Segment users experiencing payment failures by the 'flag_reason' and analyze if specific transaction types (e.g., deposits, withdrawals, specific instrument trades) and user demographics (age, risk_level, kyc_status) are disproportionately affected by particular failure reasons, suggesting targeted vulnerabilities or systemic weaknesses in payment processing."
+        },
+        {
+          "ts": 1770463729.186,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "Using custom SQL prompt for domain: operations"
+        },
+        {
+          "ts": 1770463729.188,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463730.105,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: SELECT\n  t.flag_reason,\n  t.txn_type,\n  u.age,\n  u..."
+        },
+        {
+          "ts": 1770463730.105,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "SQL Generated and cleaned: SELECT\n  t.flag_reason,\n  t.txn_type,\n  u.age,\n  u..."
+        },
+        {
+          "ts": 1770463730.111,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "SQL Generated: SELECT\n  t.flag_reason,\n  t.txn_type,\n  u.age,\n  u..."
+        },
+        {
+          "ts": 1770463737.006,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [validate_sql]"
+        },
+        {
+          "ts": 1770463737.137,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [execute_query]"
+        },
+        {
+          "ts": 1770463737.139,
+          "level": "INFO",
+          "node": "DB_EXEC",
+          "msg": "Executing SQL: SELECT\n  t.flag_reason,\n  t.txn_type,\n  u.age,\n  u.risk_level,\n  u.kyc_status,\n  COUNT(t.txn_id) AS failure_count\nFROM transactions AS t\nJOIN users AS u\n  ON t.user_id = u.user_id\nWHERE\n  UPPER(t.status) LIKE '%FAILED%' AND t.flag_reason IS NOT NULL\nGROUP BY\n  t.flag_reason,\n  t.txn_type,\n  u.age,\n  u.risk_level,\n  u.kyc_status\nORDER BY\n  failure_count DESC;"
+        },
+        {
+          "ts": 1770463737.147,
+          "level": "INFO",
+          "node": "DB_EXEC",
+          "msg": "Execution complete. Returned 54 rows."
+        },
+        {
+          "ts": 1770463737.149,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Query execution successful. Rows: 54"
+        },
+        {
+          "ts": 1770463749.844,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [insight_recommendation]"
+        },
+        {
+          "ts": 1770463749.851,
+          "level": "INFO",
+          "node": "INSIGHT",
+          "msg": "Generating insights for 54 rows in domain: operations"
+        },
+        {
+          "ts": 1770463749.858,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463751.74,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"insight\": \"The initial data sample in..."
+        },
+        {
+          "ts": 1770463751.741,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Insights generated successfully."
+        },
+        {
+          "ts": 1770463751.742,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [recommend_visualization]"
+        },
+        {
+          "ts": 1770463751.743,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-3-flash-preview] generating response..."
+        },
+        {
+          "ts": 1770463763.361,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-3-flash-preview]. Snippet: ```json\n{\n  \"chart_type\": \"table\",\n  \"title\": \"Pay..."
+        },
+        {
+          "ts": 1770463763.362,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Visualization recommended: table"
+        }
+      ]
+    },
+    {
+      "mission_id": "RIS003",
+      "mission_name": "Concentrated High-Risk Instrument Exposure in Unverified Users",
+      "domain": "risk",
+      "severity": "HIGH",
+      "risk_score": 52,
+      "risk_factors": {
+        "affected_entities": {
+          "value": 57,
+          "score": 100,
+          "detail": "57 unique entities"
+        },
+        "dollar_exposure": {
+          "value": 0,
+          "score": 0,
+          "detail": "$0 exposure"
+        },
+        "velocity": {
+          "value": 57,
+          "score": 100,
+          "detail": "57 events"
+        },
+        "pep_involvement": {
+          "value": 0,
+          "score": 0,
+          "detail": "0 PEP accounts"
+        },
+        "kyc_gaps": {
+          "value": 57,
+          "score": 100,
+          "detail": "57 KYC gaps"
+        },
+        "severity_escalation": {
+          "value": "HIGH",
+          "score": 50,
+          "detail": "Base: HIGH"
+        }
+      },
+      "sql": "SELECT u.kyc_status, t.instrument, t.txn_type, COUNT(t.txn_id) AS transaction_count\nFROM users u\nJOIN transactions t ON u.user_id = t.user_id\nWHERE UPPER(u.kyc_status) IN ('PENDING', 'FAILED')\nGROUP BY u.kyc_status, t.instrument, t.txn_type\nORDER BY u.kyc_status, transaction_count DESC;",
+      "data_count": 57,
+      "results": [
+        {
+          "kyc_status": "PENDING",
+          "instrument": "",
+          "txn_type": "DEPOSIT",
+          "transaction_count": 2
+        },
+        {
+          "kyc_status": "PENDING",
+          "instrument": "",
+          "txn_type": "WITHDRAWAL",
+          "transaction_count": 2
+        },
+        {
+          "kyc_status": "PENDING",
+          "instrument": "DAX",
+          "txn_type": "TRADE",
+          "transaction_count": 2
+        },
+        {
+          "kyc_status": "PENDING",
+          "instrument": "ETH/USD",
+          "txn_type": "DEPOSIT",
+          "transaction_count": 2
+        },
+        {
+          "kyc_status": "PENDING",
+          "instrument": "ETH/USD",
+          "txn_type": "REFUND",
+          "transaction_count": 2
+        },
+        {
+          "kyc_status": "PENDING",
+          "instrument": "GOOGL",
+          "txn_type": "DEPOSIT",
+          "transaction_count": 2
+        },
+        {
+          "kyc_status": "PENDING",
+          "instrument": "Gold",
+          "txn_type": "FEE",
+          "transaction_count": 2
+        },
+        {
+          "kyc_status": "PENDING",
+          "instrument": "META",
+          "txn_type": "DEPOSIT",
+          "transaction_count": 2
+        },
+        {
+          "kyc_status": "PENDING",
+          "instrument": "MSFT",
+          "txn_type": "TRADE",
+          "transaction_count": 2
+        },
+        {
+          "kyc_status": "PENDING",
+          "instrument": "Natural Gas",
+          "txn_type": "TRADE",
+          "transaction_count": 2
+        },
+        {
+          "kyc_status": "PENDING",
+          "instrument": "Natural Gas",
+          "txn_type": "WITHDRAWAL",
+          "transaction_count": 2
+        },
+        {
+          "kyc_status": "PENDING",
+          "instrument": "Nikkei",
+          "txn_type": "WITHDRAWAL",
+          "transaction_count": 2
+        },
+        {
+          "kyc_status": "PENDING",
+          "instrument": "",
+          "txn_type": "REFUND",
+          "transaction_count": 1
+        },
+        {
+          "kyc_status": "PENDING",
+          "instrument": "",
+          "txn_type": "TRANSFER",
+          "transaction_count": 1
+        },
+        {
+          "kyc_status": "PENDING",
+          "instrument": "AAPL",
+          "txn_type": "WITHDRAWAL",
+          "transaction_count": 1
+        },
+        {
+          "kyc_status": "PENDING",
+          "instrument": "AMZN",
+          "txn_type": "DEPOSIT",
+          "transaction_count": 1
+        },
+        {
+          "kyc_status": "PENDING",
+          "instrument": "AMZN",
+          "txn_type": "FEE",
+          "transaction_count": 1
+        },
+        {
+          "kyc_status": "PENDING",
+          "instrument": "AMZN",
+          "txn_type": "REFUND",
+          "transaction_count": 1
+        },
+        {
+          "kyc_status": "PENDING",
+          "instrument": "AMZN",
+          "txn_type": "TRANSFER",
+          "transaction_count": 1
+        },
+        {
+          "kyc_status": "PENDING",
+          "instrument": "BTC/USD",
+          "txn_type": "DEPOSIT",
+          "transaction_count": 1
+        },
+        {
+          "kyc_status": "PENDING",
+          "instrument": "BTC/USD",
+          "txn_type": "FEE",
+          "transaction_count": 1
+        },
+        {
+          "kyc_status": "PENDING",
+          "instrument": "BTC/USD",
+          "txn_type": "REFUND",
+          "transaction_count": 1
+        },
+        {
+          "kyc_status": "PENDING",
+          "instrument": "BTC/USD",
+          "txn_type": "WITHDRAWAL",
+          "transaction_count": 1
+        },
+        {
+          "kyc_status": "PENDING",
+          "instrument": "DAX",
+          "txn_type": "TRANSFER",
+          "transaction_count": 1
+        },
+        {
+          "kyc_status": "PENDING",
+          "instrument": "ETH/USD",
+          "txn_type": "FEE",
+          "transaction_count": 1
+        },
+        {
+          "kyc_status": "PENDING",
+          "instrument": "ETH/USD",
+          "txn_type": "TRANSFER",
+          "transaction_count": 1
+        },
+        {
+          "kyc_status": "PENDING",
+          "instrument": "EUR/USD",
+          "txn_type": "DEPOSIT",
+          "transaction_count": 1
+        },
+        {
+          "kyc_status": "PENDING",
+          "instrument": "EUR/USD",
+          "txn_type": "FEE",
+          "transaction_count": 1
+        },
+        {
+          "kyc_status": "PENDING",
+          "instrument": "EUR/USD",
+          "txn_type": "WITHDRAWAL",
+          "transaction_count": 1
+        },
+        {
+          "kyc_status": "PENDING",
+          "instrument": "FTSE100",
+          "txn_type": "FEE",
+          "transaction_count": 1
+        },
+        {
+          "kyc_status": "PENDING",
+          "instrument": "FTSE100",
+          "txn_type": "REFUND",
+          "transaction_count": 1
+        },
+        {
+          "kyc_status": "PENDING",
+          "instrument": "FTSE100",
+          "txn_type": "TRADE",
+          "transaction_count": 1
+        },
+        {
+          "kyc_status": "PENDING",
+          "instrument": "FTSE100",
+          "txn_type": "TRANSFER",
+          "transaction_count": 1
+        },
+        {
+          "kyc_status": "PENDING",
+          "instrument": "GBP/USD",
+          "txn_type": "DEPOSIT",
+          "transaction_count": 1
+        },
+        {
+          "kyc_status": "PENDING",
+          "instrument": "GBP/USD",
+          "txn_type": "WITHDRAWAL",
+          "transaction_count": 1
+        },
+        {
+          "kyc_status": "PENDING",
+          "instrument": "Gold",
+          "txn_type": "TRADE",
+          "transaction_count": 1
+        },
+        {
+          "kyc_status": "PENDING",
+          "instrument": "Gold",
+          "txn_type": "WITHDRAWAL",
+          "transaction_count": 1
+        },
+        {
+          "kyc_status": "PENDING",
+          "instrument": "META",
+          "txn_type": "FEE",
+          "transaction_count": 1
+        },
+        {
+          "kyc_status": "PENDING",
+          "instrument": "MSFT",
+          "txn_type": "DEPOSIT",
+          "transaction_count": 1
+        },
+        {
+          "kyc_status": "PENDING",
+          "instrument": "MSFT",
+          "txn_type": "REFUND",
+          "transaction_count": 1
+        },
+        {
+          "kyc_status": "PENDING",
+          "instrument": "MSFT",
+          "txn_type": "WITHDRAWAL",
+          "transaction_count": 1
+        },
+        {
+          "kyc_status": "PENDING",
+          "instrument": "NASDAQ",
+          "txn_type": "REFUND",
+          "transaction_count": 1
+        },
+        {
+          "kyc_status": "PENDING",
+          "instrument": "NVDA",
+          "txn_type": "WITHDRAWAL",
+          "transaction_count": 1
+        },
+        {
+          "kyc_status": "PENDING",
+          "instrument": "Natural Gas",
+          "txn_type": "REFUND",
+          "transaction_count": 1
+        },
+        {
+          "kyc_status": "PENDING",
+          "instrument": "Natural Gas",
+          "txn_type": "TRANSFER",
+          "transaction_count": 1
+        },
+        {
+          "kyc_status": "PENDING",
+          "instrument": "Nikkei",
+          "txn_type": "TRANSFER",
+          "transaction_count": 1
+        },
+        {
+          "kyc_status": "PENDING",
+          "instrument": "Oil",
+          "txn_type": "DEPOSIT",
+          "transaction_count": 1
+        },
+        {
+          "kyc_status": "PENDING",
+          "instrument": "Oil",
+          "txn_type": "WITHDRAWAL",
+          "transaction_count": 1
+        },
+        {
+          "kyc_status": "PENDING",
+          "instrument": "S&P500",
+          "txn_type": "FEE",
+          "transaction_count": 1
+        },
+        {
+          "kyc_status": "PENDING",
+          "instrument": "S&P500",
+          "txn_type": "TRADE",
+          "transaction_count": 1
+        },
+        {
+          "kyc_status": "PENDING",
+          "instrument": "S&P500",
+          "txn_type": "WITHDRAWAL",
+          "transaction_count": 1
+        },
+        {
+          "kyc_status": "PENDING",
+          "instrument": "Silver",
+          "txn_type": "FEE",
+          "transaction_count": 1
+        },
+        {
+          "kyc_status": "PENDING",
+          "instrument": "TSLA",
+          "txn_type": "FEE",
+          "transaction_count": 1
+        },
+        {
+          "kyc_status": "PENDING",
+          "instrument": "USD/JPY",
+          "txn_type": "TRANSFER",
+          "transaction_count": 1
+        },
+        {
+          "kyc_status": "PENDING",
+          "instrument": "USD/JPY",
+          "txn_type": "WITHDRAWAL",
+          "transaction_count": 1
+        },
+        {
+          "kyc_status": "PENDING",
+          "instrument": "XRP/USD",
+          "txn_type": "REFUND",
+          "transaction_count": 1
+        },
+        {
+          "kyc_status": "PENDING",
+          "instrument": "XRP/USD",
+          "txn_type": "TRADE",
+          "transaction_count": 1
+        }
+      ],
+      "visualization_config": {
+        "chart_type": "bar",
+        "title": "Transaction Volume and Instrument Exposure for Pending/Failed KYC Statuses",
+        "x_axis_key": "instrument",
+        "y_axis_key": "transaction_count",
+        "label": "Transaction Count",
+        "description": "A bar chart is the most effective way to visualize categorical imbalances. It allows for a clear comparison of transaction volumes across different instruments and transaction types, making it easy to spot disproportionate concentrations that might indicate high-risk activities or potential fraud among users with PENDING or FAILED KYC statuses."
+      },
+      "insight": "The query results indicate a notable concentration of transaction activity, particularly trades and withdrawals, among users with 'PENDING' KYC status. While the sample size is limited, the presence of 'PENDING' users engaging in instrument trades (e.g., DAX, GOOGL, META, MSFT, Natural Gas, Nikkei) and significant withdrawal activities raises a red flag. This suggests a potential vector for illicit activities, as users may be attempting to leverage the system before their identity is fully verified. The high volume of activity from this segment, especially in riskier instruments, poses an elevated operational and reputational risk.",
+      "recommendation": "1. **Initiate immediate review of all 'PENDING' KYC accounts with active trading or withdrawal activity.** Prioritize accounts engaging with high-volatility instruments or exhibiting unusual withdrawal patterns for enhanced scrutiny and potential temporary account restrictions pending full KYC verification. \n2. **Implement real-time monitoring for 'PENDING' KYC users.** Develop and deploy enhanced alerts for any transaction activity (especially deposits, trades, and withdrawals) exceeding predefined thresholds from this user segment. This proactive measure aims to detect and flag suspicious behavior in real-time.",
+      "original_query": "Analyze if there are significant imbalances in transaction volume and instrument exposure across different KYC statuses. Specifically, look for scenarios where users with 'PENDING' or 'FAILED' KYC are disproportionately concentrated in specific high-risk instruments or transaction types, indicating potential money laundering or fraud vectors.",
+      "depth": 0,
+      "parent_mission_id": null,
+      "rationale": "",
+      "timestamp": "LIVE AUDIT",
+      "logs": [
+        {
+          "ts": 1770463700.389,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [classify_intent]"
+        },
+        {
+          "ts": 1770463700.423,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Starting Intent Classification and Preprocessing in parallel for domain: risk"
+        },
+        {
+          "ts": 1770463706.851,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classifying intent for domain: risk | Query: Analyze if there are significant imbalances in transaction volume and instrument exposure across different KYC statuses. Specifically, look for scenarios where users with 'PENDING' or 'FAILED' KYC are disproportionately concentrated in specific high-risk instruments or transaction types, indicating potential money laundering or fraud vectors."
+        },
+        {
+          "ts": 1770463706.853,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463707.504,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"intent\": \"SELECT\",\n  \"confidence\": 0...."
+        },
+        {
+          "ts": 1770463707.504,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classification Result: SELECT (conf: 0.9) | Needs Clarification: False"
+        },
+        {
+          "ts": 1770463722.209,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463722.766,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: [\"users\", \"transactions\"]..."
+        },
+        {
+          "ts": 1770463722.769,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463724.043,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"resolved_entities\": {\n    \"users.kyc_..."
+        },
+        {
+          "ts": 1770463724.045,
+          "level": "INFO",
+          "node": "entity_extractor.py",
+          "msg": "Final Extracted/Resolved Entities: {'users.kyc_status': ['PENDING', 'FAILED'], 'transactions.instrument': ['XRP/USD', 'AMZN', 'AAPL', 'DAX', 'FTSE100', 'GOOGL', 'AUD/USD', 'Natural Gas', 'Nikkei', 'Oil', 'NVDA', 'EUR/USD', 'BTC/USD', 'ETH/USD', 'NASDAQ', 'GBP/USD', 'USD/JPY', 'MSFT', 'TSLA'], 'transactions.txn_type': ['DEPOSIT', 'WITHDRAWAL', 'TRANSFER', 'TRADE', 'FEE', 'REFUND']}"
+        },
+        {
+          "ts": 1770463724.118,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Intent classified: SELECT (conf: 0.9) | Needs Clarification: False"
+        },
+        {
+          "ts": 1770463735.993,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [generate_sql]"
+        },
+        {
+          "ts": 1770463735.995,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "Generating SQL for domain: risk | Query: Analyze if there are significant imbalances in transaction volume and instrument exposure across different KYC statuses. Specifically, look for scenarios where users with 'PENDING' or 'FAILED' KYC are disproportionately concentrated in specific high-risk instruments or transaction types, indicating potential money laundering or fraud vectors."
+        },
+        {
+          "ts": 1770463736.001,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "Using custom SQL prompt for domain: risk"
+        },
+        {
+          "ts": 1770463736.003,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463736.847,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: SELECT u.kyc_status, t.instrument, t.txn_type, COU..."
+        },
+        {
+          "ts": 1770463736.851,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "SQL Generated and cleaned: SELECT u.kyc_status, t.instrument, t.txn_type, COU..."
+        },
+        {
+          "ts": 1770463736.857,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "SQL Generated: SELECT u.kyc_status, t.instrument, t.txn_type, COU..."
+        },
+        {
+          "ts": 1770463737.031,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [validate_sql]"
+        },
+        {
+          "ts": 1770463737.15,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [execute_query]"
+        },
+        {
+          "ts": 1770463737.154,
+          "level": "INFO",
+          "node": "DB_EXEC",
+          "msg": "Executing SQL: SELECT u.kyc_status, t.instrument, t.txn_type, COUNT(t.txn_id) AS transaction_count\nFROM users u\nJOIN transactions t ON u.user_id = t.user_id\nWHERE UPPER(u.kyc_status) IN ('PENDING', 'FAILED')\nGROUP BY u.kyc_status, t.instrument, t.txn_type\nORDER BY u.kyc_status, transaction_count DESC;"
+        },
+        {
+          "ts": 1770463737.164,
+          "level": "INFO",
+          "node": "DB_EXEC",
+          "msg": "Execution complete. Returned 57 rows."
+        },
+        {
+          "ts": 1770463737.167,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Query execution successful. Rows: 57"
+        },
+        {
+          "ts": 1770463763.363,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [insight_recommendation]"
+        },
+        {
+          "ts": 1770463763.364,
+          "level": "INFO",
+          "node": "INSIGHT",
+          "msg": "Generating insights for 57 rows in domain: risk"
+        },
+        {
+          "ts": 1770463763.365,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463765.232,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"insight\": \"The query results indicate..."
+        },
+        {
+          "ts": 1770463765.232,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Insights generated successfully."
+        },
+        {
+          "ts": 1770463765.233,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [recommend_visualization]"
+        },
+        {
+          "ts": 1770463765.233,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-3-flash-preview] generating response..."
+        },
+        {
+          "ts": 1770463794.184,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-3-flash-preview]. Snippet: ```json\n{\n  \"chart_type\": \"bar\",\n  \"title\": \"Trans..."
+        },
+        {
+          "ts": 1770463794.188,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Visualization recommended: bar"
+        }
+      ]
+    },
+    {
+      "mission_id": "dd-COM001-1-0",
+      "mission_name": "Investigate High-Volume BTC/USD and ETH/USD Transactions by Risky Users",
+      "domain": "compliance",
+      "severity": "LOW",
+      "risk_score": 20,
+      "risk_factors": {
+        "affected_entities": {
+          "value": 6,
+          "score": 60,
+          "detail": "6 unique entities"
+        },
+        "dollar_exposure": {
+          "value": 0,
+          "score": 0,
+          "detail": "$0 exposure"
+        },
+        "velocity": {
+          "value": 6,
+          "score": 30,
+          "detail": "6 events"
+        },
+        "pep_involvement": {
+          "value": 0,
+          "score": 0,
+          "detail": "0 PEP accounts"
+        },
+        "kyc_gaps": {
+          "value": 0,
+          "score": 0,
+          "detail": "0 KYC gaps"
+        },
+        "severity_escalation": {
+          "value": "MEDIUM",
+          "score": 25,
+          "detail": "Base: MEDIUM"
+        }
+      },
+      "sql": "SELECT u.user_id, SUM(t.amount_usd) FROM users u JOIN transactions t ON u.user_id = t.user_id WHERE (UPPER(t.instrument) LIKE '%BTC/USD%' OR UPPER(t.instrument) LIKE '%ETH/USD%') AND (UPPER(u.kyc_status) IN ('PENDING', 'FAILED')) AND (UPPER(u.risk_level) IN ('HIGH', 'CRITICAL')) GROUP BY u.user_id",
+      "data_count": 6,
+      "results": [
+        {
+          "user_id": "10",
+          "SUM(t.amount_usd)": 31087.48
+        },
+        {
+          "user_id": "31",
+          "SUM(t.amount_usd)": 60.85
+        },
+        {
+          "user_id": "4",
+          "SUM(t.amount_usd)": 7703.99
+        },
+        {
+          "user_id": "51",
+          "SUM(t.amount_usd)": 50069.6
+        },
+        {
+          "user_id": "66",
+          "SUM(t.amount_usd)": 299.23
+        },
+        {
+          "user_id": "91",
+          "SUM(t.amount_usd)": 11504.86
+        }
+      ],
+      "visualization_config": {
+        "chart_type": "bar",
+        "title": "Total Transaction Amount for High-Risk Users with Pending/Failed KYC (BTC/USD & ETH/USD)",
+        "x_axis_key": "user_id",
+        "y_axis_key": "SUM(t.amount_usd)",
+        "label": "Total Amount (USD)",
+        "description": "A bar chart is the best way to compare the total transaction volume across different users, making it easy to identify which high-risk or unverified users are moving the largest sums of money."
+      },
+      "insight": "This query highlights a critical area of potential risk and operational inefficiency.  We have identified users involved in significant BTC/USD and ETH/USD transactions whose Know Your Customer (KYC) status is either 'PENDING' or 'FAILED', and concurrently exhibit 'HIGH' or 'CRITICAL' risk levels. This signifies that a substantial volume of high-risk transactions are being processed by users who have not fully completed our compliance verification. This exposure presents a heightened risk of regulatory non-compliance, financial crime (e.g., money laundering), and reputational damage.  The total transaction amount associated with these profiles is considerable, indicating that these are not isolated incidents but rather represent a material segment of our transaction volume.",
+      "recommendation": "1. **Immediate Review and Action on High-Risk Pending/Failed KYC Users:** Initiate a priority review of all user profiles identified in this query. For 'PENDING' KYC users, expedite the verification process or, if documentation is outstanding, issue clear and immediate requests for completion with defined deadlines. For 'FAILED' KYC users, suspend all transaction capabilities until satisfactory resolution, and consider account closure if issues cannot be rectified. This proactive intervention will mitigate immediate compliance and financial crime risks. \n\n2. **Root Cause Analysis and Process Improvement:** Commission a dedicated working group to conduct a thorough root cause analysis for the high volume of 'PENDING' and 'FAILED' KYC statuses, particularly within the high/critical risk user segments and for crypto-to-fiat (BTC/USD, ETH/USD) transactions. This analysis should examine bottlenecks in our KYC/AML processes, potential gaps in user guidance, or systemic issues that may be contributing to these failures. The objective is to identify and implement process improvements to reduce the rate of pending and failed KYC verifications for high-risk users, thereby strengthening our overall compliance posture and operational efficiency.",
+      "original_query": "Show me the user IDs and total transaction amounts for all transactions involving BTC/USD and ETH/USD where the user's KYC status is 'PENDING' or 'FAILED' and their risk level is 'HIGH' or 'CRITICAL'.",
+      "depth": 1,
+      "parent_mission_id": "COM001",
+      "rationale": "This query directly investigates the most prominent instruments identified in the findings (BTC/USD and ETH/USD) and focuses on the specific high-risk user segments. Understanding the individual user contributions to these volumes is crucial for identifying potential bad actors.",
+      "timestamp": "LIVE AUDIT",
+      "logs": [
+        {
+          "ts": 1770463807.043,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [classify_intent]"
+        },
+        {
+          "ts": 1770463807.044,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Starting Intent Classification and Preprocessing in parallel for domain: compliance"
+        },
+        {
+          "ts": 1770463807.061,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classifying intent for domain: compliance | Query: Show me the user IDs and total transaction amounts for all transactions involving BTC/USD and ETH/USD where the user's KYC status is 'PENDING' or 'FAILED' and their risk level is 'HIGH' or 'CRITICAL'."
+        },
+        {
+          "ts": 1770463807.064,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463807.628,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"intent\": \"SELECT\",\n  \"confidence\": 1...."
+        },
+        {
+          "ts": 1770463807.628,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classification Result: SELECT (conf: 1.0) | Needs Clarification: False"
+        },
+        {
+          "ts": 1770463810.832,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463811.633,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: [\"users\", \"transactions\"]..."
+        },
+        {
+          "ts": 1770463811.633,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463812.496,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"resolved_entities\": {\n    \"transactio..."
+        },
+        {
+          "ts": 1770463812.498,
+          "level": "INFO",
+          "node": "entity_extractor.py",
+          "msg": "Final Extracted/Resolved Entities: {'transactions.instrument': ['BTC/USD', 'ETH/USD'], 'users.kyc_status': 'PENDING', 'users.risk_level': ['HIGH', 'CRITICAL']}"
+        },
+        {
+          "ts": 1770463819.859,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Intent classified: SELECT (conf: 1.0) | Needs Clarification: False"
+        },
+        {
+          "ts": 1770463819.876,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [generate_sql]"
+        },
+        {
+          "ts": 1770463819.878,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "Generating SQL for domain: compliance | Query: Show me the user IDs and total transaction amounts for all transactions involving BTC/USD and ETH/USD where the user's KYC status is 'PENDING' or 'FAILED' and their risk level is 'HIGH' or 'CRITICAL'."
+        },
+        {
+          "ts": 1770463819.885,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "Using custom SQL prompt for domain: compliance"
+        },
+        {
+          "ts": 1770463819.885,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463821.0,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: SELECT u.user_id, SUM(t.amount_usd) FROM users u J..."
+        },
+        {
+          "ts": 1770463821.0,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "SQL Generated and cleaned: SELECT u.user_id, SUM(t.amount_usd) FROM users u J..."
+        },
+        {
+          "ts": 1770463821.0,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "SQL Generated: SELECT u.user_id, SUM(t.amount_usd) FROM users u J..."
+        },
+        {
+          "ts": 1770463825.772,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [validate_sql]"
+        },
+        {
+          "ts": 1770463825.824,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [execute_query]"
+        },
+        {
+          "ts": 1770463825.829,
+          "level": "INFO",
+          "node": "DB_EXEC",
+          "msg": "Executing SQL: SELECT u.user_id, SUM(t.amount_usd) FROM users u JOIN transactions t ON u.user_id = t.user_id WHERE (UPPER(t.instrument) LIKE '%BTC/USD%' OR UPPER(t.instrument) LIKE '%ETH/USD%') AND (UPPER(u.kyc_status) IN ('PENDING', 'FAILED')) AND (UPPER(u.risk_level) IN ('HIGH', 'CRITICAL')) GROUP BY u.user_id"
+        },
+        {
+          "ts": 1770463825.834,
+          "level": "INFO",
+          "node": "DB_EXEC",
+          "msg": "Execution complete. Returned 6 rows."
+        },
+        {
+          "ts": 1770463825.835,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Query execution successful. Rows: 6"
+        },
+        {
+          "ts": 1770463825.882,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [insight_recommendation]"
+        },
+        {
+          "ts": 1770463825.884,
+          "level": "INFO",
+          "node": "INSIGHT",
+          "msg": "Generating insights for 6 rows in domain: compliance"
+        },
+        {
+          "ts": 1770463825.885,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463828.463,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"insight\": \"This query highlights a cr..."
+        },
+        {
+          "ts": 1770463828.466,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Insights generated successfully."
+        },
+        {
+          "ts": 1770463828.466,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [recommend_visualization]"
+        },
+        {
+          "ts": 1770463828.468,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-3-flash-preview] generating response..."
+        },
+        {
+          "ts": 1770463843.761,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-3-flash-preview]. Snippet: {\n  \"chart_type\": \"bar\",\n  \"title\": \"Total Transac..."
+        },
+        {
+          "ts": 1770463843.761,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Visualization recommended: bar"
+        }
+      ]
+    },
+    {
+      "mission_id": "dd-COM001-1-1",
+      "mission_name": "Analyze Transaction Locations for Unverified High-Risk Users",
+      "domain": "compliance",
+      "severity": "MEDIUM",
+      "risk_score": 26,
+      "risk_factors": {
+        "affected_entities": {
+          "value": 8,
+          "score": 80,
+          "detail": "8 unique entities"
+        },
+        "dollar_exposure": {
+          "value": 0,
+          "score": 0,
+          "detail": "$0 exposure"
+        },
+        "velocity": {
+          "value": 8,
+          "score": 40,
+          "detail": "8 events"
+        },
+        "pep_involvement": {
+          "value": 0,
+          "score": 0,
+          "detail": "0 PEP accounts"
+        },
+        "kyc_gaps": {
+          "value": 0,
+          "score": 0,
+          "detail": "0 KYC gaps"
+        },
+        "severity_escalation": {
+          "value": "MEDIUM",
+          "score": 25,
+          "detail": "Base: MEDIUM"
+        }
+      },
+      "sql": "SELECT le.country, SUM(t.amount_usd) AS total_transaction_volume\nFROM users u\nJOIN login_events le ON u.user_id = le.user_id\nJOIN transactions t ON u.user_id = t.user_id\nWHERE (UPPER(u.kyc_status) LIKE '%PENDING%' OR UPPER(u.kyc_status) LIKE '%FAILED%')\nAND (UPPER(u.risk_level) LIKE '%HIGH%' OR UPPER(u.risk_level) LIKE '%CRITICAL%')\nGROUP BY le.country\nORDER BY total_transaction_volume DESC;",
+      "data_count": 8,
+      "results": [
+        {
+          "country": "United Kingdom",
+          "total_transaction_volume": 81910.46
+        },
+        {
+          "country": "India",
+          "total_transaction_volume": 80883.67
+        },
+        {
+          "country": "Japan",
+          "total_transaction_volume": 68737.13
+        },
+        {
+          "country": "Germany",
+          "total_transaction_volume": 46230.97
+        },
+        {
+          "country": "Singapore",
+          "total_transaction_volume": 33057.64
+        },
+        {
+          "country": "Australia",
+          "total_transaction_volume": 17499.56
+        },
+        {
+          "country": "UAE",
+          "total_transaction_volume": 8749.78
+        },
+        {
+          "country": "Kuwait",
+          "total_transaction_volume": 8704.63
+        }
+      ],
+      "visualization_config": {
+        "chart_type": "bar",
+        "title": "Top Countries by Transaction Volume for High-Risk and Pending/Failed KYC Users",
+        "x_axis_key": "country",
+        "y_axis_key": "total_transaction_volume",
+        "label": "Total Transaction Volume (USD)",
+        "description": "A bar chart is the most effective way to compare a numeric metric (transaction volume) across different categories (countries), making it easy to identify the top originating countries for this specific high-risk user segment."
+      },
+      "insight": "Our current compliance posture reveals a concentration of high-risk transactions originating from key international markets, specifically the United Kingdom, India, and Japan. This data directly correlates with users exhibiting 'PENDING' or 'FAILED' KYC status. This situation presents a significant operational and reputational risk, potentially indicating weaknesses in our customer onboarding verification processes or a heightened susceptibility to fraudulent activities from these regions. The substantial transaction volumes associated with these at-risk users underscore the urgency of addressing these findings.",
+      "recommendation": "1. **Immediate targeted review of KYC processes for high-risk originating countries:** Initiate an expedited audit of our Know Your Customer (KYC) verification protocols specifically for users originating from the United Kingdom, India, and Japan. Focus on identifying any systemic weaknesses or bottlenecks in the 'PENDING' or 'FAILED' statuses that are allowing high-risk transactions to proceed. \n2. **Enhanced real-time transaction monitoring and geo-blocking strategies:** Implement enhanced real-time fraud detection algorithms and consider geo-blocking capabilities for transactions originating from the identified high-risk countries and associated with users flagged with 'PENDING' or 'FAILED' KYC statuses, pending further investigation and remediation.",
+      "original_query": "For users with 'PENDING' or 'FAILED' KYC status and 'HIGH' or 'CRITICAL' risk levels, what are the top originating countries and the total transaction volume associated with each country?",
+      "depth": 1,
+      "parent_mission_id": "COM001",
+      "rationale": "The original findings highlight high-risk users and instruments. This follow-up investigates the geographical origin of these transactions. If a disproportionate volume originates from specific high-risk countries, it can further strengthen the suspicion of illicit activities and inform geographical risk assessments.",
+      "timestamp": "LIVE AUDIT",
+      "logs": [
+        {
+          "ts": 1770463807.046,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [classify_intent]"
+        },
+        {
+          "ts": 1770463807.047,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Starting Intent Classification and Preprocessing in parallel for domain: compliance"
+        },
+        {
+          "ts": 1770463807.628,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classifying intent for domain: compliance | Query: For users with 'PENDING' or 'FAILED' KYC status and 'HIGH' or 'CRITICAL' risk levels, what are the top originating countries and the total transaction volume associated with each country?"
+        },
+        {
+          "ts": 1770463807.635,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463808.452,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"intent\": \"SELECT\",\n  \"confidence\": 1...."
+        },
+        {
+          "ts": 1770463808.452,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classification Result: SELECT (conf: 1.0) | Needs Clarification: False"
+        },
+        {
+          "ts": 1770463812.499,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463813.035,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: [\"users\", \"transactions\"]..."
+        },
+        {
+          "ts": 1770463813.037,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463813.907,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"resolved_entities\": {\n    \"users.kyc_..."
+        },
+        {
+          "ts": 1770463813.908,
+          "level": "INFO",
+          "node": "entity_extractor.py",
+          "msg": "Final Extracted/Resolved Entities: {'users.kyc_status': ['PENDING', 'FAILED'], 'users.risk_level': ['HIGH', 'CRITICAL']}"
+        },
+        {
+          "ts": 1770463819.859,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Intent classified: SELECT (conf: 1.0) | Needs Clarification: False"
+        },
+        {
+          "ts": 1770463821.0,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [generate_sql]"
+        },
+        {
+          "ts": 1770463821.0,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "Generating SQL for domain: compliance | Query: For users with 'PENDING' or 'FAILED' KYC status and 'HIGH' or 'CRITICAL' risk levels, what are the top originating countries and the total transaction volume associated with each country?"
+        },
+        {
+          "ts": 1770463821.0,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "Using custom SQL prompt for domain: compliance"
+        },
+        {
+          "ts": 1770463821.0,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463821.933,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: SELECT le.country, SUM(t.amount_usd) AS total_tran..."
+        },
+        {
+          "ts": 1770463821.933,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "SQL Generated and cleaned: SELECT le.country, SUM(t.amount_usd) AS total_tran..."
+        },
+        {
+          "ts": 1770463821.933,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "SQL Generated: SELECT le.country, SUM(t.amount_usd) AS total_tran..."
+        },
+        {
+          "ts": 1770463825.78,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [validate_sql]"
+        },
+        {
+          "ts": 1770463825.838,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [execute_query]"
+        },
+        {
+          "ts": 1770463825.838,
+          "level": "INFO",
+          "node": "DB_EXEC",
+          "msg": "Executing SQL: SELECT le.country, SUM(t.amount_usd) AS total_transaction_volume\nFROM users u\nJOIN login_events le ON u.user_id = le.user_id\nJOIN transactions t ON u.user_id = t.user_id\nWHERE (UPPER(u.kyc_status) LIKE '%PENDING%' OR UPPER(u.kyc_status) LIKE '%FAILED%')\nAND (UPPER(u.risk_level) LIKE '%HIGH%' OR UPPER(u.risk_level) LIKE '%CRITICAL%')\nGROUP BY le.country\nORDER BY total_transaction_volume DESC;"
+        },
+        {
+          "ts": 1770463825.845,
+          "level": "INFO",
+          "node": "DB_EXEC",
+          "msg": "Execution complete. Returned 8 rows."
+        },
+        {
+          "ts": 1770463825.846,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Query execution successful. Rows: 8"
+        },
+        {
+          "ts": 1770463843.768,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [insight_recommendation]"
+        },
+        {
+          "ts": 1770463843.768,
+          "level": "INFO",
+          "node": "INSIGHT",
+          "msg": "Generating insights for 8 rows in domain: compliance"
+        },
+        {
+          "ts": 1770463843.771,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463845.592,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"insight\": \"Our current compliance pos..."
+        },
+        {
+          "ts": 1770463845.592,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Insights generated successfully."
+        },
+        {
+          "ts": 1770463845.593,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [recommend_visualization]"
+        },
+        {
+          "ts": 1770463845.595,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-3-flash-preview] generating response..."
+        },
+        {
+          "ts": 1770463849.997,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-3-flash-preview]. Snippet: {\n  \"chart_type\": \"bar\",\n  \"title\": \"Top Countries..."
+        },
+        {
+          "ts": 1770463849.998,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Visualization recommended: bar"
+        }
+      ]
+    },
+    {
+      "mission_id": "dd-OPS001-1-0",
+      "mission_name": "Investigate Uncategorized Withdrawal Failures",
+      "domain": "operations",
+      "severity": "LOW",
+      "risk_score": 0,
+      "risk_factors": {},
+      "sql": "SELECT DISTINCT u.user_id, t.payment_method FROM users u JOIN transactions t ON u.user_id = t.user_id WHERE UPPER(t.txn_type) LIKE '%WITHDRAWAL%' AND UPPER(t.status) LIKE '%FAILED%' AND (t.flag_reason IS NULL OR UPPER(t.flag_reason) LIKE '%NULL%');",
+      "data_count": 0,
+      "results": [],
+      "visualization_config": null,
+      "insight": "No data found to analyze.",
+      "recommendation": "Try broadening your search criteria or checking if the data for this period is available.",
+      "original_query": "For all users who experienced a WITHDRAWAL failure with no 'flag_reason', what are their user_ids and what were the specific payment_methods used?",
+      "depth": 1,
+      "parent_mission_id": "OPS001",
+      "rationale": "The current findings show WITHDRAWAL failures but lack specific 'flag_reason'. By identifying the user_ids and payment_methods associated with these uncategorized failures, we can begin to isolate commonalities in the payment processing flow that might be causing these issues.",
+      "timestamp": "LIVE AUDIT",
+      "logs": [
+        {
+          "ts": 1770463807.047,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [classify_intent]"
+        },
+        {
+          "ts": 1770463807.05,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Starting Intent Classification and Preprocessing in parallel for domain: operations"
+        },
+        {
+          "ts": 1770463808.46,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classifying intent for domain: operations | Query: For all users who experienced a WITHDRAWAL failure with no 'flag_reason', what are their user_ids and what were the specific payment_methods used?"
+        },
+        {
+          "ts": 1770463808.464,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463809.164,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"intent\": \"SELECT\",\n  \"confidence\": 1...."
+        },
+        {
+          "ts": 1770463809.166,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classification Result: SELECT (conf: 1.0) | Needs Clarification: False"
+        },
+        {
+          "ts": 1770463813.91,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463814.525,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: [\"users\", \"transactions\"]..."
+        },
+        {
+          "ts": 1770463814.529,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463815.345,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"resolved_entities\": {\n    \"transactio..."
+        },
+        {
+          "ts": 1770463815.345,
+          "level": "INFO",
+          "node": "entity_extractor.py",
+          "msg": "Final Extracted/Resolved Entities: {'transactions.txn_type': 'WITHDRAWAL', 'transactions.status': 'FAILED', 'transactions.flag_reason': ''}"
+        },
+        {
+          "ts": 1770463819.859,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Intent classified: SELECT (conf: 1.0) | Needs Clarification: False"
+        },
+        {
+          "ts": 1770463821.933,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [generate_sql]"
+        },
+        {
+          "ts": 1770463821.933,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "Generating SQL for domain: operations | Query: For all users who experienced a WITHDRAWAL failure with no 'flag_reason', what are their user_ids and what were the specific payment_methods used?"
+        },
+        {
+          "ts": 1770463821.933,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "Using custom SQL prompt for domain: operations"
+        },
+        {
+          "ts": 1770463821.941,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463822.696,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: SELECT DISTINCT u.user_id, t.payment_method FROM u..."
+        },
+        {
+          "ts": 1770463822.696,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "SQL Generated and cleaned: SELECT DISTINCT u.user_id, t.payment_method FROM u..."
+        },
+        {
+          "ts": 1770463822.698,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "SQL Generated: SELECT DISTINCT u.user_id, t.payment_method FROM u..."
+        },
+        {
+          "ts": 1770463825.789,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [validate_sql]"
+        },
+        {
+          "ts": 1770463825.847,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [execute_query]"
+        },
+        {
+          "ts": 1770463825.849,
+          "level": "INFO",
+          "node": "DB_EXEC",
+          "msg": "Executing SQL: SELECT DISTINCT u.user_id, t.payment_method FROM users u JOIN transactions t ON u.user_id = t.user_id WHERE UPPER(t.txn_type) LIKE '%WITHDRAWAL%' AND UPPER(t.status) LIKE '%FAILED%' AND (t.flag_reason IS NULL OR UPPER(t.flag_reason) LIKE '%NULL%');"
+        },
+        {
+          "ts": 1770463825.851,
+          "level": "INFO",
+          "node": "DB_EXEC",
+          "msg": "Execution complete. Returned 0 rows."
+        },
+        {
+          "ts": 1770463825.854,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Query execution successful. Rows: 0"
+        },
+        {
+          "ts": 1770463850.0,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [insight_recommendation]"
+        },
+        {
+          "ts": 1770463850.001,
+          "level": "INFO",
+          "node": "INSIGHT",
+          "msg": "Generating insights for 0 rows in domain: operations"
+        },
+        {
+          "ts": 1770463850.003,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Insights generated successfully."
+        },
+        {
+          "ts": 1770463850.005,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [recommend_visualization]"
+        },
+        {
+          "ts": 1770463850.008,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "No results for visualization recommendation."
+        }
+      ]
+    },
+    {
+      "mission_id": "dd-OPS001-1-1",
+      "mission_name": "Analyze Deposit Failures for High-Risk, Pending KYC Users",
+      "domain": "operations",
+      "severity": "LOW",
+      "risk_score": 7,
+      "risk_factors": {
+        "affected_entities": {
+          "value": 1,
+          "score": 10,
+          "detail": "1 unique entities"
+        },
+        "dollar_exposure": {
+          "value": 1800.98,
+          "score": 1,
+          "detail": "$1,801 exposure"
+        },
+        "velocity": {
+          "value": 1,
+          "score": 5,
+          "detail": "1 events"
+        },
+        "pep_involvement": {
+          "value": 0,
+          "score": 0,
+          "detail": "0 PEP accounts"
+        },
+        "kyc_gaps": {
+          "value": 0,
+          "score": 0,
+          "detail": "0 KYC gaps"
+        },
+        "severity_escalation": {
+          "value": "MEDIUM",
+          "score": 25,
+          "detail": "Base: MEDIUM"
+        }
+      },
+      "sql": "SELECT DISTINCT u.user_id, t.amount, t.currency FROM users u JOIN transactions t ON u.user_id = t.user_id WHERE UPPER(u.risk_level) LIKE '%CRITICAL%' AND UPPER(u.kyc_status) LIKE '%PENDING%' AND UPPER(t.txn_type) LIKE '%DEPOSIT%' AND UPPER(t.status) LIKE '%FAILED%';",
+      "data_count": 1,
+      "results": [
+        {
+          "user_id": "91",
+          "amount": 1800.98,
+          "currency": "JPY"
+        }
+      ],
+      "visualization_config": {
+        "chart_type": "table",
+        "title": "Failed Deposit Transactions for Critical Risk Users with Pending KYC",
+        "x_axis_key": "user_id",
+        "y_axis_key": [
+          "amount",
+          "currency"
+        ],
+        "label": "Failed Transaction Details",
+        "description": "The request asks for specific details (user_id, amount, and currency) of individual transactions. Since the data consists of discrete records with different currencies and no aggregation is performed, a table is the best way to present this detailed list."
+      },
+      "insight": "The query reveals a direct correlation between users flagged with 'CRITICAL' risk levels and 'PENDING' KYC status who are experiencing DEPOSIT failures.  This indicates a potential operational bottleneck or a systemic issue impacting our highest-risk user segment.  The fact that these are deposit failures, rather than withdrawal issues, suggests a potential onboarding friction point or a specific processing flaw that needs immediate attention. Failure to address this could lead to lost revenue, increased customer dissatisfaction within a vulnerable user base, and reputational damage.",
+      "recommendation": "1.  Initiate an immediate, focused investigation into the root cause of DEPOSIT failures specifically for users matching the 'CRITICAL' risk_level and 'PENDING' kyc_status criteria. This includes reviewing transaction logs, payment gateway integration, and any automated checks in place. \n2.  Proactively contact the identified user_ids (e.g., '91') to offer direct assistance with their deposit attempts, gather feedback on their experience, and expedite their KYC process where feasible to mitigate further friction and potential churn.",
+      "original_query": "For users with 'risk_level' as 'CRITICAL' and 'kyc_status' as 'PENDING' who experienced DEPOSIT failures, what are their user_ids and what were the amounts and currencies of these failed transactions?",
+      "depth": 1,
+      "parent_mission_id": "OPS001",
+      "rationale": "The finding highlights a DEPOSIT failure for a user with 'CRITICAL' risk and 'PENDING' KYC status. Investigating the specific amounts and currencies of these failures for such users can reveal if there are transaction value thresholds or currency-specific issues that are being exacerbated by incomplete KYC or high-risk profiles.",
+      "timestamp": "LIVE AUDIT",
+      "logs": [
+        {
+          "ts": 1770463807.05,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [classify_intent]"
+        },
+        {
+          "ts": 1770463807.052,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Starting Intent Classification and Preprocessing in parallel for domain: operations"
+        },
+        {
+          "ts": 1770463809.168,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classifying intent for domain: operations | Query: For users with 'risk_level' as 'CRITICAL' and 'kyc_status' as 'PENDING' who experienced DEPOSIT failures, what are their user_ids and what were the amounts and currencies of these failed transactions?"
+        },
+        {
+          "ts": 1770463809.17,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463809.725,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"intent\": \"SELECT\",\n  \"confidence\": 1...."
+        },
+        {
+          "ts": 1770463809.725,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classification Result: SELECT (conf: 1.0) | Needs Clarification: False"
+        },
+        {
+          "ts": 1770463815.348,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463815.824,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: [\"users\", \"transactions\"]..."
+        },
+        {
+          "ts": 1770463815.833,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463816.9,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"resolved_entities\": {\n    \"users.risk..."
+        },
+        {
+          "ts": 1770463816.901,
+          "level": "INFO",
+          "node": "entity_extractor.py",
+          "msg": "Final Extracted/Resolved Entities: {'users.risk_level': 'CRITICAL', 'users.kyc_status': 'PENDING', 'transactions.txn_type': 'DEPOSIT', 'transactions.status': 'FAILED'}"
+        },
+        {
+          "ts": 1770463819.859,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Intent classified: SELECT (conf: 1.0) | Needs Clarification: False"
+        },
+        {
+          "ts": 1770463822.699,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [generate_sql]"
+        },
+        {
+          "ts": 1770463822.701,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "Generating SQL for domain: operations | Query: For users with 'risk_level' as 'CRITICAL' and 'kyc_status' as 'PENDING' who experienced DEPOSIT failures, what are their user_ids and what were the amounts and currencies of these failed transactions?"
+        },
+        {
+          "ts": 1770463822.706,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "Using custom SQL prompt for domain: operations"
+        },
+        {
+          "ts": 1770463822.708,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463823.824,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: SELECT DISTINCT u.user_id, t.amount, t.currency FR..."
+        },
+        {
+          "ts": 1770463823.829,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "SQL Generated and cleaned: SELECT DISTINCT u.user_id, t.amount, t.currency FR..."
+        },
+        {
+          "ts": 1770463823.833,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "SQL Generated: SELECT DISTINCT u.user_id, t.amount, t.currency FR..."
+        },
+        {
+          "ts": 1770463825.796,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [validate_sql]"
+        },
+        {
+          "ts": 1770463825.857,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [execute_query]"
+        },
+        {
+          "ts": 1770463825.859,
+          "level": "INFO",
+          "node": "DB_EXEC",
+          "msg": "Executing SQL: SELECT DISTINCT u.user_id, t.amount, t.currency FROM users u JOIN transactions t ON u.user_id = t.user_id WHERE UPPER(u.risk_level) LIKE '%CRITICAL%' AND UPPER(u.kyc_status) LIKE '%PENDING%' AND UPPER(t.txn_type) LIKE '%DEPOSIT%' AND UPPER(t.status) LIKE '%FAILED%';"
+        },
+        {
+          "ts": 1770463825.862,
+          "level": "INFO",
+          "node": "DB_EXEC",
+          "msg": "Execution complete. Returned 1 rows."
+        },
+        {
+          "ts": 1770463825.863,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Query execution successful. Rows: 1"
+        },
+        {
+          "ts": 1770463850.012,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [insight_recommendation]"
+        },
+        {
+          "ts": 1770463850.013,
+          "level": "INFO",
+          "node": "INSIGHT",
+          "msg": "Generating insights for 1 rows in domain: operations"
+        },
+        {
+          "ts": 1770463850.015,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463851.645,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"insight\": \"The query reveals a direct..."
+        },
+        {
+          "ts": 1770463851.645,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Insights generated successfully."
+        },
+        {
+          "ts": 1770463851.646,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [recommend_visualization]"
+        },
+        {
+          "ts": 1770463851.646,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-3-flash-preview] generating response..."
+        },
+        {
+          "ts": 1770463864.186,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-3-flash-preview]. Snippet: {\n  \"chart_type\": \"table\",\n  \"title\": \"Failed Depo..."
+        },
+        {
+          "ts": 1770463864.186,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Visualization recommended: table"
+        }
+      ]
+    },
+    {
+      "mission_id": "dd-RIS003-1-0",
+      "mission_name": "High-Risk Instrument Exposure for PENDING KYC Users",
+      "domain": "risk",
+      "severity": "MEDIUM",
+      "risk_score": 36,
+      "risk_factors": {
+        "affected_entities": {
+          "value": 12,
+          "score": 100,
+          "detail": "12 unique entities"
+        },
+        "dollar_exposure": {
+          "value": 0,
+          "score": 0,
+          "detail": "$0 exposure"
+        },
+        "velocity": {
+          "value": 12,
+          "score": 60,
+          "detail": "12 events"
+        },
+        "pep_involvement": {
+          "value": 0,
+          "score": 0,
+          "detail": "0 PEP accounts"
+        },
+        "kyc_gaps": {
+          "value": 0,
+          "score": 0,
+          "detail": "0 KYC gaps"
+        },
+        "severity_escalation": {
+          "value": "HIGH",
+          "score": 50,
+          "detail": "Base: HIGH"
+        }
+      },
+      "sql": "SELECT u.username, COUNT(t.txn_id) AS total_transaction_count, AVG(t.amount_usd) AS average_transaction_amount_usd FROM users u JOIN transactions t ON u.user_id = t.user_id WHERE UPPER(u.kyc_status) LIKE '%PENDING%' AND UPPER(t.instrument) IN ('DAX', 'GOOGL', 'META', 'MSFT', 'NATURAL GAS', 'NIKKEI') GROUP BY u.username;",
+      "data_count": 12,
+      "results": [
+        {
+          "username": "adam_morris",
+          "total_transaction_count": 2,
+          "average_transaction_amount_usd": 218.765
+        },
+        {
+          "username": "andrew_lewis",
+          "total_transaction_count": 1,
+          "average_transaction_amount_usd": 1876.1
+        },
+        {
+          "username": "aria_bailey",
+          "total_transaction_count": 1,
+          "average_transaction_amount_usd": 6271.08
+        },
+        {
+          "username": "aurora_powell",
+          "total_transaction_count": 2,
+          "average_transaction_amount_usd": 13383.99
+        },
+        {
+          "username": "carl_wood",
+          "total_transaction_count": 2,
+          "average_transaction_amount_usd": 1742.565
+        },
+        {
+          "username": "hannah_turner",
+          "total_transaction_count": 2,
+          "average_transaction_amount_usd": 3481.98
+        },
+        {
+          "username": "nathan_scott",
+          "total_transaction_count": 1,
+          "average_transaction_amount_usd": 6454.57
+        },
+        {
+          "username": "phillip_gonzales",
+          "total_transaction_count": 3,
+          "average_transaction_amount_usd": 3381.4300000000003
+        },
+        {
+          "username": "sarah_davis",
+          "total_transaction_count": 3,
+          "average_transaction_amount_usd": 8268.043333333333
+        },
+        {
+          "username": "skylar_gray",
+          "total_transaction_count": 3,
+          "average_transaction_amount_usd": 456.1433333333334
+        },
+        {
+          "username": "sophia_hernandez",
+          "total_transaction_count": 1,
+          "average_transaction_amount_usd": 11.6
+        },
+        {
+          "username": "zoey_campbell",
+          "total_transaction_count": 1,
+          "average_transaction_amount_usd": 127014.74
+        }
+      ],
+      "visualization_config": {
+        "chart_type": "table",
+        "title": "Transaction Summary for Users with Pending KYC Status",
+        "x_axis_key": "username",
+        "y_axis_key": [
+          "total_transaction_count",
+          "average_transaction_amount_usd"
+        ],
+        "label": "User Transaction Details",
+        "description": "A table is the most appropriate format for this request because it involves listing specific individual users (entities) alongside multiple metrics with different units and scales (a count and a currency amount). A table ensures all detailed information is legible without the scaling issues a bar chart would face when plotting small counts against large dollar amounts."
+      },
+      "insight": "The query reveals a cohort of users with 'PENDING' KYC status who are actively trading high-profile instruments like 'DAX', 'GOOGL', 'META', 'MSFT', 'Natural Gas', and 'Nikkei'.  While this indicates engagement with our platform and potentially valuable trading activity, the 'PENDING' KYC status for these individuals represents a significant regulatory and operational risk.  If these KYC statuses are not resolved promptly, we face the potential for non-compliance with anti-money laundering (AML) and Know Your Customer (KYC) regulations, which could lead to substantial fines, reputational damage, and even operational disruption. The varying transaction volumes and average amounts highlight a diverse group of traders within this risk pool.",
+      "recommendation": [
+        "Prioritize and expedite the KYC review process for all users identified in this query. Implement a dedicated task force or SLA to clear these pending statuses within 48 hours to mitigate immediate regulatory exposure.",
+        "Investigate the root cause of the 'PENDING' KYC statuses for this specific group. If systemic issues are identified (e.g., documentation errors, specific geographic challenges), proactively address them to prevent recurrence and improve the overall KYC onboarding efficiency."
+      ],
+      "original_query": "Show me all users with 'PENDING' KYC status who have traded 'DAX', 'GOOGL', 'META', 'MSFT', 'Natural Gas', or 'Nikkei' instruments, and list the total transaction count and average transaction amount in USD for each.",
+      "depth": 1,
+      "parent_mission_id": "RIS003",
+      "rationale": "This query aims to quantify the extent of high-risk instrument trading by 'PENDING' KYC users. By examining the total transaction count and average amount, we can assess the volume and value of these potentially risky activities. This will help determine if 'PENDING' users are actively using these instruments and the scale of their involvement, which is a direct follow-up to the finding of their presence in these instruments.",
+      "timestamp": "LIVE AUDIT",
+      "logs": [
+        {
+          "ts": 1770463807.054,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [classify_intent]"
+        },
+        {
+          "ts": 1770463807.056,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Starting Intent Classification and Preprocessing in parallel for domain: risk"
+        },
+        {
+          "ts": 1770463809.733,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classifying intent for domain: risk | Query: Show me all users with 'PENDING' KYC status who have traded 'DAX', 'GOOGL', 'META', 'MSFT', 'Natural Gas', or 'Nikkei' instruments, and list the total transaction count and average transaction amount in USD for each."
+        },
+        {
+          "ts": 1770463809.737,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463810.427,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"intent\": \"SELECT\",\n  \"confidence\": 1...."
+        },
+        {
+          "ts": 1770463810.43,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classification Result: SELECT (conf: 1.0) | Needs Clarification: False"
+        },
+        {
+          "ts": 1770463816.903,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463817.502,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: [\"users\", \"transactions\"]..."
+        },
+        {
+          "ts": 1770463817.506,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463818.426,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"resolved_entities\": {\n    \"users.kyc_..."
+        },
+        {
+          "ts": 1770463818.426,
+          "level": "INFO",
+          "node": "entity_extractor.py",
+          "msg": "Final Extracted/Resolved Entities: {'users.kyc_status': 'PENDING', 'transactions.instrument': ['DAX', 'GOOGL', 'MSFT', 'Natural Gas', 'Nikkei']}"
+        },
+        {
+          "ts": 1770463819.859,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Intent classified: SELECT (conf: 1.0) | Needs Clarification: False"
+        },
+        {
+          "ts": 1770463823.838,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [generate_sql]"
+        },
+        {
+          "ts": 1770463823.842,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "Generating SQL for domain: risk | Query: Show me all users with 'PENDING' KYC status who have traded 'DAX', 'GOOGL', 'META', 'MSFT', 'Natural Gas', or 'Nikkei' instruments, and list the total transaction count and average transaction amount in USD for each."
+        },
+        {
+          "ts": 1770463823.863,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "Using custom SQL prompt for domain: risk"
+        },
+        {
+          "ts": 1770463823.87,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463824.792,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: SELECT u.username, COUNT(t.txn_id) AS total_transa..."
+        },
+        {
+          "ts": 1770463824.792,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "SQL Generated and cleaned: SELECT u.username, COUNT(t.txn_id) AS total_transa..."
+        },
+        {
+          "ts": 1770463824.793,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "SQL Generated: SELECT u.username, COUNT(t.txn_id) AS total_transa..."
+        },
+        {
+          "ts": 1770463825.804,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [validate_sql]"
+        },
+        {
+          "ts": 1770463825.865,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [execute_query]"
+        },
+        {
+          "ts": 1770463825.867,
+          "level": "INFO",
+          "node": "DB_EXEC",
+          "msg": "Executing SQL: SELECT u.username, COUNT(t.txn_id) AS total_transaction_count, AVG(t.amount_usd) AS average_transaction_amount_usd FROM users u JOIN transactions t ON u.user_id = t.user_id WHERE UPPER(u.kyc_status) LIKE '%PENDING%' AND UPPER(t.instrument) IN ('DAX', 'GOOGL', 'META', 'MSFT', 'NATURAL GAS', 'NIKKEI') GROUP BY u.username;"
+        },
+        {
+          "ts": 1770463825.87,
+          "level": "INFO",
+          "node": "DB_EXEC",
+          "msg": "Execution complete. Returned 12 rows."
+        },
+        {
+          "ts": 1770463825.871,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Query execution successful. Rows: 12"
+        },
+        {
+          "ts": 1770463864.191,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [insight_recommendation]"
+        },
+        {
+          "ts": 1770463864.193,
+          "level": "INFO",
+          "node": "INSIGHT",
+          "msg": "Generating insights for 12 rows in domain: risk"
+        },
+        {
+          "ts": 1770463864.195,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463865.794,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"insight\": \"The query reveals a cohort..."
+        },
+        {
+          "ts": 1770463865.796,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Insights generated successfully."
+        },
+        {
+          "ts": 1770463865.796,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [recommend_visualization]"
+        },
+        {
+          "ts": 1770463865.797,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-3-flash-preview] generating response..."
+        },
+        {
+          "ts": 1770463897.805,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-3-flash-preview]. Snippet: ```json\n{\n  \"chart_type\": \"table\",\n  \"title\": \"Tra..."
+        },
+        {
+          "ts": 1770463897.807,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Visualization recommended: table"
+        }
+      ]
+    },
+    {
+      "mission_id": "dd-RIS003-1-1",
+      "mission_name": "Withdrawal Patterns of PENDING KYC Users",
+      "domain": "risk",
+      "severity": "MEDIUM",
+      "risk_score": 35,
+      "risk_factors": {
+        "affected_entities": {
+          "value": 10,
+          "score": 100,
+          "detail": "10 unique entities"
+        },
+        "dollar_exposure": {
+          "value": 0,
+          "score": 0,
+          "detail": "$0 exposure"
+        },
+        "velocity": {
+          "value": 10,
+          "score": 50,
+          "detail": "10 events"
+        },
+        "pep_involvement": {
+          "value": 0,
+          "score": 0,
+          "detail": "0 PEP accounts"
+        },
+        "kyc_gaps": {
+          "value": 0,
+          "score": 0,
+          "detail": "0 KYC gaps"
+        },
+        "severity_escalation": {
+          "value": "HIGH",
+          "score": 50,
+          "detail": "Base: HIGH"
+        }
+      },
+      "sql": "SELECT u.username, COUNT(t.txn_id) AS total_withdrawals, SUM(t.amount_usd) AS total_amount_withdrawn_usd, GROUP_CONCAT(DISTINCT t.payment_method) AS payment_methods\nFROM users u\nJOIN transactions t ON u.user_id = t.user_id\nWHERE UPPER(u.kyc_status) LIKE '%PENDING%' AND UPPER(t.txn_type) LIKE '%WITHDRAWAL%'\nGROUP BY u.username;",
+      "data_count": 10,
+      "results": [
+        {
+          "username": "adam_morris",
+          "total_withdrawals": 2,
+          "total_amount_withdrawn_usd": 5562.37,
+          "payment_methods": "ACH"
+        },
+        {
+          "username": "andrew_lewis",
+          "total_withdrawals": 1,
+          "total_amount_withdrawn_usd": 29.68,
+          "payment_methods": "Wire Transfer"
+        },
+        {
+          "username": "aurora_powell",
+          "total_withdrawals": 2,
+          "total_amount_withdrawn_usd": 58598.5,
+          "payment_methods": "Crypto Wallet,E-Wallet"
+        },
+        {
+          "username": "charlotte_taylor",
+          "total_withdrawals": 2,
+          "total_amount_withdrawn_usd": 574.6700000000001,
+          "payment_methods": "Credit Card,SEPA"
+        },
+        {
+          "username": "hannah_turner",
+          "total_withdrawals": 1,
+          "total_amount_withdrawn_usd": 1377.8,
+          "payment_methods": "E-Wallet"
+        },
+        {
+          "username": "nathan_scott",
+          "total_withdrawals": 2,
+          "total_amount_withdrawn_usd": 37464.48,
+          "payment_methods": "Wire Transfer,SEPA"
+        },
+        {
+          "username": "phillip_gonzales",
+          "total_withdrawals": 2,
+          "total_amount_withdrawn_usd": 11615.060000000001,
+          "payment_methods": "Bank Transfer,ACH"
+        },
+        {
+          "username": "sarah_davis",
+          "total_withdrawals": 1,
+          "total_amount_withdrawn_usd": 136.35,
+          "payment_methods": "Debit Card"
+        },
+        {
+          "username": "sophia_hernandez",
+          "total_withdrawals": 1,
+          "total_amount_withdrawn_usd": 11.6,
+          "payment_methods": "Credit Card"
+        },
+        {
+          "username": "ted_ford",
+          "total_withdrawals": 2,
+          "total_amount_withdrawn_usd": 858.5999999999999,
+          "payment_methods": "Wire Transfer,Debit Card"
+        }
+      ],
+      "visualization_config": {
+        "chart_type": "table",
+        "title": "Pending KYC User Withdrawals Details",
+        "x_axis_key": "username",
+        "y_axis_key": [
+          "total_withdrawals",
+          "total_amount_withdrawn_usd",
+          "payment_methods"
+        ],
+        "label": "Withdrawal Information",
+        "description": "A table is the best choice because the user requested a list of details for specific users, including multiple metrics (count and sum) and a concatenated string of payment methods. Visual charts like bars or pies cannot effectively represent the 'payment_methods' string data alongside the numerical values for individual users."
+      },
+      "insight": "The data reveals that users with 'PENDING' KYC status have collectively engaged in significant withdrawal activity, totaling approximately $117,429 USD across 15 withdrawals within this sample. The diversity of payment methods utilized (including Crypto Wallets, E-Wallets, Wire Transfers, and Credit/Debit Cards) coupled with the 'PENDING' KYC status highlights a potential elevated risk of financial crime, fraud, or regulatory non-compliance. This situation demands immediate attention to mitigate potential financial losses and reputational damage.",
+      "recommendation": "1. **Immediate Action on High-Risk Users:** Prioritize the immediate review and validation of KYC for users exhibiting significant withdrawal activity while in 'PENDING' status. Consider temporarily suspending withdrawals for this cohort until their KYC is fully verified. \n2. **Enhanced Transaction Monitoring:** Implement stricter, real-time monitoring and automated alerts for all withdrawal attempts from users with 'PENDING' KYC status, particularly those exceeding predefined thresholds or originating from higher-risk payment methods. This proactive measure will help detect and prevent illicit activities before they occur.",
+      "original_query": "For users with 'PENDING' KYC status, list all withdrawals made. Include the total number of withdrawals, the total amount withdrawn in USD, and the payment methods used for these withdrawals.",
+      "depth": 1,
+      "parent_mission_id": "RIS003",
+      "rationale": "The finding highlights 'PENDING' KYC users engaging in withdrawals. This follow-up query focuses specifically on this aspect to understand the patterns and scale of their withdrawal activities. Identifying the total withdrawal amount and the payment methods can reveal potential money laundering techniques or attempts to quickly move funds before full verification.",
+      "timestamp": "LIVE AUDIT",
+      "logs": [
+        {
+          "ts": 1770463807.058,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [classify_intent]"
+        },
+        {
+          "ts": 1770463807.06,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Starting Intent Classification and Preprocessing in parallel for domain: risk"
+        },
+        {
+          "ts": 1770463810.433,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classifying intent for domain: risk | Query: For users with 'PENDING' KYC status, list all withdrawals made. Include the total number of withdrawals, the total amount withdrawn in USD, and the payment methods used for these withdrawals."
+        },
+        {
+          "ts": 1770463810.435,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463810.83,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"intent\": \"SELECT\",\n  \"confidence\": 1...."
+        },
+        {
+          "ts": 1770463810.831,
+          "level": "INFO",
+          "node": "INTENT",
+          "msg": "Classification Result: SELECT (conf: 1.0) | Needs Clarification: False"
+        },
+        {
+          "ts": 1770463818.426,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463818.897,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: [\"users\", \"transactions\"]..."
+        },
+        {
+          "ts": 1770463818.9,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463819.842,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"resolved_entities\": {\n    \"users.kyc_..."
+        },
+        {
+          "ts": 1770463819.843,
+          "level": "INFO",
+          "node": "entity_extractor.py",
+          "msg": "Final Extracted/Resolved Entities: {'users.kyc_status': 'PENDING', 'transactions.txn_type': 'WITHDRAWAL'}"
+        },
+        {
+          "ts": 1770463819.865,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Intent classified: SELECT (conf: 1.0) | Needs Clarification: False"
+        },
+        {
+          "ts": 1770463824.794,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [generate_sql]"
+        },
+        {
+          "ts": 1770463824.795,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "Generating SQL for domain: risk | Query: For users with 'PENDING' KYC status, list all withdrawals made. Include the total number of withdrawals, the total amount withdrawn in USD, and the payment methods used for these withdrawals."
+        },
+        {
+          "ts": 1770463824.8,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "Using custom SQL prompt for domain: risk"
+        },
+        {
+          "ts": 1770463824.8,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463825.762,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: SELECT u.username, COUNT(t.txn_id) AS total_withdr..."
+        },
+        {
+          "ts": 1770463825.762,
+          "level": "INFO",
+          "node": "SQL_GEN",
+          "msg": "SQL Generated and cleaned: SELECT u.username, COUNT(t.txn_id) AS total_withdr..."
+        },
+        {
+          "ts": 1770463825.762,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "SQL Generated: SELECT u.username, COUNT(t.txn_id) AS total_withdr..."
+        },
+        {
+          "ts": 1770463825.809,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [validate_sql]"
+        },
+        {
+          "ts": 1770463825.872,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [execute_query]"
+        },
+        {
+          "ts": 1770463825.874,
+          "level": "INFO",
+          "node": "DB_EXEC",
+          "msg": "Executing SQL: SELECT u.username, COUNT(t.txn_id) AS total_withdrawals, SUM(t.amount_usd) AS total_amount_withdrawn_usd, GROUP_CONCAT(DISTINCT t.payment_method) AS payment_methods\nFROM users u\nJOIN transactions t ON u.user_id = t.user_id\nWHERE UPPER(u.kyc_status) LIKE '%PENDING%' AND UPPER(t.txn_type) LIKE '%WITHDRAWAL%'\nGROUP BY u.username;"
+        },
+        {
+          "ts": 1770463825.877,
+          "level": "INFO",
+          "node": "DB_EXEC",
+          "msg": "Execution complete. Returned 10 rows."
+        },
+        {
+          "ts": 1770463825.878,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Query execution successful. Rows: 10"
+        },
+        {
+          "ts": 1770463897.807,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [insight_recommendation]"
+        },
+        {
+          "ts": 1770463897.809,
+          "level": "INFO",
+          "node": "INSIGHT",
+          "msg": "Generating insights for 10 rows in domain: risk"
+        },
+        {
+          "ts": 1770463897.809,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-2.5-flash-lite] generating response..."
+        },
+        {
+          "ts": 1770463899.614,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-2.5-flash-lite]. Snippet: ```json\n{\n  \"insight\": \"The data reveals that user..."
+        },
+        {
+          "ts": 1770463899.616,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Insights generated successfully."
+        },
+        {
+          "ts": 1770463899.617,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Node: [recommend_visualization]"
+        },
+        {
+          "ts": 1770463899.619,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM [gemini] using model [gemini-3-flash-preview] generating response..."
+        },
+        {
+          "ts": 1770463913.042,
+          "level": "INFO",
+          "node": "llm.py",
+          "msg": "LLM response received from [gemini-3-flash-preview]. Snippet: ```json\n{\n  \"chart_type\": \"table\",\n  \"title\": \"Pen..."
+        },
+        {
+          "ts": 1770463913.043,
+          "level": "INFO",
+          "node": "ORCHESTRATOR",
+          "msg": "Visualization recommended: table"
+        }
+      ]
+    }
+  ],
+  "clusters": [
+    {
+      "cluster_id": "TC-001",
+      "threat_name": "High-Risk User Activity with Incomplete KYC and Transactional Anomalies",
+      "severity": "HIGH",
+      "connected_missions": [
+        "COM001",
+        "RIS003",
+        "dd-COM001-1-0",
+        "dd-COM001-1-1",
+        "dd-RIS003-1-0",
+        "dd-RIS003-1-1"
+      ],
+      "shared_entities": {
+        "user_ids": [],
+        "countries": [
+          "United Kingdom",
+          "India",
+          "Japan"
+        ],
+        "ip_addresses": []
+      },
+      "narrative": "A significant pattern emerges involving users with 'PENDING' or 'FAILED' KYC status who are actively engaged in high-volume transactions, particularly with high-risk instruments like BTC/USD, ETH/USD, and financial derivatives (DAX, GOOGL, META, MSFT, Natural Gas, Nikkei). These activities are further concentrated in specific international markets (United Kingdom, India, Japan).  The withdrawal patterns of these 'PENDING' KYC users also indicate substantial financial movement. This suggests a coordinated effort to exploit the system by individuals with incomplete verification, potentially for illicit financial activities or to circumvent compliance measures.",
+      "recommended_action": "Immediately flag and suspend all accounts with 'PENDING' or 'FAILED' KYC status that exhibit high-volume trading or withdrawal activity. Conduct enhanced due diligence on transactions originating from the United Kingdom, India, and Japan for these user segments. Investigate the root cause of deposit failures for 'CRITICAL' risk level users with 'PENDING' KYC."
+    }
+  ],
+  "narrative": {
+    "executive_summary": "Our real-time scan has identified a critical threat cluster, 'TC-001: High-Risk User Activity with Incomplete KYC and Transactional Anomalies.' This cluster highlights a significant risk posed by users with incomplete Know Your Customer (KYC) verification who are engaging in high-volume transactions across various high-risk instruments and originating from key international markets. The potential for illicit financial activities and circumvention of compliance measures is elevated, requiring immediate attention.",
+    "threat_vectors": [
+      {
+        "name": "High-Risk User Activity with Incomplete KYC and Transactional Anomalies (TC-001)",
+        "severity": "HIGH",
+        "description": "Users with 'PENDING' or 'FAILED' KYC status are engaging in high-volume transactions across high-risk instruments (BTC/USD, ETH/USD, derivatives) and financial products, originating from the United Kingdom, India, and Japan. Significant withdrawal patterns from these users are also noted."
+      },
+      {
+        "name": "High-Volume Transactions from Unverified/High-Risk Users",
+        "severity": "MEDIUM",
+        "description": "Significant transaction volumes are associated with instruments like BTC/USD, ETH/USD, Natural Gas, and S&P500 from users flagged with 'PENDING' or 'FAILED' KYC and 'HIGH' or 'CRITICAL' risk levels, indicating elevated exposure to illicit finance."
+      },
+      {
+        "name": "Concentrated High-Risk Instrument Exposure in Unverified Users",
+        "severity": "HIGH",
+        "description": "A notable concentration of transaction activity, particularly trades and withdrawals, is observed among users with 'PENDING' KYC status engaging with instruments like DAX, GOOGL, META, MSFT, Natural Gas, and Nikkei."
+      },
+      {
+        "name": "Payment Failure Root Cause Analysis by Transaction Type and User Segment",
+        "severity": "MEDIUM",
+        "description": "A significant volume of payment failures lacks granular 'flag_reason' categorization, hindering root cause analysis. Deposit failures are specifically noted for 'CRITICAL' risk level users with 'PENDING' KYC."
+      }
+    ],
+    "immediate_actions": [
+      "Immediately flag and suspend all accounts with 'PENDING' or 'FAILED' KYC status exhibiting high-volume trading or withdrawal activity.",
+      "Conduct enhanced due diligence on all transactions originating from the United Kingdom, India, and Japan for users with 'PENDING' or 'FAILED' KYC status.",
+      "Investigate the root cause of deposit failures for 'CRITICAL' risk level users with 'PENDING' KYC status.",
+      "Initiate a review of the current KYC verification process to identify potential loopholes exploited by high-risk users."
+    ],
+    "monitoring_recommendations": [
+      "Continuously monitor transaction patterns for users with 'PENDING' or 'FAILED' KYC status, with a specific focus on high-risk instruments and international origins.",
+      "Establish real-time alerts for any new high-volume transactions originating from the United Kingdom, India, and Japan by users with incomplete KYC."
+    ],
+    "overall_risk": 44,
+    "overall_severity": "MEDIUM",
+    "title": "Intelligence Brief - LIVE"
+  }
+}
