@@ -27,8 +27,7 @@ Endpoints:
 
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field
-from typing import Optional, Dict, Any, List
-import json
+from typing import Optional, Dict, Any
 
 from app.services.alert_engine import AlertEngineService, ALERTS_DB_PATH
 from app.services.alert_events_generate import EventGenerator
